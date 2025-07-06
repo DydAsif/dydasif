@@ -3,17 +3,17 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'Ashfakur Rahman Asif - Digital Marketing Portfolio',
+  title: 'Asif - Digital Marketing Portfolio',
   description: 'Digital Marketing Strategist & Tracking Expert specializing in GA4, Meta CAPI, and funnel automation. I make your ads track better.',
   openGraph: {
-    title: 'Ashfakur Rahman Asif - Digital Marketing Portfolio',
+    title: 'Asif - Digital Marketing Portfolio',
     description: 'Digital Marketing Strategist & Tracking Expert specializing in GA4, Meta CAPI, and funnel automation.',
     images: [
       {
         url: 'https://placehold.co/1200x630.png',
         width: 1200,
         height: 630,
-        alt: 'Ashfakur Rahman Asif - Digital Marketing Portfolio',
+        alt: 'Asif - Digital Marketing Portfolio',
       },
     ],
     type: 'website',
