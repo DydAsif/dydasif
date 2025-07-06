@@ -9,7 +9,7 @@ export function Hero() {
         <div className="relative z-10 space-y-6 text-center md:text-left">
           <div className="max-w-2xl mx-auto md:mx-0">
             <h1 className="text-4xl font-headline font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl lg:text-7xl">
-              Hi, I'm Ashfakur Rahman Asif — I Make Your Ads Track Better.
+              Hi, I'm Asif — I Make Your Ads Track Better.
             </h1>
             <p className="mt-4 text-lg text-muted-foreground md:text-xl">
               Digital Marketing Strategist | Tracking Expert | GA4 & Meta Certified

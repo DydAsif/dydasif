@@ -54,9 +54,12 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: hsl(var(--background) / 0.95);
   }
   html {
     scroll-behavior: smooth;
+    background: url('https://placehold.co/1920x1080.png') no-repeat center center fixed;
+    background-size: cover;
   }
 }
