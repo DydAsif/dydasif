@@ -48,8 +48,9 @@ export function Hero() {
         <h1 className="text-5xl md:text-7xl font-bold drop-shadow-xl font-headline">Ashfakur Rahman Asif</h1>
         <p className="text-xl md:text-2xl mt-4 drop-shadow-lg max-w-2xl">Digital Marketing & Tracking Expert</p>
         <a
-          href="/asif-cv.pdf"
-          download
+          href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-8 inline-block bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg"
         >
           Download CV

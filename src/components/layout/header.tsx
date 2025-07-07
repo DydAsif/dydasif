@@ -77,8 +77,9 @@ export function Header() {
         </nav>
         <div className="hidden items-center gap-4 md:flex">
            <a
-            href="/asif-cv.pdf"
-            download
+            href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-[#00ccff] text-black rounded-xl px-4 py-2 font-bold hover:bg-blue-400 transition shadow-lg text-sm"
           >
             Download CV
@@ -104,8 +105,9 @@ export function Header() {
                 ))}
               </nav>
                <a
-                href="/asif-cv.pdf"
-                download
+                href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block text-center bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg"
               >
                 Download CV
