@@ -117,7 +117,7 @@ export function Socials() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl text-primary">Connect With Me</h2>
-            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="text-slate-200 text-center max-w-xl mx-auto mt-4">
               Ready to grow your business? Hire me on your favorite platform or get in touch on social media.
             </p>
           </div>
@@ -144,10 +144,16 @@ export function Socials() {
             <h3 className="text-2xl font-bold text-center mb-8 text-primary/90">Let’s Connect on Social Media</h3>
             <div className="flex flex-wrap items-center justify-center gap-4">
               {socialMediaLinks.map((link) => (
-                <Button asChild key={link.label} size="icon" variant="outline" className="rounded-full h-14 w-14 hover:bg-primary hover:text-primary-foreground border-primary text-primary transition-all duration-300 hover:scale-110">
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
-                    {link.icon}
-                  </a>
+                 <Button asChild key={link.label}>
+                   <a 
+                     href={link.href}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     aria-label={link.label}
+                     className="inline-flex items-center justify-center whitespace-nowrap rounded-full h-14 w-14 border border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
+                   >
+                     {link.icon}
+                   </a>
                 </Button>
               ))}
             </div>
