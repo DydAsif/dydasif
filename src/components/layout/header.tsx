@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -27,15 +26,33 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+        });
+      }
+    }
+    // Close mobile menu if it's open
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
+
+
   return (
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <a href="#home" className="flex items-center gap-2">
+        <a href="#home" onClick={handleLinkClick} className="flex items-center gap-2">
           <span className="text-lg font-bold tracking-tight text-primary sm:text-xl">Ashfakur Rahman Asif</span>
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+            <a key={link.href} href={link.href} onClick={handleLinkClick} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
               {link.label}
             </a>
           ))}
@@ -54,12 +71,12 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right">
             <div className="grid gap-6 p-6">
-              <a href="#home" className="flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+              <a href="#home" className="flex items-center gap-2" onClick={handleLinkClick}>
                  <span className="text-xl font-bold tracking-tight text-primary">Ashfakur Rahman Asif</span>
               </a>
               <nav className="grid gap-4">
                 {navLinks.map((link) => (
-                  <a key={link.href} href={link.href} className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary" onClick={() => setIsMenuOpen(false)}>
+                  <a key={link.href} href={link.href} className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary" onClick={handleLinkClick}>
                     {link.label}
                   </a>
                 ))}
