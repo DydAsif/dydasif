@@ -92,11 +92,17 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
         },
+        'button-glow': {
+          '0%': { boxShadow: '0 0 5px #3b82f6, 0 0 10px #3b82f6' },
+          '50%': { boxShadow: '0 0 20px #3b82f6, 0 0 30px #3b82f6' },
+          '100%': { boxShadow: '0 0 5px #3b82f6, 0 0 10px #3b82f6' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'float': 'float 4s ease-in-out infinite',
+        'button-glow': 'button-glow 4s ease-in-out infinite',
       },
     },
   },
