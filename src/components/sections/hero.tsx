@@ -46,10 +46,14 @@ export function Hero() {
   }, [vantaEffect]);
 
   return (
-    <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center relative py-20">
-        <div className="container mx-auto px-4 md:px-6">
+    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Vanta background will attach here */}
+      <div ref={vantaRef} className="absolute top-0 left-0 w-full h-full z-0" />
+
+      {/* Content Layer */}
+      <div className="relative z-10 container mx-auto px-4 md:px-6 py-20">
             <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-24 items-center">
-                <div className="z-10 text-primary-foreground space-y-6 text-center lg:text-left">
+                <div className="text-primary-foreground space-y-6 text-center lg:text-left">
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline">Ashfakur Rahman Asif</h1>
                     <p className="text-lg sm:text-xl text-muted-foreground/90 max-w-xl mx-auto lg:mx-0">Digital Marketing & Conversion Tracking Expert</p>
                     <Button asChild size="lg">
@@ -62,9 +66,9 @@ export function Hero() {
                       </a>
                     </Button>
                 </div>
-                <div className="z-10 relative flex justify-center items-center">
+                <div className="relative flex justify-center items-center">
                     <Image
-                        src="https://i.ibb.co/yBMzR8n/upscalemedia-transformed.png"
+                        src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
                         alt="Ashfakur Rahman Asif"
                         width={450}
                         height={450}
