@@ -141,7 +141,7 @@ export function Socials() {
             <h3 className="text-2xl font-bold text-center mb-8 text-primary/90">Let’s Connect on Social Media</h3>
             <div className="flex flex-wrap items-center justify-center gap-4">
               {socialMediaLinks.map((link) => (
-                <Button asChild key={link.href} size="icon" variant="outline" className="rounded-full h-14 w-14 hover:bg-primary hover:text-primary-foreground border-primary text-primary transition-all duration-300 hover:scale-110">
+                <Button asChild key={link.label} size="icon" variant="outline" className="rounded-full h-14 w-14 hover:bg-primary hover:text-primary-foreground border-primary text-primary transition-all duration-300 hover:scale-110">
                   <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
                     {link.icon}
                   </a>
