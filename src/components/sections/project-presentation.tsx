@@ -18,7 +18,7 @@ const projects = [
 
 export function ProjectPresentation() {
   return (
-    <section id="presentation" className="w-full py-12 md:py-24 lg:py-32">
+    <section id="presentation" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -30,14 +30,14 @@ export function ProjectPresentation() {
         </div>
         <div className="mx-auto grid items-start gap-12 sm:max-w-4xl md:max-w-5xl lg:grid-cols-1 mt-12">
           {projects.map((project, index) => (
-            <Card key={index} className="w-full shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden">
+            <Card key={index} className="w-full shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg overflow-hidden bg-card border border-border hover:border-primary">
               <div className="md:grid md:grid-cols-2 md:gap-8 items-center">
                 <div className="p-6">
                   <CardHeader className="p-0">
                     <CardTitle className="text-2xl font-bold">{project.title}</CardTitle>
                   </CardHeader>
-                  <CardContent className="p-0">
-                    <p className="text-muted-foreground mt-4">{project.description}</p>
+                  <CardContent className="p-0 mt-4">
+                    <p className="text-muted-foreground">{project.description}</p>
                   </CardContent>
                 </div>
                 <div className="relative h-64 md:h-full min-h-[250px]">

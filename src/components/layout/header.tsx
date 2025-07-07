@@ -9,6 +9,8 @@ const navLinks = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
+  { href: '#portfolio', label: 'Portfolio' },
+  { href: '#presentation', label: 'Presentations' },
   { href: '#certifications', label: 'Certifications' },
   { href: '#social-links', label: 'Socials' },
   { href: '#contact', label: 'Contact' },
@@ -44,18 +46,14 @@ export function Header() {
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
     const href = e.currentTarget.getAttribute('href');
-    
-    // Only prevent default and scroll for internal hash links
-    if (href && href.startsWith('#')) {
-      e.preventDefault();
+    if (href) {
       const targetElement = document.querySelector(href);
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
-    // For other links (like download), the default browser action will proceed.
-
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }

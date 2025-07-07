@@ -37,7 +37,7 @@ export function Portfolio() {
         </div>
         <div className="mx-auto grid items-stretch gap-8 sm:max-w-4xl sm:grid-cols-1 md:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 mt-12">
           {portfolioItems.map((item, index) => (
-            <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-lg flex flex-col">
+            <Card key={index} className="bg-card border border-border shadow-lg hover:shadow-primary/20 hover:scale-105 hover:border-primary transition-all duration-300 rounded-lg flex flex-col">
               <CardHeader>
                 <div className="flex items-center gap-4">
                   {item.icon}
