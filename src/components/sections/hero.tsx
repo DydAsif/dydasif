@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Button } from "@/components/ui/button";
@@ -8,13 +9,13 @@ export function Hero() {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   useEffect(() => {
-    let NET: any = null;
+    let GLOBE: any = null;
     if (typeof window !== "undefined") {
-      NET = require("vanta/dist/vanta.net.min");
+      GLOBE = require("vanta/dist/vanta.globe.min");
     }
 
-    if (!vantaEffect && NET) {
-      const vantaInitializer = NET.default || NET;
+    if (!vantaEffect && GLOBE) {
+      const vantaInitializer = GLOBE.default || GLOBE;
       setVantaEffect(
         vantaInitializer({
           el: vantaRef.current,
@@ -26,11 +27,8 @@ export function Hero() {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0x00b894,      // Teal Green (site accent)
-          backgroundColor: 0x111827, // Dark Gray (site primary)
-          points: 12.00,
-          maxDistance: 22.00,
-          spacing: 18.00
+          color: 0x00b894,      // Teal Green land
+          backgroundColor: 0x111827, // Dark Gray water/background
         })
       );
     }
