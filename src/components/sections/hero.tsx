@@ -64,7 +64,7 @@ export function Hero() {
                 </div>
                 <div className="z-10 relative flex justify-center items-center">
                     <Image
-                        src="https://i.ibb.co/L6WvF9q/man-removebg-preview.png"
+                        src="https://i.ibb.co/yBMzR8n/upscalemedia-transformed.png"
                         alt="Ashfakur Rahman Asif"
                         width={450}
                         height={450}
