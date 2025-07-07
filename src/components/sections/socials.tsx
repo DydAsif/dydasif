@@ -107,7 +107,7 @@ const socialMediaLinks = [
   },
   {
     label: 'WhatsApp',
-    href: 'https://wa.me/1234567890',
+    href: 'https://wa.me/8801636335194',
     icon: <WhatsAppIcon />,
   },
 ];
