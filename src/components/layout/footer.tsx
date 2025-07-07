@@ -6,11 +6,10 @@ export function Footer() {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
-    // This check is to prevent hydration mismatch, though getFullYear is generally safe.
-    if (currentYear !== new Date().getFullYear()) {
-      setCurrentYear(new Date().getFullYear());
-    }
-  }, [currentYear]);
+    // This effect ensures the component is re-rendered on the client
+    // after hydration, which can help with certain mismatches.
+    setCurrentYear(new Date().getFullYear());
+  }, []); // Empty dependency array means it runs once on mount
 
   return (
     <footer className="w-full py-6 border-t bg-secondary/50">
