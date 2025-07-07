@@ -8,13 +8,13 @@ export function Hero() {
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   useEffect(() => {
-    let FOG: any = null;
+    let NET: any = null;
     if (typeof window !== "undefined") {
-      FOG = require("vanta/dist/vanta.fog.min");
+      NET = require("vanta/dist/vanta.net.min");
     }
 
-    if (!vantaEffect && FOG) {
-      const vantaInitializer = FOG.default || FOG;
+    if (!vantaEffect && NET) {
+      const vantaInitializer = NET.default || NET;
       setVantaEffect(
         vantaInitializer({
           el: vantaRef.current,
@@ -24,13 +24,13 @@ export function Hero() {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0x00ccff,     // lightning/electric blue
-          midtoneColor: 0x003355,       // smoky blue
-          lowlightColor: 0x000000,      // dark for contrast
-          baseColor: 0x001f2f,          // background color
-          blurFactor: 0.7,
-          speed: 1.2,
-          zoom: 1.2
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x00b894,      // Teal Green (site accent)
+          backgroundColor: 0x111827, // Dark Gray (site primary)
+          points: 12.00,
+          maxDistance: 22.00,
+          spacing: 18.00
         })
       );
     }
