@@ -3,20 +3,23 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Button } from "@/components/ui/button";
 
-// Import Vanta only when component is mounted (avoid server-side issues)
-let NET: any = null;
-if (typeof window !== "undefined") {
-  NET = require("vanta/dist/vanta.net.min");
-}
+// vanta.js is a client-side only library, so we can't import it at the top level.
 
 export function Hero() {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   useEffect(() => {
-    if (!vantaEffect && NET) {
+    let vantaInitializer: any = null;
+    if (typeof window !== "undefined") {
+      const vantaModule = require("vanta/dist/vanta.net.min");
+      // Handle both CJS and ESM module formats that can be returned by require
+      vantaInitializer = vantaModule.default || vantaModule;
+    }
+
+    if (!vantaEffect && vantaInitializer) {
       setVantaEffect(
-        NET({
+        vantaInitializer({
           el: vantaRef.current,
           THREE: THREE,
           mouseControls: true,
@@ -31,10 +34,12 @@ export function Hero() {
         })
       );
     }
+    
+    // Cleanup function to destroy the effect when the component unmounts
     return () => {
       if (vantaEffect) vantaEffect.destroy();
     };
-  }, [vantaEffect]);
+  }, [vantaEffect]); // Rerun the effect if vantaEffect changes (e.g., gets destroyed)
 
   return (
     <section id="home" ref={vantaRef} className="w-full h-screen flex items-center justify-center text-center relative">
