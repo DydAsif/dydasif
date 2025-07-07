@@ -78,7 +78,7 @@ const freelancePlatforms = [
   },
   {
     label: 'SEOClerk',
-    href: '#',
+    href: 'https://www.seoclerk.com/user/DYDasif',
     icon: <SeoClerkIcon />,
     style: "bg-blue-700 hover:bg-blue-600 text-white hover:shadow-2xl hover:shadow-blue-500/40",
   },
