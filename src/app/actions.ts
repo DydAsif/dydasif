@@ -1,6 +1,9 @@
 "use server";
 
 import * as z from 'zod';
+import { Resend } from 'resend';
+
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 const contactFormSchema = z.object({
   name: z.string().min(2, 'Name is required.'),
@@ -15,12 +18,32 @@ export async function submitContactForm(values: z.infer<typeof contactFormSchema
     return { success: false, message: 'Invalid form data.' };
   }
 
-  // Here you would typically send an email or save to a database.
-  // For this example, we'll just log it and simulate a success response.
-  console.log('Form submitted successfully:', validatedFields.data);
-  
-  // Simulate network delay
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  const { name, email, message } = validatedFields.data;
 
-  return { success: true };
+  if (!resend) {
+    console.error('RESEND_API_KEY is not configured. Email will not be sent.');
+    // In a real app, you'd want to handle this more gracefully.
+    // For now, we'll return a success message to the user but log the error.
+    return { success: true, message: "Form submitted, but email sending is currently disabled." };
+  }
+
+  try {
+    await resend.emails.send({
+      from: 'onboarding@resend.dev', // IMPORTANT: This must be a verified domain in your Resend account.
+      to: 'asifashfakurrahman@gmail.com',
+      subject: `New contact form submission from ${name}`,
+      reply_to: email,
+      html: `
+        <p>You have a new message from your portfolio website:</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+    });
+    return { success: true };
+  } catch (error) {
+    console.error("Email sending failed:", error);
+    return { success: false, message: 'There was an error sending your message.' };
+  }
 }
