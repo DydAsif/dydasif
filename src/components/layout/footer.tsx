@@ -13,7 +13,7 @@ const socialLinks = [
   },
   {
     label: 'Facebook',
-    href: 'https://fb.com/yourname',
+    href: 'https://www.facebook.com/share/12KAR3Dqt58/',
     icon: <Facebook className="h-5 w-5" />,
   },
 ];
