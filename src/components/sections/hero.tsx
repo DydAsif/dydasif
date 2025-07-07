@@ -1,41 +1,55 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+"use client";
+import { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { Button } from "@/components/ui/button";
+
+// Import Vanta only when component is mounted (avoid server-side issues)
+let NET: any = null;
+if (typeof window !== "undefined") {
+  NET = require("vanta/dist/vanta.net.min");
+}
 
 export function Hero() {
+  const vantaRef = useRef(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(null);
+
+  useEffect(() => {
+    if (!vantaEffect && NET) {
+      setVantaEffect(
+        NET({
+          el: vantaRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 400.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          color: 0x00b894, // Theme accent color
+          backgroundColor: 0x111827, // Theme primary color
+          spacing: 20.0,
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
+
   return (
-    <section id="home" className="relative w-full h-screen min-h-[700px] flex items-center justify-center">
-      <div className="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-10 items-center">
-        <div className="relative z-10 space-y-6 text-center md:text-left">
-          <div className="max-w-2xl mx-auto md:mx-0">
-            <h1 className="text-4xl font-headline font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl lg:text-7xl">
-              Hi, I'm Asif — I Make Your Ads Track Better.
-            </h1>
-            <p className="mt-4 text-lg text-muted-foreground md:text-xl">
-              Digital Marketing Strategist | Tracking Expert | GA4 & Meta Certified
-            </p>
-          </div>
-          <div className="flex flex-col gap-4 justify-center sm:flex-row md:justify-start">
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Link href="#services">View My Services</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="#contact">Contact Me</Link>
-            </Button>
-          </div>
-        </div>
-        <div className="flex items-center justify-center">
-          <div className="relative h-80 w-80 md:h-96 md:w-96 rounded-full transition-all duration-300 ease-in-out hover:bg-accent/20 hover:scale-105">
-            <Image
-              src="https://i.ibb.co/b4Gj4cD/upscalemedia-transformed.png"
-              alt="Ashfakur Rahman Asif"
-              fill
-              className="rounded-full object-cover shadow-2xl"
-              data-ai-hint="portrait professional"
-              priority
-            />
-          </div>
-        </div>
+    <section id="home" ref={vantaRef} className="w-full h-screen flex items-center justify-center text-center relative">
+      <div className="z-10 text-primary-foreground p-4">
+        <h1 className="text-4xl sm:text-5xl font-bold font-headline">Ashfakur Rahman Asif</h1>
+        <p className="text-lg sm:text-xl mt-4 text-muted-foreground/90">Digital Marketing & Conversion Tracking Expert</p>
+        <Button asChild size="lg" className="mt-6">
+          <a
+            href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download CV
+          </a>
+        </Button>
       </div>
     </section>
   );
