@@ -121,12 +121,12 @@ export function Socials() {
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#00FF94]">
             Let’s Work Together
           </h2>
-           <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+           <p className="max-w-[900px] text-slate-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Ready to grow your business? Hire me on your favorite platform or get in touch on social media.
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-5xl items-start gap-8 lg:grid-cols-2 lg:gap-12 mt-16">
+        <div className="mx-auto grid max-w-5xl items-stretch gap-8 lg:grid-cols-2 lg:gap-12 mt-16">
           <div className="relative rounded-2xl border border-slate-700 bg-slate-800/50 p-8 backdrop-blur-sm">
             <h3 className="mb-6 text-2xl font-bold text-white text-center">Hire Me On Freelance Platforms</h3>
             <div className="flex flex-col items-center justify-center gap-4">
@@ -145,9 +145,9 @@ export function Socials() {
             </div>
           </div>
           
-          <div className="relative rounded-2xl border border-slate-700 bg-slate-800/50 p-8 backdrop-blur-sm">
-            <h3 className="mb-6 text-2xl font-bold text-white text-center">Let's Connect on Social Media</h3>
-            <div className="flex flex-wrap items-center justify-center gap-6">
+          <div className="relative rounded-2xl border border-slate-700 bg-slate-800/50 p-8 backdrop-blur-sm flex flex-col">
+            <h3 className="mb-6 text-2xl font-bold text-white text-center shrink-0">Let's Connect on Social Media</h3>
+            <div className="flex flex-wrap items-center justify-center gap-6 my-auto">
               {socialMediaLinks.map((link) => (
                  <a
                   key={link.label}
@@ -155,7 +155,7 @@ export function Socials() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="flex h-16 w-16 items-center justify-center rounded-full bg-slate-900/50 text-slate-400 transition-all duration-300 hover:scale-110 hover:bg-[#1E293B] hover:text-[#00E5FF] hover:shadow-[0_0_20px_#00E5FF50]"
+                  className="flex h-16 w-16 items-center justify-center rounded-full border border-slate-700 text-slate-400 transition-all duration-300 hover:scale-110 hover:border-[#00E5FF] hover:text-[#00E5FF] hover:shadow-[0_0_20px_#00E5FF30]"
                 >
                   {link.icon}
                 </a>
