@@ -14,8 +14,9 @@ export function Hero() {
     }
 
     if (!vantaEffect && FOG) {
+      const vantaInitializer = FOG.default || FOG;
       setVantaEffect(
-        FOG({
+        vantaInitializer({
           el: vantaRef.current,
           THREE: THREE,
           mouseControls: true,
