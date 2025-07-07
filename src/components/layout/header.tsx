@@ -6,7 +6,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
   { href: '#portfolio', label: 'Portfolio' },
@@ -27,15 +26,25 @@ export function Header() {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     
+    const sections = document.querySelectorAll('section[id]');
+    
     observer.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setActiveSection(`#${entry.target.id}`);
+            // A special check for the hero section which has the id "home"
+            if (entry.target.id === 'home') {
+                 // Check if we are near the top of the page
+                 if (window.scrollY < window.innerHeight / 2) {
+                    setActiveSection('#home');
+                 }
+            } else {
+                setActiveSection(`#${entry.target.id}`);
+            }
         }
       });
-    }, { rootMargin: '-30% 0px -70% 0px' });
+    }, { rootMargin: '-40% 0px -60% 0px', threshold: 0 });
 
-    const sections = document.querySelectorAll('section[id]');
+
     sections.forEach(section => observer.current?.observe(section));
 
     return () => {
@@ -44,14 +53,13 @@ export function Header() {
     };
   }, []);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
     e.preventDefault();
-    const href = e.currentTarget.getAttribute('href');
-    if (href) {
-      const targetElement = document.querySelector(href);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+      // Manually set active section on click for instant feedback
+      setActiveSection(href);
     }
     if (isMenuOpen) {
       setIsMenuOpen(false);
@@ -62,12 +70,12 @@ export function Header() {
   return (
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <a href="#home" onClick={handleLinkClick} className="flex items-center gap-2">
+        <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex items-center gap-2">
           <span className="text-lg font-bold tracking-tight text-primary sm:text-xl">Ashfakur Rahman Asif</span>
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={handleLinkClick} className={`text-sm font-medium transition-colors ${activeSection === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>
+            <a key={link.href} href={link.href} onClick={(e) => handleLinkClick(e, link.href)} className={`text-sm font-medium transition-colors ${activeSection === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>
               {link.label}
             </a>
           ))}
@@ -91,12 +99,12 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="bg-background">
             <div className="grid gap-6 p-6">
-              <a href="#home" className="flex items-center gap-2" onClick={handleLinkClick}>
+              <a href="#home" className="flex items-center gap-2" onClick={(e) => handleLinkClick(e, '#home')}>
                  <span className="text-xl font-bold tracking-tight text-primary">Ashfakur Rahman Asif</span>
               </a>
               <nav className="grid gap-4">
                 {navLinks.map((link) => (
-                  <a key={link.href} href={link.href} className={`text-lg font-medium transition-colors ${activeSection === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={handleLinkClick}>
+                  <a key={link.href} href={link.href} className={`text-lg font-medium transition-colors ${activeSection === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={(e) => handleLinkClick(e, link.href)}>
                     {link.label}
                   </a>
                 ))}
