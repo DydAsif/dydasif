@@ -66,16 +66,19 @@ const freelancePlatforms = [
     label: 'Fiverr',
     href: 'https://www.fiverr.com/a_r_asif',
     icon: <FiverrIcon />,
+    style: "bg-[#1DBF73] hover:bg-[#1DBF73]/90 text-white hover:shadow-lg hover:shadow-[#1DBF73]/40",
   },
   {
     label: 'Upwork',
     href: '#', // Placeholder link
     icon: <UpworkIcon />,
+    style: "bg-[#14A800] hover:bg-[#14A800]/90 text-white hover:shadow-lg hover:shadow-[#14A800]/40",
   },
   {
     label: 'SEOClerk',
     href: '#', // Placeholder link
     icon: <SeoClerkIcon />,
+    style: "bg-slate-800 hover:bg-slate-700 text-white hover:shadow-lg hover:shadow-slate-500/40",
   },
 ];
 
@@ -126,7 +129,7 @@ export function Socials() {
             <h3 className="text-2xl font-bold text-center mb-8 text-primary/90">Hire Me On Freelance Platforms</h3>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               {freelancePlatforms.map((platform) => (
-                <Button key={platform.label} asChild className="w-full sm:w-auto bg-slate-100 text-slate-900 rounded-lg px-6 py-3 text-base font-semibold hover:scale-105 shadow-md hover:bg-slate-200 transition-all duration-300">
+                <Button key={platform.label} asChild className={`w-full sm:w-auto rounded-lg px-6 py-3 text-base font-semibold hover:scale-105 shadow-md transition-all duration-300 ${platform.style}`}>
                   <a href={platform.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3">
                     {platform.icon}
                     <span>{platform.label}</span>
