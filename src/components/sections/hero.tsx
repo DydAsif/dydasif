@@ -2,25 +2,20 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-
-// vanta.js is a client-side only library, so we can't import it at the top level.
 
 export function Hero() {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   useEffect(() => {
-    let vantaInitializer: any = null;
+    let FOG: any = null;
     if (typeof window !== "undefined") {
-      const vantaModule = require("vanta/dist/vanta.fog.min");
-      // Handle both CJS and ESM module formats that can be returned by require
-      vantaInitializer = vantaModule.default || vantaModule;
+      FOG = require("vanta/dist/vanta.fog.min");
     }
 
-    if (!vantaEffect && vantaInitializer) {
+    if (!vantaEffect && FOG) {
       setVantaEffect(
-        vantaInitializer({
+        FOG({
           el: vantaRef.current,
           THREE: THREE,
           mouseControls: true,
@@ -28,13 +23,13 @@ export function Hero() {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0x3c82f6,
-          midtoneColor: 0x00b894,
-          lowlightColor: 0x111827,
-          baseColor: 0x111827,
-          blurFactor: 0.60,
-          speed: 1.20,
-          zoom: 0.80,
+          highlightColor: 0x00ccff,     // lightning/electric blue
+          midtoneColor: 0x003355,       // smoky blue
+          lowlightColor: 0x000000,      // dark for contrast
+          baseColor: 0x001f2f,          // background color
+          blurFactor: 0.7,
+          speed: 1.2,
+          zoom: 1.2
         })
       );
     }
@@ -46,38 +41,18 @@ export function Hero() {
   }, [vantaEffect]);
 
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Vanta background will attach here */}
-      <div ref={vantaRef} className="absolute top-0 left-0 w-full h-full z-0" />
-
-      {/* Content Layer */}
-      <div className="relative z-10 container mx-auto px-4 md:px-6 py-20">
-            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-24 items-center">
-                <div className="text-primary-foreground space-y-6 text-center lg:text-left">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline">Ashfakur Rahman Asif</h1>
-                    <p className="text-lg sm:text-xl text-muted-foreground/90 max-w-xl mx-auto lg:mx-0">Digital Marketing & Conversion Tracking Expert</p>
-                    <Button asChild size="lg" className="bg-cta hover:bg-cta/90 text-cta-foreground">
-                      <a
-                          href="/asif-cv.pdf"
-                          download
-                      >
-                          Download CV
-                      </a>
-                    </Button>
-                </div>
-                <div className="relative flex justify-center items-center">
-                    <div className="absolute inset-0 bg-black/20 rounded-full blur-xl"></div>
-                    <Image
-                        src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
-                        alt="Ashfakur Rahman Asif"
-                        width={450}
-                        height={450}
-                        className="relative mx-auto rounded-full object-cover animate-float"
-                        data-ai-hint="man portrait"
-                        priority
-                    />
-                </div>
-            </div>
+    <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center text-center relative overflow-hidden">
+      <div className="z-10 text-white px-4">
+        <h1 className="text-5xl font-bold drop-shadow-xl font-headline">Ashfakur Rahman Asif</h1>
+        <p className="text-xl mt-4 drop-shadow-lg">Digital Marketing & Tracking Expert</p>
+        <Button asChild size="lg" className="mt-8 bg-blue-600 hover:bg-blue-700 text-white shadow-md">
+          <a
+            href="/asif-cv.pdf"
+            download
+          >
+            Download CV
+          </a>
+        </Button>
       </div>
     </section>
   );
