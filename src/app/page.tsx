@@ -4,7 +4,6 @@ import { Hero } from '@/components/sections/hero';
 import { About } from '@/components/sections/about';
 import { Services } from '@/components/sections/services';
 import { Portfolio } from '@/components/sections/portfolio';
-import { ProjectPresentation } from '@/components/sections/project-presentation';
 import { Certifications } from '@/components/sections/certifications';
 import { Socials } from '@/components/sections/socials';
 import { Contact } from '@/components/sections/contact';
@@ -18,7 +17,6 @@ export default function Home() {
         <About />
         <Services />
         <Portfolio />
-        <ProjectPresentation />
         <Certifications />
         <Socials />
         <Contact />
