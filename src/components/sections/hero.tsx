@@ -27,13 +27,12 @@ export function Hero() {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: 0x00b894,      // Teal Green land
-          backgroundColor: 0x111827, // Dark Gray water/background
+          color: 0x00b894,      // Use accent color for Earth's land
+          backgroundColor: 0x0, // Transparent background to show galaxy
         })
       );
     }
     
-    // Cleanup function to destroy the effect when the component unmounts
     return () => {
       if (vantaEffect) vantaEffect.destroy();
     };
