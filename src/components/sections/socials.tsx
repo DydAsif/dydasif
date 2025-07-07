@@ -4,7 +4,7 @@ import { Linkedin, Facebook, Briefcase } from 'lucide-react';
 const socialLinks = [
   {
     label: 'View My Fiverr Profile',
-    href: 'https://fiverr.com/yourname',
+    href: 'https://www.fiverr.com/a_r_asif',
     icon: <Briefcase />,
   },
   {
