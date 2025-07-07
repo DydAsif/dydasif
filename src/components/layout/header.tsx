@@ -42,8 +42,8 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden items-center gap-4 md:flex">
-          <Button asChild style={{'--ring': 'hsl(var(--accent))'} as React.CSSProperties}>
-            <a href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download CV</a>
+          <Button asChild className="bg-cta hover:bg-cta/90 text-cta-foreground">
+            <a href="/asif-cv.pdf" download>Download CV</a>
           </Button>
         </div>
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -65,8 +65,8 @@ export function Header() {
                   </Link>
                 ))}
               </nav>
-              <Button asChild>
-                 <a href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download CV</a>
+              <Button asChild className="bg-cta hover:bg-cta/90 text-cta-foreground">
+                 <a href="/asif-cv.pdf" download>Download CV</a>
               </Button>
             </div>
           </SheetContent>

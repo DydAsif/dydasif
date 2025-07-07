@@ -24,6 +24,8 @@
     --input: 220 13% 89%;
     --ring: 168 100% 36%;
     --radius: 0.5rem;
+    --cta: 226 74% 48%; /* blue-700 */
+    --cta-foreground: 0 0% 100%;
   }
 
   .dark {
@@ -46,6 +48,8 @@
     --border: 220 13% 18%;
     --input: 220 13% 18%;
     --ring: 168 100% 36%;
+    --cta: 226 74% 48%; /* blue-700 */
+    --cta-foreground: 0 0% 100%;
   }
 }
 

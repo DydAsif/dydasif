@@ -56,11 +56,10 @@ export function Hero() {
                 <div className="text-primary-foreground space-y-6 text-center lg:text-left">
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-headline">Ashfakur Rahman Asif</h1>
                     <p className="text-lg sm:text-xl text-muted-foreground/90 max-w-xl mx-auto lg:mx-0">Digital Marketing & Conversion Tracking Expert</p>
-                    <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground animate-button-glow">
+                    <Button asChild size="lg" className="bg-cta hover:bg-cta/90 text-cta-foreground">
                       <a
-                          href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=sharing"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href="/asif-cv.pdf"
+                          download
                       >
                           Download CV
                       </a>
