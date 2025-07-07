@@ -9,7 +9,7 @@ const socialLinks = [
   },
   {
     label: 'Connect on LinkedIn',
-    href: 'https://linkedin.com/in/yourname',
+    href: 'https://www.linkedin.com/in/ashfakur-rahman-asif-42231b369/',
     icon: <Linkedin />,
   },
   {
