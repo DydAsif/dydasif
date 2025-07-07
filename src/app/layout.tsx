@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: 'Digital Marketing Strategist & Tracking Expert specializing in GA4, Meta CAPI, and funnel automation.',
     images: [
       {
-        url: 'https://placehold.co/1200x630.png',
+        url: 'https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png',
         width: 1200,
         height: 630,
         alt: 'Ashfakur Rahman Asif - Digital Marketing Portfolio',
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-ai-hint="galaxy space" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

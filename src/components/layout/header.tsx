@@ -1,15 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#presentation', label: 'Presentations' },
   { href: '#social-links', label: 'Socials' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -17,27 +16,38 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('#home');
+  const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    observer.current = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(`#${entry.target.id}`);
+        }
+      });
+    }, { rootMargin: '-30% 0px -70% 0px' });
+
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach(section => observer.current?.observe(section));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      sections.forEach(section => observer.current?.unobserve(section));
+    };
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     const href = e.currentTarget.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth',
-        });
-      }
+    if (href) {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     }
-    // Close mobile menu if it's open
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
@@ -52,15 +62,19 @@ export function Header() {
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={handleLinkClick} className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+            <a key={link.href} href={link.href} onClick={handleLinkClick} className={`text-sm font-medium transition-colors ${activeSection === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>
               {link.label}
             </a>
           ))}
         </nav>
         <div className="hidden items-center gap-4 md:flex">
-          <Button asChild className="bg-cta hover:bg-cta/90 text-cta-foreground">
-            <a href="/asif-cv.pdf" download>Download CV</a>
-          </Button>
+           <a
+            href="/asif-cv.pdf"
+            download
+            className="inline-block bg-[#00ccff] text-black rounded-xl px-4 py-2 font-bold hover:bg-blue-400 transition shadow-lg text-sm"
+          >
+            Download CV
+          </a>
         </div>
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <SheetTrigger asChild>
@@ -69,21 +83,25 @@ export function Header() {
               <span className="sr-only">Toggle navigation menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right">
+          <SheetContent side="right" className="bg-background">
             <div className="grid gap-6 p-6">
               <a href="#home" className="flex items-center gap-2" onClick={handleLinkClick}>
                  <span className="text-xl font-bold tracking-tight text-primary">Ashfakur Rahman Asif</span>
               </a>
               <nav className="grid gap-4">
                 {navLinks.map((link) => (
-                  <a key={link.href} href={link.href} className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary" onClick={handleLinkClick}>
+                  <a key={link.href} href={link.href} className={`text-lg font-medium transition-colors ${activeSection === link.href ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`} onClick={handleLinkClick}>
                     {link.label}
                   </a>
                 ))}
               </nav>
-              <Button asChild className="bg-cta hover:bg-cta/90 text-cta-foreground">
-                 <a href="/asif-cv.pdf" download>Download CV</a>
-              </Button>
+               <a
+                href="/asif-cv.pdf"
+                download
+                className="inline-block text-center bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg"
+              >
+                Download CV
+              </a>
             </div>
           </SheetContent>
         </Sheet>

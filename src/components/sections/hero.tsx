@@ -2,20 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { Button } from "@/components/ui/button";
+
+// Vanta.js needs to be client-side only
+let FOG: any = null;
 
 export function Hero() {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
   useEffect(() => {
-    let GLOBE: any = null;
     if (typeof window !== "undefined") {
-      GLOBE = require("vanta/dist/vanta.globe.min");
+      FOG = require("vanta/dist/vanta.fog.min");
     }
 
-    if (!vantaEffect && GLOBE) {
-      const vantaInitializer = GLOBE.default || GLOBE;
+    if (!vantaEffect && FOG) {
+      const vantaInitializer = FOG.default || FOG;
       setVantaEffect(
         vantaInitializer({
           el: vantaRef.current,
@@ -25,10 +26,13 @@ export function Hero() {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          scale: 1.0,
-          scaleMobile: 1.0,
-          color: 0x00b894,      // Use accent color for Earth's land
-          backgroundColor: 0x0, // Transparent background to show galaxy
+          highlightColor: 0x00ccff,
+          midtoneColor: 0x003355,
+          lowlightColor: 0x000000,
+          baseColor: 0x001f2f,
+          blurFactor: 0.7,
+          speed: 1.2,
+          zoom: 0.8
         })
       );
     }
@@ -40,17 +44,16 @@ export function Hero() {
 
   return (
     <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center text-center relative overflow-hidden">
-      <div className="z-10 text-white px-4">
-        <h1 className="text-5xl font-bold drop-shadow-xl font-headline">Ashfakur Rahman Asif</h1>
-        <p className="text-xl mt-4 drop-shadow-lg">Digital Marketing & Tracking Expert</p>
-        <Button asChild size="lg" className="mt-8 bg-cta hover:bg-cta/90 text-cta-foreground shadow-md">
-          <a
-            href="/asif-cv.pdf"
-            download
-          >
-            Download CV
-          </a>
-        </Button>
+      <div className="z-10 text-white px-4 flex flex-col items-center">
+        <h1 className="text-5xl md:text-7xl font-bold drop-shadow-xl font-headline">Ashfakur Rahman Asif</h1>
+        <p className="text-xl md:text-2xl mt-4 drop-shadow-lg max-w-2xl">Digital Marketing & Tracking Expert</p>
+        <a
+          href="/asif-cv.pdf"
+          download
+          className="mt-8 inline-block bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg"
+        >
+          Download CV
+        </a>
       </div>
     </section>
   );

@@ -4,52 +4,53 @@
 
 @layer base {
   :root {
-    --background: 220 14% 99%; /* #F9FAFB */
-    --foreground: 222 39% 11%; /* #111827 */
-    --card: 220 14% 99%;
-    --card-foreground: 222 39% 11%;
-    --popover: 220 14% 99%;
-    --popover-foreground: 222 39% 11%;
-    --primary: 222 39% 11%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 220 13% 91%;
-    --secondary-foreground: 222 39% 11%;
-    --muted: 220 13% 91%;
-    --muted-foreground: 222 39% 41%;
-    --accent: 168 100% 36%; /* #00B894 */
-    --accent-foreground: 0 0% 100%;
+    --background: 207 100% 9%; /* #001f2f */
+    --foreground: 210 40% 98%; /* #f8fafc */
+    --card: 207 100% 12%; /* adjusted dark blue */
+    --card-foreground: 210 40% 98%;
+    --popover: 207 100% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 192 100% 50%; /* #00ccff */
+    --primary-foreground: 207 100% 8%;
+    --secondary: 207 100% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 207 100% 15%;
+    --muted-foreground: 210 40% 60%;
+    --accent: 192 100% 50%; /* #00ccff */
+    --accent-foreground: 207 100% 8%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 13% 89%;
-    --input: 220 13% 89%;
-    --ring: 168 100% 36%;
+    --border: 207 100% 20%;
+    --input: 207 100% 20%;
+    --ring: 192 100% 50%;
     --radius: 0.5rem;
-    --cta: 226 74% 48%; /* blue-700 */
-    --cta-foreground: 0 0% 100%;
+    --cta: 192 100% 50%; /* #00ccff */
+    --cta-foreground: 207 100% 8%;
   }
 
   .dark {
-    --background: 222 39% 11%;
-    --foreground: 0 0% 98%;
-    --card: 222 39% 11%;
-    --card-foreground: 0 0% 98%;
-    --popover: 222 39% 11%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 222 39% 11%;
-    --secondary: 220 13% 18%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 220 13% 18%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 168 100% 36%;
-    --accent-foreground: 222 39% 11%;
+    /* Same as light theme as per prompt */
+    --background: 207 100% 9%;
+    --foreground: 210 40% 98%;
+    --card: 207 100% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 207 100% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 192 100% 50%;
+    --primary-foreground: 207 100% 8%;
+    --secondary: 207 100% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 207 100% 15%;
+    --muted-foreground: 210 40% 60%;
+    --accent: 192 100% 50%;
+    --accent-foreground: 207 100% 8%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 13% 18%;
-    --input: 220 13% 18%;
-    --ring: 168 100% 36%;
-    --cta: 226 74% 48%; /* blue-700 */
-    --cta-foreground: 0 0% 100%;
+    --border: 207 100% 20%;
+    --input: 207 100% 20%;
+    --ring: 192 100% 50%;
+    --cta: 192 100% 50%;
+    --cta-foreground: 207 100% 8%;
   }
 }
 
@@ -58,11 +59,10 @@
     @apply border-border;
   }
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
   }
   html {
     scroll-behavior: smooth;
-    background: url('https://placehold.co/1920x1080.png') no-repeat center center fixed;
-    background-size: cover;
+    /* Background is now handled by Vanta.js in the hero section */
   }
 }
