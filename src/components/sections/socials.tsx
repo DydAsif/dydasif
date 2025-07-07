@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Linkedin, Instagram, Facebook, Twitter } from 'lucide-react';
 
@@ -79,7 +80,7 @@ const freelancePlatforms = [
     label: 'SEOClerk',
     href: '#',
     icon: <SeoClerkIcon />,
-    style: "bg-slate-800 hover:bg-slate-700 text-white hover:shadow-2xl hover:shadow-slate-500/40",
+    style: "bg-blue-700 hover:bg-blue-600 text-white hover:shadow-2xl hover:shadow-blue-500/40",
   },
 ];
 
