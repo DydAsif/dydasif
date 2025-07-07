@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -42,7 +43,7 @@ export function Header() {
         </nav>
         <div className="hidden items-center gap-4 md:flex">
           <Button asChild style={{'--ring': 'hsl(var(--accent))'} as React.CSSProperties}>
-            <a href="https://your-link-to-cv.com" target="_blank" rel="noopener noreferrer">Download CV</a>
+            <a href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download CV</a>
           </Button>
         </div>
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -65,7 +66,7 @@ export function Header() {
                 ))}
               </nav>
               <Button asChild>
-                 <a href="https://your-link-to-cv.com" target="_blank" rel="noopener noreferrer">Download CV</a>
+                 <a href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=sharing" target="_blank" rel="noopener noreferrer">Download CV</a>
               </Button>
             </div>
           </SheetContent>
