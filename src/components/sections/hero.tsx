@@ -43,7 +43,7 @@ export function Hero() {
       <div className="z-10 text-white px-4">
         <h1 className="text-5xl font-bold drop-shadow-xl font-headline">Ashfakur Rahman Asif</h1>
         <p className="text-xl mt-4 drop-shadow-lg">Digital Marketing & Tracking Expert</p>
-        <Button asChild size="lg" className="mt-8 bg-blue-600 hover:bg-blue-700 text-white shadow-md">
+        <Button asChild size="lg" className="mt-8 bg-cta hover:bg-cta/90 text-cta-foreground shadow-md">
           <a
             href="/asif-cv.pdf"
             download
