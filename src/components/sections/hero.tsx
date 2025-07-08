@@ -46,12 +46,12 @@ export function Hero() {
   return (
     <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center text-center relative overflow-hidden">
       <div className="z-10 text-white px-4 flex flex-col items-center">
-        <h1 className="text-5xl md:text-7xl font-bold drop-shadow-xl font-headline flex flex-wrap justify-center">
+        <h1 className="text-5xl md:text-7xl font-bold drop-shadow-xl font-headline flex flex-wrap justify-center [perspective:1000px]">
            {name.split("").map((char, index) => (
             <span
               key={index}
-              className="animate-letter-reveal opacity-0"
-              style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
+              className="animate-letter-reveal-3d opacity-0"
+              style={{ animationDelay: `${index * 0.15}s`, animationFillMode: 'forwards' }}
             >
               {char === " " ? "\u00A0" : char}
             </span>
@@ -59,7 +59,7 @@ export function Hero() {
         </h1>
         <p 
           className="text-xl md:text-2xl mt-4 drop-shadow-lg max-w-2xl opacity-0 animate-fade-in-up"
-          style={{ animationDelay: '2.5s', animationFillMode: 'forwards' }}
+          style={{ animationDelay: '3.3s', animationFillMode: 'forwards' }}
         >
           Digital Marketing & Tracking Expert
         </p>
@@ -68,7 +68,7 @@ export function Hero() {
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 inline-block bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg opacity-0 animate-fade-in-up"
-          style={{ animationDelay: '2.7s', animationFillMode: 'forwards' }}
+          style={{ animationDelay: '3.5s', animationFillMode: 'forwards' }}
         >
           Download CV
         </a>
