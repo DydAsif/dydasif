@@ -9,6 +9,7 @@ let FOG: any = null;
 export function Hero() {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const name = "Ashfakur Rahman Asif";
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -45,7 +46,17 @@ export function Hero() {
   return (
     <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center text-center relative overflow-hidden">
       <div className="z-10 text-white px-4 flex flex-col items-center">
-        <h1 className="text-5xl md:text-7xl font-bold drop-shadow-xl font-headline">Ashfakur Rahman Asif</h1>
+        <h1 className="text-5xl md:text-7xl font-bold drop-shadow-xl font-headline flex flex-wrap justify-center">
+           {name.split("").map((char, index) => (
+            <span
+              key={index}
+              className="animate-crash-in opacity-0"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
+        </h1>
         <p className="text-xl md:text-2xl mt-4 drop-shadow-lg max-w-2xl">Digital Marketing & Tracking Expert</p>
         <a
           href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
