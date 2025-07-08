@@ -53,18 +53,19 @@ const services = [
 
 const tools = [
   { name: 'Google Tag Manager', logo: 'https://placehold.co/120x50.png', hint: 'gtm logo' },
+  { name: 'Meta (Facebook)', logo: 'https://placehold.co/120x50.png', hint: 'meta logo' },
   { name: 'Google Analytics 4', logo: 'https://placehold.co/120x50.png', hint: 'ga4 logo' },
-  { name: 'Shopify', logo: 'https://placehold.co/120x50.png', hint: 'shopify logo' },
-  { name: 'WordPress', logo: 'https://placehold.co/120x50.png', hint: 'wordpress logo' },
-  { name: 'Facebook Meta', logo: 'https://placehold.co/120x50.png', hint: 'meta logo' },
-  { name: 'LinkedIn', logo: 'https://placehold.co/120x50.png', hint: 'linkedin logo' },
-  { name: 'Pinterest', logo: 'https://placehold.co/120x50.png', hint: 'pinterest logo' },
+  { name: 'Google Ads', logo: 'https://placehold.co/120x50.png', hint: 'google ads logo' },
   { name: 'Stepdot.io', logo: 'https://placehold.co/120x50.png', hint: 'automation logo' },
+  { name: 'WordPress', logo: 'https://placehold.co/120x50.png', hint: 'wordpress logo' },
+  { name: 'Shopify', logo: 'https://placehold.co/120x50.png', hint: 'shopify logo' },
+  { name: 'Wix', logo: 'https://placehold.co/120x50.png', hint: 'wix logo' },
+  { name: 'ClickFunnels', logo: 'https://placehold.co/120x50.png', hint: 'clickfunnels logo' },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="w-full py-12 md:py-24 lg:py-32">
+    <section id="services" className="w-full py-12 md:py-24 lg:py-32" data-aos="fade-up" data-aos-duration="1200">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
@@ -77,7 +78,11 @@ export function Services() {
         <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-1 md:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 mt-12">
           {services.map((service, index) => (
             <Collapsible key={index} asChild>
-              <Card className="bg-card border border-border shadow-lg hover:shadow-primary/20 hover:border-primary transition-all duration-300 rounded-lg flex flex-col">
+              <Card
+                className="bg-gradient-to-br from-card to-secondary border border-border shadow-lg hover:shadow-2xl hover:shadow-primary/20 hover:border-primary transition-all duration-300 rounded-lg flex flex-col hover:-translate-y-1.5"
+                data-aos="fade-up"
+                data-aos-delay={`${100 * (index + 1)}`}
+              >
                 <CardHeader className="flex flex-col items-center text-center gap-4 p-6">
                   {service.icon}
                   <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
@@ -114,7 +119,7 @@ export function Services() {
           ))}
         </div>
 
-        <div className="mt-24 text-center">
+        <div className="mt-24 text-center" data-aos="fade-up" data-aos-delay="400">
           <h3 className="text-2xl font-headline font-bold tracking-tighter sm:text-3xl text-primary">Tools I Use</h3>
           <div className="mt-8 flex flex-wrap justify-center items-center gap-x-8 gap-y-6">
             {tools.map(tool => (
@@ -124,7 +129,7 @@ export function Services() {
                     alt={tool.name}
                     width={120}
                     height={50}
-                    className="object-contain filter grayscale hover:grayscale-0 transition-all"
+                    className="object-contain brightness-125 transition-transform duration-300 hover:scale-110"
                     data-ai-hint={tool.hint}
                   />
               </div>

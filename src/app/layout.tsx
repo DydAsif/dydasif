@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import AOSProvider from '@/components/AOSProvider';
 
 export const metadata: Metadata = {
   title: 'Ashfakur Rahman Asif - Digital Marketing Portfolio',
@@ -36,7 +37,9 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        {children}
+        <AOSProvider>
+          {children}
+        </AOSProvider>
         <Toaster />
       </body>
     </html>
