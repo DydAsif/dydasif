@@ -11,9 +11,7 @@ export function Hero() {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
   const name = "Ashfakur Rahman Asif";
-
-  const [activeLetters, setActiveLetters] = useState<boolean[]>(new Array(name.length).fill(false));
-  const [subtitleVisible, setSubtitleVisible] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
     // Vanta.js initialization
@@ -42,55 +40,46 @@ export function Hero() {
         })
       );
     }
-
-    // Animation logic
-    const timeouts: NodeJS.Timeout[] = [];
     
-    name.split('').forEach((_, index) => {
-        timeouts.push(setTimeout(() => {
-            setActiveLetters(prev => {
-                const newActive = [...prev];
-                newActive[index] = true;
-                return newActive;
-            });
-        }, index * 150));
-    });
+    // Timer to fade in subtitle and button after name animation
+    const timer = setTimeout(() => {
+        setContentVisible(true);
+    }, name.length * 200 + 500); 
 
-    timeouts.push(setTimeout(() => {
-        setSubtitleVisible(true);
-    }, name.length * 150 + 500));
-    
     return () => {
       if (vantaEffect) vantaEffect.destroy();
-      timeouts.forEach(clearTimeout);
+      clearTimeout(timer);
     };
   }, []); // Run only once on mount
 
   return (
     <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center text-center relative overflow-hidden">
       <div className="z-10 text-white px-4 flex flex-col items-center">
-        <h1 className="text-5xl md:text-7xl font-bold drop-shadow-xl font-headline flex flex-wrap justify-center [perspective:1000px] group">
-           {name.split("").map((char, index) => (
-            <span
-              key={index}
-              className={cn(
-                'transition-transform duration-1000 ease-out group-hover:animate-crash',
-                activeLetters[index] 
-                  ? 'opacity-100 [transform:scale(1)_rotateY(720deg)] animate-flash animate-glowPulse' 
-                  : 'opacity-0 [transform:scale(5)_rotateY(0deg)]'
-              )}
-              style={{
-                textShadow: activeLetters[index] ? '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))' : 'none',
-              }}
-            >
-              {char === " " ? "\u00A0" : char}
-            </span>
-          ))}
-        </h1>
+        <div className="flex flex-wrap justify-center">
+            {name.split("").map((char, index) => (
+                <span
+                    key={index}
+                    data-char={char}
+                    className={cn(
+                        "text-5xl md:text-7xl font-bold font-headline relative inline-block opacity-0 animate-fly-in",
+                        "before:content-[attr(data-char)] before:absolute before:top-0 before:left-0 before:opacity-80 before:text-teal-300 before:z-[-1] before:animate-glitch-top",
+                        "after:content-[attr(data-char)] after:absolute after:top-0 after:left-0 after:opacity-80 after:text-cyan-400 after:z-[-1] after:animate-glitch-bottom"
+                    )}
+                    style={{
+                        animationDelay: `${index * 0.2}s`,
+                        textShadow: '0 0 10px hsl(var(--primary))',
+                        mixBlendMode: 'screen',
+                    }}
+                >
+                    {char === " " ? "\u00A0" : char}
+                </span>
+            ))}
+        </div>
+        
         <p 
           className={cn(
-            "text-xl md:text-2xl mt-4 drop-shadow-lg max-w-2xl opacity-0 transition-opacity duration-1000",
-            subtitleVisible && "opacity-100"
+            "text-xl md:text-2xl mt-8 drop-shadow-lg max-w-2xl opacity-0 transition-opacity duration-1000",
+            contentVisible && "opacity-100"
           )}
         >
           Digital Marketing & Tracking Expert
@@ -101,9 +90,9 @@ export function Hero() {
           rel="noopener noreferrer"
           className={cn(
             "mt-8 inline-block bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg opacity-0 transition-opacity duration-1000",
-            subtitleVisible && "opacity-100"
+            contentVisible && "opacity-100"
           )}
-          style={{ transitionDelay: subtitleVisible ? '200ms' : '0ms' }}
+          style={{ transitionDelay: contentVisible ? '200ms' : '0ms' }}
         >
           Download CV
         </a>
