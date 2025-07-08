@@ -55,6 +55,7 @@ export function Hero() {
 
   return (
     <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center text-center relative overflow-hidden">
+      <audio src="https://www.soundjay.com/ambience/sounds/thunderstorm-1.mp3" autoPlay loop className="sr-only"></audio>
       <div className="z-10 text-white px-4 flex flex-col items-center [perspective:1000px]">
         <div className="flex flex-wrap justify-center">
             {name.split("").map((char, index) => (
