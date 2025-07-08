@@ -39,10 +39,10 @@ const services = [
   {
     icon: <GitBranch className="h-10 w-10 text-primary" />,
     title: 'Multi-Platform + Funnel Automation',
-    description: 'Tracking setup for Pinterest, Reddit, & LinkedIn. Funnel automation using StepDot.io and CRM webhook integration.',
+    description: 'Tracking setup for Pinterest, Reddit, & LinkedIn. Funnel automation using Stape.io and CRM webhook integration.',
     details: [
       'Pinterest, Reddit & LinkedIn Tag setup.',
-      'StepDot.io funnel building & testing.',
+      'Stape.io funnel building & testing.',
       'Webhook & CRM routing automation.',
       'Cross-platform goal & event tracking.',
       'Full funnel conversion analysis.',
@@ -62,7 +62,7 @@ const tools = [
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
     { name: 'ClickFunnels', logo: 'https://cdn.simpleicons.org/clickfunnels/00ccff', displayName: 'ClickFunnels' },
-    { name: 'StepDot.io', logo: 'https://avatars.githubusercontent.com/u/102929215?s=200&v=4', displayName: 'StepDot' },
+    { name: 'Stape.io', logo: 'https://avatars.githubusercontent.com/u/87065994?s=200&v=4', displayName: 'Stape' },
   ];
 
 export function Services() {
@@ -130,7 +130,7 @@ export function Services() {
                     src={tool.logo}
                     alt={tool.name}
                     className={`object-contain h-10 w-10 mb-1.5 transition-transform duration-300 ease-in-out hover:scale-125 ${
-                      tool.name === 'StepDot.io' ? 'rounded-full' : ''
+                      tool.name === 'Stape.io' ? 'rounded-full' : ''
                     }`}
                   />
                   <span className="text-sm text-center text-foreground">{tool.displayName}</span>
