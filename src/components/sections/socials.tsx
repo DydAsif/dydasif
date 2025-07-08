@@ -118,7 +118,7 @@ export function Socials() {
     <section id="social-links" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-b from-[#0F172A] to-[#1E293B] overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#00FF94]">
+          <h2 className="pb-4 text-3xl sm:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#00FF94]">
             Let’s Work Together
           </h2>
            <p className="max-w-[900px] text-slate-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
