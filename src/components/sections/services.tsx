@@ -1,4 +1,3 @@
-
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Facebook, TrendingUp, GitBranch, ChevronDown } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -11,11 +10,11 @@ const services = [
     title: 'Facebook Pixel & Conversion API',
     description: 'Pixel setup via GTM/manual, Event deduplication, and full tracking for AddToCart, Purchase, and Lead events.',
     details: [
-      'Pixel installation via GTM',
-      'Conversion API with deduplication',
-      'Custom event tracking (Purchase, Lead)',
-      'EMQ score improvement',
-      'Real-time event testing & validation',
+      'Pixel installation via GTM for precision.',
+      'Conversion API with full event deduplication.',
+      'Custom event tracking (Purchase, Lead, etc).',
+      'EMQ score improvement strategies.',
+      'Real-time event testing & validation.',
     ],
     image: 'https://placehold.co/600x400.png',
     imageAlt: 'Facebook Events Manager Screenshot',
@@ -26,11 +25,11 @@ const services = [
     title: 'GA4 + Google Ads + eCommerce Tracking',
     description: 'GA4 property setup, enhanced ecommerce for Shopify/Woo, and GTM setup with DebugView for precise analysis.',
     details: [
-      'GA4 setup (new or migration)',
-      'Enhanced eCommerce event mapping',
-      'Google Ads conversion tracking',
-      'DebugView for real-time testing',
-      'Shopify & WooCommerce DataLayer debug',
+      'GA4 setup (new property or migration).',
+      'Enhanced eCommerce event mapping.',
+      'Google Ads conversion link via GTM.',
+      'DebugView for real-time testing.',
+      'Shopify & WooCommerce DataLayer debug.',
     ],
     image: 'https://placehold.co/600x400.png',
     imageAlt: 'GA4 DebugView Screenshot',
@@ -41,11 +40,11 @@ const services = [
     title: 'Multi-Platform + Funnel Automation',
     description: 'Tracking setup for Pinterest, Reddit, & LinkedIn. Funnel automation using StepDot.io and CRM webhook integration.',
     details: [
-      'Pinterest, Reddit & LinkedIn Tag setup',
-      'StepDot.io funnel building & testing',
-      'Webhook & CRM routing automation',
-      'Cross-platform goal tracking',
-      'Full funnel conversion analysis',
+      'Pinterest, Reddit & LinkedIn Tag setup.',
+      'StepDot.io funnel building & testing.',
+      'Webhook & CRM routing automation.',
+      'Cross-platform goal & event tracking.',
+      'Full funnel conversion analysis.',
     ],
     image: 'https://placehold.co/600x400.png',
     imageAlt: 'Multi-platform GTM Screenshot',
@@ -54,16 +53,16 @@ const services = [
 ];
 
 const tools = [
-  { name: 'Google Tag Manager', logo: 'https://i.ibb.co/3ykd1jC/gtm-logo.png', hint: 'gtm logo' },
-  { name: 'Meta (Facebook)', logo: 'https://i.ibb.co/1fSS8Sg/meta.png', hint: 'meta logo' },
-  { name: 'Google Analytics 4', logo: 'https://i.ibb.co/9v9Z3sW/ga4.png', hint: 'ga4 logo' },
-  { name: 'Google Ads', logo: 'https://i.ibb.co/mB4y3b9/google-ads.png', hint: 'google ads logo' },
-  { name: 'Stepdot.io', logo: 'https://i.ibb.co/L52xFN5/stepdot-io.png', hint: 'automation logo' },
-  { name: 'WordPress', logo: 'https://i.ibb.co/zntgY5Y/wordpress.png', hint: 'wordpress logo' },
-  { name: 'Shopify', logo: 'https://i.ibb.co/qY7hLzG/shopify.png', hint: 'shopify logo' },
-  { name: 'Wix', logo: 'https://i.ibb.co/9G7ZpbC/wix.png', hint: 'wix logo' },
-  { name: 'ClickFunnels', logo: 'https://i.ibb.co/GvxYv09/clickfunnels.png', hint: 'clickfunnels logo' },
-];
+    { name: 'Google Tag Manager', logo: 'https://cdn.simpleicons.org/googletagmanager/00ccff', hint: 'gtm logo', displayName: 'GTM' },
+    { name: 'Meta (Facebook)', logo: 'https://cdn.simpleicons.org/meta/00ccff', hint: 'meta logo', displayName: 'Meta' },
+    { name: 'Google Analytics 4', logo: 'https://cdn.simpleicons.org/googleanalytics/00ccff', hint: 'ga4 logo', displayName: 'GA4' },
+    { name: 'Google Ads', logo: 'https://cdn.simpleicons.org/googleads/00ccff', hint: 'google ads logo', displayName: 'Google Ads' },
+    { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', hint: 'wordpress logo', displayName: 'WordPress' },
+    { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', hint: 'shopify logo', displayName: 'Shopify' },
+    { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', hint: 'wix logo', displayName: 'Wix' },
+    { name: 'ClickFunnels', logo: 'https://cdn.simpleicons.org/clickup/00ccff', hint: 'clickfunnels logo', displayName: 'ClickFunnels' },
+    { name: 'StepDot.io', logo: 'https://avatars.githubusercontent.com/u/102929215?s=200&v=4', hint: 'automation logo', displayName: 'StepDot' },
+  ];
 
 export function Services() {
   return (
@@ -123,22 +122,22 @@ export function Services() {
 
         <div className="mt-24 text-center" data-aos="fade-up" data-aos-delay="400">
           <h3 className="text-2xl font-headline font-bold tracking-tighter sm:text-3xl text-primary">Tools I Use</h3>
-          <div className="mt-8 flex flex-wrap justify-center items-center gap-x-8 gap-y-6">
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-x-4">
             {tools.map(tool => (
-              <div key={tool.name} title={tool.name}>
+              <div key={tool.name} className="flex flex-col items-center m-4 w-[90px]" title={tool.name}>
                  <Image
                     src={tool.logo}
                     alt={tool.name}
-                    width={120}
-                    height={50}
-                    className="object-contain brightness-125 transition-transform duration-300 hover:scale-110"
+                    width={40}
+                    height={40}
+                    className="object-contain h-10 mb-1.5 transition-transform duration-300 ease-in-out hover:scale-125"
                     data-ai-hint={tool.hint}
                   />
+                  <span className="text-sm text-foreground">{tool.displayName}</span>
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );
