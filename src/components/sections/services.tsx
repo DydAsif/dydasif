@@ -10,11 +10,11 @@ const services = [
     title: 'Facebook Pixel & Conversion API',
     description: 'Pixel setup via GTM/manual, Event deduplication, and full tracking for AddToCart, Purchase, and Lead events.',
     details: [
-      'Facebook Pixel installation via GTM',
-      'Conversion API setup (with deduplication)',
-      'Custom event tracking (AddToCart, Lead, Purchase)',
+      'Pixel installation via GTM',
+      'Conversion API with deduplication',
+      'Custom event tracking (Purchase, Lead)',
       'EMQ score improvement',
-      'Real-time event testing',
+      'Real-time event testing & validation',
     ],
     image: 'https://placehold.co/600x400.png',
     imageAlt: 'Facebook Events Manager Screenshot',
@@ -26,10 +26,10 @@ const services = [
     description: 'GA4 property setup, enhanced ecommerce for Shopify/Woo, and GTM setup with DebugView for precise analysis.',
     details: [
       'GA4 setup (new or migration)',
-      'Enhanced ecommerce event mapping',
-      'Google Ads conversion tracking via GTM',
-      'DebugView real-time testing',
-      'Shopify/WooCommerce DataLayer debug',
+      'Enhanced eCommerce event mapping',
+      'Google Ads conversion tracking',
+      'DebugView for real-time testing',
+      'Shopify & WooCommerce DataLayer debug',
     ],
     image: 'https://placehold.co/600x400.png',
     imageAlt: 'GA4 DebugView Screenshot',
@@ -38,12 +38,13 @@ const services = [
   {
     icon: <GitBranch className="h-10 w-10 text-primary" />,
     title: 'Multi-Platform + Funnel Automation',
-    description: 'Tracking setup for Pinterest, Reddit, and LinkedIn. Funnel automation using StepDot.io and CRM webhook integration.',
+    description: 'Tracking setup for Pinterest, Reddit, & LinkedIn. Funnel automation using StepDot.io and CRM webhook integration.',
     details: [
-      'Pinterest, Reddit, LinkedIn Insight Tag via GTM',
-      'StepDot.io funnel setup & testing',
-      'Webhook + CRM routing automation',
-      'Multi-platform goal tracking',
+      'Pinterest, Reddit & LinkedIn Tag setup',
+      'StepDot.io funnel building & testing',
+      'Webhook & CRM routing automation',
+      'Cross-platform goal tracking',
+      'Full funnel conversion analysis',
     ],
     image: 'https://placehold.co/600x400.png',
     imageAlt: 'Multi-platform GTM Screenshot',
@@ -75,7 +76,7 @@ export function Services() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-1 md:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 mt-12">
+        <div className="mx-auto grid items-stretch gap-8 sm:max-w-4xl sm:grid-cols-1 md:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 mt-12">
           {services.map((service, index) => (
             <Collapsible key={index} asChild>
               <Card
