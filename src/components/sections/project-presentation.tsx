@@ -1,24 +1,65 @@
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const projects = [
   {
     title: 'Shopify Purchase Tracking Fix',
-    problem: 'Purchase events not tracking properly on Facebook Ads.',
-    solution: 'Setup Meta Pixel + CAPI via GTM with deduplication.',
-    result: '100% purchase tracking & EMQ 8.7',
-    imageUrl: 'https://placehold.co/800x400.png',
-    imageHint: 'code debug',
-    alt: 'Shopify Facebook Pixel Debug'
+    tabs: [
+      {
+        trigger: 'Problem',
+        value: 'problem',
+        content: 'Purchase events not tracking properly on Facebook Ads.',
+        imageUrl: 'https://placehold.co/800x400.png',
+        imageHint: 'error screen analytics',
+        alt: 'Screenshot of Facebook Ads showing tracking errors'
+      },
+      {
+        trigger: 'Solution',
+        value: 'solution',
+        content: 'Setup Meta Pixel + CAPI via GTM with deduplication.',
+        imageUrl: 'https://placehold.co/800x400.png',
+        imageHint: 'code snippet gtm',
+        alt: 'Screenshot of Google Tag Manager setup for Meta Pixel'
+      },
+      {
+        trigger: 'Result',
+        value: 'result',
+        content: '100% purchase tracking & EMQ 8.7',
+        imageUrl: 'https://placehold.co/800x400.png',
+        imageHint: 'dashboard graph success',
+        alt: 'Screenshot of Events Manager showing successful purchase tracking'
+      }
+    ]
   },
   {
     title: 'GA4 + Google Ads Tracking on WordPress',
-    problem: 'Conversions not recorded in GA4 or Ads.',
-    solution: 'GA4 + Ads tag added via GTM with proper event mapping.',
-    result: '18 tracked conversions per week',
-    imageUrl: 'https://placehold.co/800x400.png',
-    imageHint: 'analytics dashboard',
-    alt: 'GA4 DebugView Result'
+     tabs: [
+      {
+        trigger: 'Problem',
+        value: 'problem',
+        content: 'Conversions not recorded in GA4 or Ads.',
+        imageUrl: 'https://placehold.co/800x400.png',
+        imageHint: 'zero conversions chart',
+        alt: 'Screenshot of GA4 showing no conversion data'
+      },
+      {
+        trigger: 'Solution',
+        value: 'solution',
+        content: 'GA4 + Ads tag added via GTM with proper event mapping.',
+        imageUrl: 'https://placehold.co/800x400.png',
+        imageHint: 'flowchart gtm wordpress',
+        alt: 'Screenshot of GTM setup for GA4 and Google Ads'
+      },
+      {
+        trigger: 'Result',
+        value: 'result',
+        content: '18 tracked conversions per week.',
+        imageUrl: 'https://placehold.co/800x400.png',
+        imageHint: 'graph increasing conversions',
+        alt: 'Screenshot of Google Ads showing tracked conversions'
+      }
+    ]
   }
 ];
 
@@ -39,18 +80,27 @@ export function ProjectPresentation() {
             <Card key={index} className="bg-card border border-border shadow-lg hover:shadow-primary/20 hover:border-primary transition-all duration-300 rounded-lg overflow-hidden">
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-primary mb-4">{project.title}</h3>
-                <p className="text-muted-foreground mb-2"><strong className="text-foreground">Problem:</strong> {project.problem}</p>
-                <p className="text-muted-foreground mb-2"><strong className="text-foreground">Solution:</strong> {project.solution}</p>
-                <p className="text-muted-foreground"><strong className="text-foreground">Result:</strong> {project.result}</p>
-              </div>
-              <div className="relative h-auto aspect-video">
-                <Image
-                  src={project.imageUrl}
-                  alt={project.alt}
-                  fill
-                  className="object-cover"
-                  data-ai-hint={project.imageHint}
-                />
+                <Tabs defaultValue={project.tabs[0].value} className="w-full">
+                  <TabsList className="grid w-full grid-cols-3 bg-secondary/50">
+                    {project.tabs.map(tab => (
+                      <TabsTrigger key={tab.value} value={tab.value}>{tab.trigger}</TabsTrigger>
+                    ))}
+                  </TabsList>
+                  {project.tabs.map(tab => (
+                    <TabsContent key={tab.value} value={tab.value} className="mt-4">
+                      <p className="text-muted-foreground mb-4 font-semibold">{tab.content}</p>
+                      <div className="relative aspect-video">
+                        <Image
+                          src={tab.imageUrl}
+                          alt={tab.alt}
+                          fill
+                          className="object-cover rounded-md border border-border"
+                          data-ai-hint={tab.imageHint}
+                        />
+                      </div>
+                    </TabsContent>
+                  ))}
+                </Tabs>
               </div>
             </Card>
           ))}
