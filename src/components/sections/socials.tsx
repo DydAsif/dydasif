@@ -92,7 +92,7 @@ const socialMediaLinks = [
   },
   {
     label: 'Instagram',
-    href: '#',
+    href: 'https://www.instagram.com/it_is_me_asif?igsh=MWFiODhlcnZkY2JhNw==',
     icon: <Instagram className="h-8 w-8" />,
   },
   {
