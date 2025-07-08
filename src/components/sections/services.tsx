@@ -53,15 +53,15 @@ const services = [
 ];
 
 const tools = [
-  { name: 'Google Tag Manager', logo: 'https://placehold.co/120x50.png', hint: 'gtm logo' },
-  { name: 'Meta (Facebook)', logo: 'https://placehold.co/120x50.png', hint: 'meta logo' },
-  { name: 'Google Analytics 4', logo: 'https://placehold.co/120x50.png', hint: 'ga4 logo' },
-  { name: 'Google Ads', logo: 'https://placehold.co/120x50.png', hint: 'google ads logo' },
-  { name: 'Stepdot.io', logo: 'https://placehold.co/120x50.png', hint: 'automation logo' },
-  { name: 'WordPress', logo: 'https://placehold.co/120x50.png', hint: 'wordpress logo' },
-  { name: 'Shopify', logo: 'https://placehold.co/120x50.png', hint: 'shopify logo' },
-  { name: 'Wix', logo: 'https://placehold.co/120x50.png', hint: 'wix logo' },
-  { name: 'ClickFunnels', logo: 'https://placehold.co/120x50.png', hint: 'clickfunnels logo' },
+  { name: 'Google Tag Manager', logo: 'https://i.ibb.co/3ykd1jC/gtm-logo.png', hint: 'gtm logo' },
+  { name: 'Meta (Facebook)', logo: 'https://i.ibb.co/1fSS8Sg/meta.png', hint: 'meta logo' },
+  { name: 'Google Analytics 4', logo: 'https://i.ibb.co/9v9Z3sW/ga4.png', hint: 'ga4 logo' },
+  { name: 'Google Ads', logo: 'https://i.ibb.co/mB4y3b9/google-ads.png', hint: 'google ads logo' },
+  { name: 'Stepdot.io', logo: 'https://i.ibb.co/L52xFN5/stepdot-io.png', hint: 'automation logo' },
+  { name: 'WordPress', logo: 'https://i.ibb.co/zntgY5Y/wordpress.png', hint: 'wordpress logo' },
+  { name: 'Shopify', logo: 'https://i.ibb.co/qY7hLzG/shopify.png', hint: 'shopify logo' },
+  { name: 'Wix', logo: 'https://i.ibb.co/9G7ZpbC/wix.png', hint: 'wix logo' },
+  { name: 'ClickFunnels', logo: 'https://i.ibb.co/GvxYv09/clickfunnels.png', hint: 'clickfunnels logo' },
 ];
 
 export function Services() {
@@ -89,9 +89,9 @@ export function Services() {
                   <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 pt-0 flex-grow">
-                  <p className="text-center text-base text-muted-foreground min-h-24">{service.description}</p>
+                  <p className="text-center text-base text-muted-foreground min-h-[6rem]">{service.description}</p>
                 </CardContent>
-                <CardFooter className="flex-col p-6 pt-0">
+                <CardFooter className="flex-col p-6 pt-0 mt-auto">
                    <CollapsibleTrigger asChild>
                     <Button variant="outline" className="w-full group">
                       See Details <ChevronDown className="h-4 w-4 ml-2 group-data-[state=open]:rotate-180 transition-transform" />
