@@ -42,9 +42,10 @@ export function Hero() {
     }
     
     // Timer to fade in subtitle and button after name animation
+    // Animation delay is 0.15s per letter.
     const timer = setTimeout(() => {
         setContentVisible(true);
-    }, name.length * 200 + 500); 
+    }, name.length * 150 + 500); 
 
     return () => {
       if (vantaEffect) vantaEffect.destroy();
@@ -54,21 +55,19 @@ export function Hero() {
 
   return (
     <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center text-center relative overflow-hidden">
-      <div className="z-10 text-white px-4 flex flex-col items-center">
+      <div className="z-10 text-white px-4 flex flex-col items-center [perspective:1000px]">
         <div className="flex flex-wrap justify-center">
             {name.split("").map((char, index) => (
                 <span
                     key={index}
-                    data-char={char}
                     className={cn(
-                        "text-5xl md:text-7xl font-bold font-headline relative inline-block opacity-0 animate-fly-in",
-                        "before:content-[attr(data-char)] before:absolute before:top-0 before:left-0 before:opacity-80 before:text-teal-300 before:z-[-1] before:animate-glitch-top",
-                        "after:content-[attr(data-char)] after:absolute after:top-0 after:left-0 after:opacity-80 after:text-cyan-400 after:z-[-1] after:animate-glitch-bottom"
+                        "inline-block text-5xl md:text-7xl font-bold font-headline opacity-0 animate-fly-in-3d hover:animate-hover-pulse",
+                        "text-primary"
                     )}
                     style={{
-                        animationDelay: `${index * 0.2}s`,
+                        transform: 'translateZ(-800px) rotateX(90deg)',
+                        animationDelay: `${index * 0.15}s`,
                         textShadow: '0 0 10px hsl(var(--primary))',
-                        mixBlendMode: 'screen',
                     }}
                 >
                     {char === " " ? "\u00A0" : char}

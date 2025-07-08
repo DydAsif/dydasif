@@ -106,23 +106,15 @@ export default {
              transform: 'translateY(0)',
            },
         },
-        'flyIn': {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(-200px) scale(1.5) rotate(15deg)',
-          },
-          '100%': {
+        'flyIn3D': {
+          'to': {
+            transform: 'translateZ(0) rotateX(0)',
             opacity: '1',
-            transform: 'translateY(0) scale(1) rotate(0)',
           },
         },
-        'glitchTop': {
-          '0%': { transform: 'translate(1px, -1px)' },
-          '100%': { transform: 'translate(-1px, 1px)' },
-        },
-        'glitchBottom': {
-          '0%': { transform: 'translate(-1px, 1px)' },
-          '100%': { transform: 'translate(1px, -1px)' },
+        'hoverPulse': {
+          '0%': { transform: 'scale(1) rotateX(0)' },
+          '100%': { transform: 'scale(1.2) rotateX(15deg)' },
         },
       },
       animation: {
@@ -130,9 +122,8 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'float': 'float 4s ease-in-out infinite',
         'fade-in-up': 'fade-in-up 0.8s ease-out',
-        'fly-in': 'flyIn 0.8s ease forwards',
-        'glitch-top': 'glitchTop 1s infinite linear alternate-reverse',
-        'glitch-bottom': 'glitchBottom 1s infinite linear alternate',
+        'fly-in-3d': 'flyIn3D 0.8s ease-out forwards',
+        'hover-pulse': 'hoverPulse 0.3s ease infinite alternate',
       },
     },
   },
