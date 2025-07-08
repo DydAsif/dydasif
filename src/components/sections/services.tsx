@@ -89,7 +89,7 @@ export function Services() {
                   <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 pt-0 flex-grow">
-                  <p className="text-center text-base text-muted-foreground">{service.description}</p>
+                  <p className="text-center text-base text-muted-foreground min-h-24">{service.description}</p>
                 </CardContent>
                 <CardFooter className="flex-col p-6 pt-0">
                    <CollapsibleTrigger asChild>
