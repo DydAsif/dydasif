@@ -76,8 +76,8 @@ export function Hero() {
               className={cn(
                 'transition-transform duration-1000 ease-out group-hover:animate-crash',
                 activeLetters[index] 
-                  ? 'opacity-100 [transform:scale(1)_rotateY(0deg)] animate-flash animate-glowPulse'
-                  : 'opacity-0 [transform:scale(4)_rotateY(90deg)]'
+                  ? 'opacity-100 [transform:scale(1)_rotateY(720deg)] animate-flash animate-glowPulse' 
+                  : 'opacity-0 [transform:scale(5)_rotateY(0deg)]'
               )}
               style={{
                 textShadow: activeLetters[index] ? '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))' : 'none',

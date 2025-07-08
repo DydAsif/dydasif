@@ -96,24 +96,6 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-20px)' },
         },
-        'letter-reveal-3d': {
-          '0%': {
-            opacity: '0',
-            transform: 'scale(2) rotateX(90deg)',
-            filter: 'blur(5px)'
-          },
-          '60%': {
-            opacity: '1',
-            transform: 'scale(1.2) rotateX(-20deg)',
-            filter: 'blur(0)',
-            textShadow: '0 0 20px hsl(var(--primary)), 0 0 40px hsl(var(--primary))'
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'scale(1) rotateX(0deg)',
-            textShadow: 'none'
-          }
-        },
         'fade-in-up': {
            '0%': {
              opacity: '0',
@@ -125,11 +107,13 @@ export default {
            },
         },
         'flash': {
+          '0%': { 'text-shadow': '0 0 0 transparent' },
           '50%': { 'text-shadow': '0 0 20px hsl(var(--primary)), 0 0 40px hsl(var(--primary))' },
+          '100%': { 'text-shadow': '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))' }
         },
         'glowPulse': {
           'from': { 'text-shadow': '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))' },
-          'to': { 'text-shadow': '0 0 20px hsl(var(--primary)), 0 0 40px hsl(var(--primary))' },
+          'to': { 'text-shadow': '0 0 30px hsl(var(--primary)), 0 0 60px hsl(var(--primary))' },
         },
         'crash': {
             '0%, 100%': { transform: 'translateX(0) rotateZ(0deg)' },
@@ -141,11 +125,10 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'float': 'float 4s ease-in-out infinite',
-        'letter-reveal-3d': 'letter-reveal-3d 1s ease-out',
         'fade-in-up': 'fade-in-up 0.8s ease-out',
-        'flash': 'flash 0.5s ease-out',
+        'flash': 'flash 0.3s ease',
         'glowPulse': 'glowPulse 2s infinite alternate ease-in-out',
-        'crash': 'crash 0.8s ease-in-out infinite',
+        'crash': 'crash 0.8s ease-in-out infinite alternate',
       },
     },
   },
