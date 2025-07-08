@@ -51,18 +51,24 @@ export function Hero() {
             <span
               key={index}
               className="animate-crash-in opacity-0"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              style={{ animationDelay: `${index * 0.05}s`, animationFillMode: 'forwards' }}
             >
               {char === " " ? "\u00A0" : char}
             </span>
           ))}
         </h1>
-        <p className="text-xl md:text-2xl mt-4 drop-shadow-lg max-w-2xl">Digital Marketing & Tracking Expert</p>
+        <p 
+          className="text-xl md:text-2xl mt-4 drop-shadow-lg max-w-2xl opacity-0 animate-fade-in-up"
+          style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}
+        >
+          Digital Marketing & Tracking Expert
+        </p>
         <a
           href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-block bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg"
+          className="mt-8 inline-block bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg opacity-0 animate-fade-in-up"
+          style={{ animationDelay: '1.7s', animationFillMode: 'forwards' }}
         >
           Download CV
         </a>
