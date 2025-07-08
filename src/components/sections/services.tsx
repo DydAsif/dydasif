@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Facebook, TrendingUp, GitBranch, ChevronDown } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -60,7 +61,7 @@ const tools = [
     { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', displayName: 'WordPress' },
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
-    { name: 'ClickFunnels', logo: 'https://cdn.simpleicons.org/clickup/00ccff', displayName: 'ClickFunnels' },
+    { name: 'ClickFunnels', logo: 'https://cdn.simpleicons.org/clickfunnels/00ccff', displayName: 'ClickFunnels' },
     { name: 'StepDot.io', logo: 'https://avatars.githubusercontent.com/u/102929215?s=200&v=4', displayName: 'StepDot' },
   ];
 
@@ -128,7 +129,9 @@ export function Services() {
                  <img
                     src={tool.logo}
                     alt={tool.name}
-                    className="object-contain h-10 w-10 mb-1.5 transition-transform duration-300 ease-in-out hover:scale-125"
+                    className={`object-contain h-10 w-10 mb-1.5 transition-transform duration-300 ease-in-out hover:scale-125 ${
+                      tool.name === 'StepDot.io' ? 'rounded-full' : ''
+                    }`}
                   />
                   <span className="text-sm text-center text-foreground">{tool.displayName}</span>
               </div>
