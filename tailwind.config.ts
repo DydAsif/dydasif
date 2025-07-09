@@ -116,6 +116,14 @@ export default {
           '0%': { transform: 'scale(1) rotateX(0)' },
           '100%': { transform: 'scale(1.2) rotateX(15deg)' },
         },
+        'logo-spin': {
+          'from': {
+            transform: 'rotateY(0deg)',
+          },
+          'to': {
+            transform: 'rotateY(360deg)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -124,6 +132,7 @@ export default {
         'fade-in-up': 'fade-in-up 0.8s ease-out',
         'fly-in-3d': 'flyIn3D 0.8s ease-out forwards',
         'hover-pulse': 'hoverPulse 0.3s ease infinite alternate',
+        'logo-spin': 'logo-spin 8s linear infinite',
       },
     },
   },
