@@ -9,23 +9,21 @@ const StapeLogo = () => (
       role="img"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125 text-primary"
+      className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125"
       aria-label="Stape.io logo"
     >
       <g>
-        {/* Filled blue hourglass */}
         <path
           d="M6 2h12v6l-4 4 4 4v6H6v-6l4-4-4-4V2z"
-          fill="currentColor"
+          fill="hsl(var(--primary))"
         />
-        {/* 'S' character with knockout effect */}
         <text
           x="18.5"
           y="12"
           fontFamily="Poppins, sans-serif"
           fontSize="17"
           fontWeight="bold"
-          fill="hsl(var(--card-foreground))"
+          fill="hsl(var(--foreground))"
           dominantBaseline="middle"
           textAnchor="middle"
         >
@@ -106,7 +104,7 @@ export function Services() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid items-stretch gap-8 sm:max-w-4xl sm:grid-cols-1 md:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 mt-12">
+        <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-1 md:grid-cols-2 lg:max-w-5xl lg:grid-cols-3 mt-12">
           {services.map((service, index) => (
             <Collapsible key={index} asChild>
               <Card
