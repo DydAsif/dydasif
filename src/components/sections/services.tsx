@@ -1,4 +1,3 @@
-
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Facebook, TrendingUp, GitBranch, ChevronDown } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -61,7 +60,6 @@ const tools = [
     { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', displayName: 'WordPress' },
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
-    { name: 'ClickFunnels', logo: 'https://cdn.simpleicons.org/clickfunnels/00ccff', displayName: 'ClickFunnels' },
     { name: 'Stape.io', logo: 'https://avatars.githubusercontent.com/u/87065994?s=200&v=4', displayName: 'Stape' },
   ];
 
