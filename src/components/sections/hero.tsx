@@ -21,13 +21,13 @@ export function Hero() {
       <div className="w-full h-full absolute top-0 left-0 bg-background -z-10" />
 
       <div id="profileImage"
-        className="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-white shadow-2xl absolute opacity-0 z-10 group"
+        className="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-white shadow-2xl absolute opacity-0 z-10"
         style={{
           animation: 'image-zoom-in 1s ease-out 0.5s forwards, image-slide-right 1.2s ease-in-out 2s forwards',
         }}
       >
         <Image
-          src="/assets/your-image.jpg"
+          src="https://placehold.co/176x176.png"
           alt="Ashfakur Rahman Asif"
           width={176}
           height={176}
@@ -81,9 +81,11 @@ export function Hero() {
       <div 
         className="absolute bottom-8 animate-bounce text-primary/80 z-20"
         style={{
-          animationDelay: '5s',
-          animationIterationCount: 'infinite',
-          animationDuration: '2s'
+          animationName: 'button-fade-up',
+          animationFillMode: 'forwards',
+          animationDuration: '1s',
+          animationTimingFunction: 'ease-out',
+          animationDelay: '5s'
         }}
       >
         <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
