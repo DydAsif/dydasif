@@ -11,23 +11,22 @@ const StapeLogo = () => (
       xmlns="http://www.w3.org/2000/svg"
       className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125"
       aria-label="Stape.io logo"
-      width="40"
-      height="40"
     >
-      <path d="M20 3 C10.62 3 3 10.62 3 20 s7.62 17 17 17 s17-7.62 17-17 S29.38 3 20 3 Z M20 33 C12.83 33 7 27.17 7 20 s5.83-13 13-13 s13 5.83 13 13 S27.17 33 20 33 Z" fill="hsl(var(--primary))"/>
+      <path d="M12 8 C10.8954 8 10 8.89543 10 10 V 12 C10 12.7981 10.4281 13.5041 11.1141 13.8471 L18.8859 17.733 C19.5719 18.076 20 18.782 20 19.5801 V 20.4199 C20 21.218 19.5719 21.924 18.8859 22.267 L11.1141 26.1529 C10.4281 26.4959 10 27.2019 10 27.9999 V 30 C10 31.1046 10.8954 32 12 32 H 28 C 29.1046 32 30 31.1046 30 30 V 27.9999 C30 27.2019 29.5719 26.4959 28.8859 26.1529 L21.1141 22.267 C20.4281 21.924 20 21.218 20 20.4199 V 19.5801 C20 18.782 20.4281 18.076 21.1141 17.733 L28.8859 13.8471 C29.5719 13.5041 30 12.7981 30 12 V 10 C30 8.89543 29.1046 8 28 8 H 12 Z" fill="hsl(var(--primary))"/>
       <text
-        x="30"
+        x="32"
         y="25"
         fontFamily="Poppins, sans-serif"
-        fontSize="24"
+        fontSize="18"
         fontWeight="bold"
         fill="hsl(var(--foreground))"
         textAnchor="middle"
+        dominantBaseline="middle"
       >
         S
       </text>
     </svg>
-  );
+);
 
 const services = [
   {
