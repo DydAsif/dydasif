@@ -14,10 +14,7 @@ const StapeLogo = () => (
       width="40"
       height="40"
     >
-      <path
-        d="M20 3 C10.62 3 3 10.62 3 20 s7.62 17 17 17 s17-7.62 17-17 S29.38 3 20 3 Z M20 33 C12.83 33 7 27.17 7 20 s5.83-13 13-13 s13 5.83 13 13 S27.17 33 20 33 Z"
-        fill="hsl(var(--primary))"
-      />
+      <path d="M20 3 C10.62 3 3 10.62 3 20 s7.62 17 17 17 s17-7.62 17-17 S29.38 3 20 3 Z M20 33 C12.83 33 7 27.17 7 20 s5.83-13 13-13 s13 5.83 13 13 S27.17 33 20 33 Z" fill="hsl(var(--primary))"/>
       <text
         x="30"
         y="25"
@@ -125,7 +122,7 @@ export function Services() {
                     </Button>
                   </CollapsibleTrigger>
                   <CollapsibleContent className="w-full mt-4 space-y-4 text-left">
-                     <ul className="list-disc list-inside text-muted-foreground space-y-2 text-sm">
+                     <ul className="list-disc list-outside pl-4 text-muted-foreground space-y-2 text-sm">
                        {service.details.map((detail, i) => (
                          <li key={i}>{detail}</li>
                        ))}
