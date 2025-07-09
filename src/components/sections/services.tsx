@@ -7,14 +7,25 @@ import Image from 'next/image';
 const StapeLogo = () => (
     <svg
       role="img"
-      viewBox="0 0 34 40"
+      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125 text-primary"
       aria-label="Stape.io logo"
-      fill="currentColor"
     >
-      <path d="M2.38419e-07 15L20 0L20 40L0 25L2.38419e-07 15Z" />
-      <path d="M34 20L20 15L20 25L34 20Z" />
+      <path d="M6 2h12v6l-4 4 4 4v6H6v-6l4-4-4-4V2z" stroke="currentColor" strokeWidth="1.5" fill="none" />
+      <text
+        x="50%"
+        y="51%"
+        dominantBaseline="middle"
+        textAnchor="middle"
+        fontSize="10"
+        fontWeight="bold"
+        fill="currentColor"
+        stroke="none"
+        className="font-headline"
+      >
+        S
+      </text>
     </svg>
   );
 
