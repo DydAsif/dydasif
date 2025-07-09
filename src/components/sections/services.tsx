@@ -12,20 +12,26 @@ const StapeLogo = () => (
       className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125 text-primary"
       aria-label="Stape.io logo"
     >
-      <path d="M6 2h12v6l-4 4 4 4v6H6v-6l4-4-4-4V2z" stroke="currentColor" strokeWidth="1.5" fill="none" />
-      <text
-        x="50%"
-        y="51%"
-        dominantBaseline="middle"
-        textAnchor="middle"
-        fontSize="10"
-        fontWeight="bold"
-        fill="currentColor"
-        stroke="none"
-        className="font-headline"
-      >
-        S
-      </text>
+      <g>
+        {/* Filled blue hourglass */}
+        <path
+          d="M6 2h12v6l-4 4 4 4v6H6v-6l4-4-4-4V2z"
+          fill="currentColor"
+        />
+        {/* 'S' character with knockout effect */}
+        <text
+          x="18.5"
+          y="12"
+          fontFamily="Poppins, sans-serif"
+          fontSize="17"
+          fontWeight="bold"
+          fill="hsl(var(--card))"
+          dominantBaseline="middle"
+          textAnchor="middle"
+        >
+          S
+        </text>
+      </g>
     </svg>
   );
 
