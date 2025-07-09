@@ -7,29 +7,28 @@ import Image from 'next/image';
 const StapeLogo = () => (
     <svg
       role="img"
-      viewBox="0 0 24 24"
+      viewBox="0 0 40 40"
       xmlns="http://www.w3.org/2000/svg"
       className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125"
       aria-label="Stape.io logo"
+      width="40"
+      height="40"
     >
-      <g>
-        <path
-          d="M6 2h12v6l-4 4 4 4v6H6v-6l4-4-4-4V2z"
-          fill="hsl(var(--primary))"
-        />
-        <text
-          x="18.5"
-          y="12"
-          fontFamily="Poppins, sans-serif"
-          fontSize="17"
-          fontWeight="bold"
-          fill="hsl(var(--foreground))"
-          dominantBaseline="middle"
-          textAnchor="middle"
-        >
-          S
-        </text>
-      </g>
+      <path
+        d="M20 3 C10.62 3 3 10.62 3 20 s7.62 17 17 17 s17-7.62 17-17 S29.38 3 20 3 Z M20 33 C12.83 33 7 27.17 7 20 s5.83-13 13-13 s13 5.83 13 13 S27.17 33 20 33 Z"
+        fill="hsl(var(--primary))"
+      />
+      <text
+        x="30"
+        y="25"
+        fontFamily="Poppins, sans-serif"
+        fontSize="24"
+        fontWeight="bold"
+        fill="hsl(var(--foreground))"
+        textAnchor="middle"
+      >
+        S
+      </text>
     </svg>
   );
 
@@ -126,7 +125,7 @@ export function Services() {
                     </Button>
                   </CollapsibleTrigger>
                   <CollapsibleContent className="w-full mt-4 space-y-4 text-left">
-                     <ul className="list-disc list-inside text-muted-foreground space-y-1 text-sm">
+                     <ul className="list-disc list-inside text-muted-foreground space-y-2 text-sm">
                        {service.details.map((detail, i) => (
                          <li key={i}>{detail}</li>
                        ))}
