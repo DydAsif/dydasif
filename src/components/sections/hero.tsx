@@ -27,7 +27,7 @@ export function Hero() {
         }}
       >
         <Image
-          src="https://placehold.co/176x176.png"
+          src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
           alt="Ashfakur Rahman Asif"
           width={176}
           height={176}
@@ -79,13 +79,9 @@ export function Hero() {
       </div>
 
       <div 
-        className="absolute bottom-8 animate-bounce text-primary/80 z-20"
+        className="absolute bottom-8 animate-bounce text-primary/80 z-20 opacity-0"
         style={{
-          animationName: 'button-fade-up',
-          animationFillMode: 'forwards',
-          animationDuration: '1s',
-          animationTimingFunction: 'ease-out',
-          animationDelay: '5s'
+          animation: 'button-fade-up 1s ease-out 5.2s forwards'
         }}
       >
         <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
