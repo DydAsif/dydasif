@@ -25,7 +25,7 @@ const StapeLogo = () => (
           fontFamily="Poppins, sans-serif"
           fontSize="17"
           fontWeight="bold"
-          fill="hsl(var(--card))"
+          fill="hsl(var(--card-foreground))"
           dominantBaseline="middle"
           textAnchor="middle"
         >
