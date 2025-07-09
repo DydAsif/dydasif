@@ -4,53 +4,48 @@
 
 @layer base {
   :root {
-    --background: 207 100% 9%; /* #001f2f */
+    --background: 222 84% 4.9%; /* #080c12 */
     --foreground: 210 40% 98%; /* #f8fafc */
-    --card: 207 100% 12%; /* adjusted dark blue */
+    --card: 222 84% 6.9%; /* adjusted dark blue */
     --card-foreground: 210 40% 98%;
-    --popover: 207 100% 8%;
+    --popover: 222 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 192 100% 50%; /* #00ccff */
-    --primary-foreground: 207 100% 8%;
-    --secondary: 207 100% 15%;
+    --primary: 217.2 91.2% 59.8%; /* #4f86f7 - A strong blue */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 28% 17%; /* #1d283a */
     --secondary-foreground: 210 40% 98%;
-    --muted: 207 100% 15%;
-    --muted-foreground: 210 40% 60%;
-    --accent: 192 100% 50%; /* #00ccff */
-    --accent-foreground: 207 100% 8%;
-    --destructive: 0 84.2% 60.2%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 91.2% 59.8%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 207 100% 20%;
-    --input: 207 100% 20%;
-    --ring: 192 100% 50%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 217.2 91.2% 59.8%;
     --radius: 0.5rem;
-    --cta: 192 100% 50%; /* #00ccff */
-    --cta-foreground: 207 100% 8%;
   }
 
   .dark {
-    /* Same as light theme as per prompt */
-    --background: 207 100% 9%;
+    --background: 222 84% 4.9%;
     --foreground: 210 40% 98%;
-    --card: 207 100% 12%;
+    --card: 222 84% 6.9%;
     --card-foreground: 210 40% 98%;
-    --popover: 207 100% 8%;
+    --popover: 222 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 192 100% 50%;
-    --primary-foreground: 207 100% 8%;
-    --secondary: 207 100% 15%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 28% 17%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 207 100% 15%;
-    --muted-foreground: 210 40% 60%;
-    --accent: 192 100% 50%;
-    --accent-foreground: 207 100% 8%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 91.2% 59.8%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 207 100% 20%;
-    --input: 207 100% 20%;
-    --ring: 192 100% 50%;
-    --cta: 192 100% 50%;
-    --cta-foreground: 207 100% 8%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -63,6 +58,5 @@
   }
   html {
     scroll-behavior: smooth;
-    /* Background is now handled by Vanta.js in the hero section */
   }
 }

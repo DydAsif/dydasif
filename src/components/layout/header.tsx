@@ -73,7 +73,7 @@ export function Header() {
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6">
         <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex items-center gap-3">
           <AnimatedLogo />
-          <span className="text-lg font-bold tracking-tight text-primary sm:text-xl">Ashfakur Rahman Asif</span>
+          <span className="hidden sm:inline text-lg font-bold tracking-tight text-primary sm:text-xl">Ashfakur Rahman Asif</span>
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
@@ -87,7 +87,7 @@ export function Header() {
             href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-[#00ccff] text-black rounded-xl px-4 py-2 font-bold hover:bg-blue-400 transition shadow-lg text-sm"
+            className="inline-block bg-primary text-primary-foreground rounded-full px-4 py-2 font-bold hover:bg-primary/80 transition shadow-lg text-sm"
           >
             Download CV
           </a>
@@ -116,7 +116,7 @@ export function Header() {
                 href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block text-center bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg"
+                className="inline-block text-center bg-primary text-primary-foreground rounded-full px-6 py-3 font-bold hover:bg-primary/80 transition shadow-lg text-lg"
               >
                 Download CV
               </a>

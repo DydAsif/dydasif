@@ -92,30 +92,6 @@ export default {
             height: '0',
           },
         },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        'fade-in-up': {
-           '0%': {
-             opacity: '0',
-             transform: 'translateY(20px)',
-           },
-           '100%': {
-             opacity: '1',
-             transform: 'translateY(0)',
-           },
-        },
-        'flyIn3D': {
-          'to': {
-            transform: 'translateZ(0) rotateX(0)',
-            opacity: '1',
-          },
-        },
-        'hoverPulse': {
-          '0%': { transform: 'scale(1) rotateX(0)' },
-          '100%': { transform: 'scale(1.2) rotateX(15deg)' },
-        },
         'logo-spin': {
           'from': {
             transform: 'rotateY(0deg)',
@@ -124,15 +100,32 @@ export default {
             transform: 'rotateY(360deg)',
           },
         },
+        'image-zoom-in': {
+          '0%': { opacity: '0', transform: 'scale(0.3) translateY(-80px)' },
+          '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        'name-reveal-behind': {
+          '0%': { opacity: '0', transform: 'translateY(60px) scale(0.8)', filter: 'blur(10px)' },
+          '60%': { opacity: '1', filter: 'blur(0)', transform: 'translateY(0) scale(1)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+        'image-slide-right': {
+          '0%': { left: '50%', transform: 'translateX(-50%)' },
+          '100%': { left: '80%', transform: 'translateX(-50%)' },
+        },
+        'profession-glow': {
+          '0%': { opacity: '0', transform: 'translateY(20px)', textShadow: 'none' },
+          '100%': { opacity: '1', transform: 'translateY(0)', textShadow: '0 0 12px hsl(var(--primary) / 0.6)' },
+        },
+        'button-fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'float': 'float 4s ease-in-out infinite',
-        'fade-in-up': 'fade-in-up 0.8s ease-out',
-        'fly-in-3d': 'flyIn3D 0.8s ease-out forwards',
-        'hover-pulse': 'hoverPulse 0.3s ease infinite alternate',
-        'logo-spin': 'logo-spin 15s linear infinite',
+        'logo-spin': 'logo-spin 10s linear infinite',
       },
     },
   },

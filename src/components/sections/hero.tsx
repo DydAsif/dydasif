@@ -1,101 +1,92 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
-import { cn } from "@/lib/utils";
+import React from 'react';
+import Image from 'next/image';
 
-// Vanta.js needs to be client-side only
-let FOG: any = null;
+const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string) => {
+  e.preventDefault();
+  const element = document.querySelector(selector);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 
 export function Hero() {
-  const vantaRef = useRef(null);
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
-  const name = "Ashfakur Rahman Asif";
-  const [contentVisible, setContentVisible] = useState(false);
-
-  useEffect(() => {
-    // Vanta.js initialization
-    if (typeof window !== "undefined") {
-      FOG = require("vanta/dist/vanta.fog.min");
-    }
-
-    if (!vantaEffect && FOG) {
-      const vantaInitializer = FOG.default || FOG;
-      setVantaEffect(
-        vantaInitializer({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          highlightColor: 0x00ccff,
-          midtoneColor: 0x003355,
-          lowlightColor: 0x000000,
-          baseColor: 0x001f2f,
-          blurFactor: 0.7,
-          speed: 1.2,
-          zoom: 0.8
-        })
-      );
-    }
-    
-    // Timer to fade in subtitle and button after name animation
-    // Animation delay is 0.15s per letter.
-    const timer = setTimeout(() => {
-        setContentVisible(true);
-    }, name.length * 150 + 500); 
-
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-      clearTimeout(timer);
-    };
-  }, []); // Run only once on mount
-
   return (
-    <section id="home" ref={vantaRef} className="w-full min-h-screen flex items-center justify-center text-center relative overflow-hidden">
-      <audio src="https://www.soundjay.com/ambience/sounds/thunderstorm-1.mp3" autoPlay loop className="sr-only"></audio>
-      <div className="z-10 text-white px-4 flex flex-col items-center [perspective:1000px]">
-        <div className="flex flex-wrap justify-center">
-            {name.split("").map((char, index) => (
-                <span
-                    key={index}
-                    className={cn(
-                        "inline-block text-5xl md:text-7xl font-bold font-headline opacity-0 animate-fly-in-3d hover:animate-hover-pulse",
-                        "text-primary"
-                    )}
-                    style={{
-                        transform: 'translateZ(-800px) rotateX(90deg)',
-                        animationDelay: `${index * 0.15}s`,
-                        textShadow: '0 0 10px hsl(var(--primary))',
-                    }}
-                >
-                    {char === " " ? "\u00A0" : char}
-                </span>
-            ))}
-        </div>
-        
-        <p 
-          className={cn(
-            "text-xl md:text-2xl mt-8 drop-shadow-lg max-w-2xl opacity-0 transition-opacity duration-1000",
-            contentVisible && "opacity-100"
-          )}
-        >
-          Digital Marketing & Tracking Expert
-        </p>
+    <section 
+      id="home"
+      className="h-screen flex flex-col items-center justify-center relative text-center z-10 overflow-hidden"
+    >
+      <div className="w-full h-full absolute top-0 left-0 bg-background -z-10" />
+
+      <div id="profileImage"
+        className="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-white shadow-2xl absolute opacity-0 z-10 group"
+        style={{
+          animation: 'image-zoom-in 1s ease-out 0.5s forwards, image-slide-right 1.2s ease-in-out 2s forwards',
+        }}
+      >
+        <Image
+          src="/assets/your-image.jpg"
+          alt="Ashfakur Rahman Asif"
+          width={176}
+          height={176}
+          className="rounded-full object-cover"
+          data-ai-hint="professional man"
+          priority
+        />
+      </div>
+
+      <h1 id="nameText"
+        className="text-3xl md:text-5xl font-extrabold tracking-wider absolute opacity-0 z-0 text-white"
+        style={{
+          animation: 'name-reveal-behind 1.4s ease-out 1.2s forwards'
+        }}
+      >
+        Ashfakur Rahman Asif
+      </h1>
+
+      <p id="professionText"
+        className="text-lg md:text-2xl font-semibold mt-4 opacity-0 absolute top-2/3 text-primary/80 tracking-wide"
+        style={{
+          animation: 'profession-glow 1s ease-out 3.2s forwards'
+        }}
+      >
+        Digital Marketing & Tracking Expert
+      </p>
+
+      <div id="buttonGroup"
+        className="opacity-0 mt-4 absolute top-[75%] flex gap-4 z-10"
+        style={{
+          animation: 'button-fade-up 1s ease-out 4.2s forwards'
+        }}
+      >
         <a
           href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            "mt-8 inline-block bg-[#00ccff] text-black rounded-xl px-6 py-3 font-bold hover:bg-blue-400 transition shadow-lg text-lg opacity-0 transition-opacity duration-1000",
-            contentVisible && "opacity-100"
-          )}
-          style={{ transitionDelay: contentVisible ? '200ms' : '0ms' }}
+          className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold hover:bg-primary/80 transition duration-300 shadow-md"
         >
           Download CV
         </a>
+        <a
+          href="#contact"
+          onClick={(e) => handleScrollTo(e, '#contact')}
+          className="bg-secondary text-secondary-foreground px-6 py-3 rounded-full font-bold hover:bg-secondary/80 transition duration-300 shadow-md"
+        >
+          Hire Me
+        </a>
+      </div>
+
+      <div 
+        className="absolute bottom-8 animate-bounce text-primary/80 z-20"
+        style={{
+          animationDelay: '5s',
+          animationIterationCount: 'infinite',
+          animationDuration: '2s'
+        }}
+      >
+        <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
       </div>
     </section>
   );
