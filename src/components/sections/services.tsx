@@ -4,6 +4,29 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 
+const StapeLogo = () => (
+    <svg
+      role="img"
+      viewBox="0 0 50 50"
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125"
+      aria-label="Stape.io logo"
+    >
+      <text
+        x="50%"
+        y="50%"
+        dy=".35em"
+        textAnchor="middle"
+        fontSize="42"
+        fontWeight="600"
+        fontFamily="Poppins, sans-serif"
+        fill="#00ccff"
+      >
+        S
+      </text>
+    </svg>
+  );
+
 const services = [
   {
     icon: <Facebook className="h-10 w-10 text-primary" />,
@@ -52,7 +75,7 @@ const services = [
   },
 ];
 
-const tools = [
+const tools: { name: string; logo: string | JSX.Element; displayName: string }[] = [
     { name: 'Google Tag Manager', logo: 'https://cdn.simpleicons.org/googletagmanager/00ccff', displayName: 'GTM' },
     { name: 'Meta (Facebook)', logo: 'https://cdn.simpleicons.org/meta/00ccff', displayName: 'Meta' },
     { name: 'Google Analytics 4', logo: 'https://cdn.simpleicons.org/googleanalytics/00ccff', displayName: 'GA4' },
@@ -60,8 +83,8 @@ const tools = [
     { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', displayName: 'WordPress' },
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
-    { name: 'Stape.io', logo: 'https://avatars.githubusercontent.com/u/87065994?s=200&v=4', displayName: 'Stape' },
-  ];
+    { name: 'Stape.io', logo: <StapeLogo />, displayName: 'Stape' },
+];
 
 export function Services() {
   return (
@@ -123,14 +146,16 @@ export function Services() {
           <h3 className="text-2xl font-headline font-bold tracking-tighter sm:text-3xl text-primary">Tools I Use</h3>
           <div className="mt-8 flex flex-wrap justify-center items-start">
             {tools.map(tool => (
-              <div key={tool.name} className="flex flex-col items-center m-4 w-[90px]" title={tool.name}>
-                 <img
-                    src={tool.logo}
-                    alt={tool.name}
-                    className={`object-contain h-10 w-10 mb-1.5 transition-transform duration-300 ease-in-out hover:scale-125 ${
-                      tool.name === 'Stape.io' ? 'rounded-full' : ''
-                    }`}
-                  />
+              <div key={tool.name} className="flex flex-col items-center m-4 w-[90px] group" title={tool.name}>
+                 {typeof tool.logo === 'string' ? (
+                    <img
+                        src={tool.logo}
+                        alt={tool.name}
+                        className="object-contain h-10 w-10 mb-1.5 transition-transform duration-300 ease-in-out group-hover:scale-125"
+                    />
+                 ) : (
+                    <div className="mb-1.5 h-10 w-10 flex items-center justify-center">{tool.logo}</div>
+                 )}
                   <span className="text-sm text-center text-foreground">{tool.displayName}</span>
               </div>
             ))}
