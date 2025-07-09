@@ -3,7 +3,7 @@ import Image from 'next/image';
 export function About() {
   return (
     <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2 md:items-center">
           <div className="relative group">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-blue-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>

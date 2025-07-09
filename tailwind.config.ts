@@ -132,7 +132,7 @@ export default {
         'fade-in-up': 'fade-in-up 0.8s ease-out',
         'fly-in-3d': 'flyIn3D 0.8s ease-out forwards',
         'hover-pulse': 'hoverPulse 0.3s ease infinite alternate',
-        'logo-spin': 'logo-spin 8s linear infinite',
+        'logo-spin': 'logo-spin 15s linear infinite',
       },
     },
   },

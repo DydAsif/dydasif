@@ -21,7 +21,7 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="w-full py-6 border-t border-border/50 bg-secondary/20">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-sm text-muted-foreground text-center md:text-left">
             &copy; {new Date().getFullYear()} Ashfakur Rahman Asif. All rights reserved.

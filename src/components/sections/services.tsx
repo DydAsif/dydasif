@@ -12,7 +12,7 @@ const StapeLogo = () => (
       className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125"
       aria-label="Stape.io logo"
     >
-      <path d="M12 8 C10.8954 8 10 8.89543 10 10 V 12 C10 12.7981 10.4281 13.5041 11.1141 13.8471 L18.8859 17.733 C19.5719 18.076 20 18.782 20 19.5801 V 20.4199 C20 21.218 19.5719 21.924 18.8859 22.267 L11.1141 26.1529 C10.4281 26.4959 10 27.2019 10 27.9999 V 30 C10 31.1046 10.8954 32 12 32 H 28 C 29.1046 32 30 31.1046 30 30 V 27.9999 C30 27.2019 29.5719 26.4959 28.8859 26.1529 L21.1141 22.267 C20.4281 21.924 20 21.218 20 20.4199 V 19.5801 C20 18.782 20.4281 18.076 21.1141 17.733 L28.8859 13.8471 C29.5719 13.5041 30 12.7981 30 12 V 10 C30 8.89543 29.1046 8 28 8 H 12 Z" fill="hsl(var(--primary))"/>
+      <path d="M20 5 L10 20 L15 20 L20 12 L25 20 L30 20 Z M12 25 L20 38 L28 25 Z" fill="hsl(var(--primary))"/>
       <text
         x="32"
         y="25"
@@ -90,7 +90,7 @@ const tools: { name: string; logo: string | JSX.Element; displayName: string }[]
 export function Services() {
   return (
     <section id="services" className="w-full py-12 md:py-24 lg:py-32" data-aos="fade-up" data-aos-duration="1200">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl text-primary">My Services</h2>
@@ -123,7 +123,7 @@ export function Services() {
                   <CollapsibleContent className="w-full mt-4 space-y-4 text-left">
                      <ul className="list-disc list-outside pl-4 text-muted-foreground space-y-2 text-sm">
                        {service.details.map((detail, i) => (
-                         <li key={i}>{detail}</li>
+                         <li key={i} className="pl-2">{detail}</li>
                        ))}
                      </ul>
                      <h4 className="font-semibold text-sm">Proof Screenshot:</h4>
