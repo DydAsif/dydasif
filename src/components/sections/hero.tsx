@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import * as THREE from 'three';
-import NET from 'vanta/dist/vanta.net.min';
+import WAVES from 'vanta/dist/vanta.waves.min';
 
 const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string) => {
   e.preventDefault();
@@ -20,34 +20,33 @@ export function Hero() {
   const vantaRef = useRef(null);
 
   useEffect(() => {
-    if (!vantaEffect) {
-       // Temporarily get color values. In a real app, you'd want a more robust way to get CSS vars
-      const primaryColor = 0x4f86f7; // Corresponds to hsl(217.2 91.2% 59.8%)
-      const backgroundColor = 0x80c12; // Corresponds to hsl(222 84% 4.9%)
+    let effect: any;
+    if (typeof window !== 'undefined' && !effect) {
+      const primaryColor = 0x4f86f7; 
+      const backgroundColor = 0x80c12;
 
-      setVantaEffect(
-        NET({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 1.00,
-          scaleMobile: 1.00,
-          color: primaryColor,
-          backgroundColor: backgroundColor,
-          points: 12.00,
-          maxDistance: 25.00,
-          spacing: 18.00
-        })
-      );
+      effect = WAVES({
+        el: vantaRef.current,
+        THREE: THREE,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: primaryColor,
+        shininess: 30.00,
+        waveHeight: 15.00,
+        waveSpeed: 0.8,
+        zoom: 0.8,
+      });
+      setVantaEffect(effect);
     }
     return () => {
-      if (vantaEffect) vantaEffect.destroy();
+      if (effect) effect.destroy();
     };
-  }, [vantaEffect]);
+  }, []);
 
   return (
     <section 
