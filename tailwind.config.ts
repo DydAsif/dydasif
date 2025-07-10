@@ -108,11 +108,21 @@ export default {
             transform: 'rotateY(360deg)',
           },
         },
+        'image-fade-in': {
+          '0%': { opacity: '0', transform: 'scale(0.8)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'name-fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(-80px)' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'logo-spin': 'logo-spin 6s linear infinite',
+        'logo-spin': 'logo-spin 10s linear infinite',
+        'image-fade-in': 'image-fade-in 1s ease-out',
+        'name-fade-in': 'name-fade-in 1s ease-out',
       },
     },
   },

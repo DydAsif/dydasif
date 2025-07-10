@@ -20,35 +20,34 @@ export function Hero() {
     >
         <div className="absolute inset-0 bg-background -z-10" />
         
-        <div data-aos="zoom-in" data-aos-duration="1000">
-            <Image
-              src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
-              alt="Ashfakur Rahman Asif"
-              width={160}
-              height={160}
-              className="rounded-full object-cover w-40 h-40 border-4 border-primary shadow-2xl"
-              data-ai-hint="professional man"
-              priority
-            />
-        </div>
+        <Image
+          src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
+          alt="Ashfakur Rahman Asif"
+          width={160}
+          height={160}
+          className="rounded-full object-cover w-40 h-40 shadow-2xl relative z-10 animate-image-fade-in"
+          data-ai-hint="professional man"
+          priority
+          style={{ animationFillMode: 'forwards' }}
+        />
 
         <h1 
-            className="text-4xl md:text-6xl font-extrabold tracking-tight mt-6 text-foreground"
-            data-aos="fade-up" data-aos-delay="200"
+            className="text-4xl md:text-6xl font-extrabold tracking-tight mt-6 text-foreground/80 relative z-0 animate-name-fade-in"
+            style={{ animationFillMode: 'forwards', animationDelay: '0.5s' }}
         >
             Ashfakur Rahman Asif
         </h1>
 
         <p 
             className="text-lg md:text-2xl font-semibold mt-4 text-primary/90 tracking-wide"
-            data-aos="fade-up" data-aos-delay="400"
+            data-aos="fade-up" data-aos-delay="1200"
         >
             Digital Marketing & Tracking Expert
         </p>
 
         <div 
             className="mt-8 flex flex-col sm:flex-row gap-4"
-            data-aos="fade-up" data-aos-delay="600"
+            data-aos="fade-up" data-aos-delay="1400"
         >
             <Button asChild size="lg">
                  <a
@@ -68,7 +67,7 @@ export function Hero() {
         
         <div 
             className="absolute bottom-8 text-primary/80 animate-bounce"
-            data-aos="fade-up" data-aos-delay="800"
+            data-aos="fade-up" data-aos-delay="1600"
         >
             <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
         </div>
