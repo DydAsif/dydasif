@@ -12,7 +12,7 @@ export function AnimatedLogo({ className }: { className?: string }) {
         <defs>
           <linearGradient id="logo-gradient-blue" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: 'hsl(var(--primary))', stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: '#080c12', stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: '#00ccff', stopOpacity: 1 }} />
           </linearGradient>
           <filter id="smoky-glow">
             <feGaussianBlur stdDeviation="3" result="coloredBlur" />
@@ -33,9 +33,8 @@ export function AnimatedLogo({ className }: { className?: string }) {
           x="50%"
           y="52%"
           fill="url(#logo-gradient-blue)"
-          stroke="#FFD700"
-          strokeWidth="1.5"
           className="opacity-50 animate-smoke"
+          style={{ filter: 'blur(5px)' }}
         >
           ARA
         </text>
@@ -53,7 +52,6 @@ export function AnimatedLogo({ className }: { className?: string }) {
           stroke="#FFD700"
           strokeWidth="1.5"
           className="group-hover:scale-110 transition-transform duration-300"
-          style={{filter: 'url(#smoky-glow)'}}
         >
           ARA
         </text>
