@@ -17,7 +17,6 @@ export default function Home() {
   const [introFinished, setIntroFinished] = useState(false);
 
   useEffect(() => {
-    // Check session storage to see if the intro has already run
     const hasIntroRun = sessionStorage.getItem('introRun');
     if (hasIntroRun) {
       setLoading(false);
@@ -25,14 +24,14 @@ export default function Home() {
     } else {
       const timer = setTimeout(() => {
         setLoading(false);
-        sessionStorage.setItem('introRun', 'true');
-      }, 4000); // Duration of the intro animation
+      }, 4000); 
       return () => clearTimeout(timer);
     }
   }, []);
 
   const handleAnimationComplete = () => {
     setIntroFinished(true);
+    sessionStorage.setItem('introRun', 'true');
   };
 
   return (
