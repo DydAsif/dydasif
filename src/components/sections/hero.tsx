@@ -22,7 +22,10 @@ export function Hero() {
         <div className="absolute inset-0 bg-background -z-10" />
         
         <div className="container mx-auto max-w-7xl px-4 md:px-6">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 animate-fade-in-from-right">
+            <div 
+                className="flex flex-col md:flex-row items-center justify-center gap-6 animate-fade-in-from-right"
+                style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
+            >
                  <Image
                   src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
                   alt="Ashfakur Rahman Asif"
@@ -47,9 +50,10 @@ export function Hero() {
                 </div>
             </div>
             <div 
-                className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
+                className="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-from-right"
+                style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
             >
-                <Button asChild size="lg">
+                <Button asChild size="lg" className="hover:animate-glow">
                      <a
                         href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
                         target="_blank"
@@ -58,7 +62,7 @@ export function Hero() {
                         Download CV
                       </a>
                 </Button>
-                <Button asChild variant="secondary" size="lg">
+                <Button asChild variant="secondary" size="lg" className="hover:animate-glow">
                      <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
                         Hire Me
                       </a>
@@ -68,6 +72,7 @@ export function Hero() {
         
         <div 
             className="absolute bottom-8 text-primary/80 animate-bounce"
+             style={{ animationDelay: '1.2s' }}
         >
             <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
         </div>
