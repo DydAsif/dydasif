@@ -115,6 +115,14 @@ export default {
         'fade-in-from-right': {
           '0%': { transform: 'translateX(20px)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        'glow': {
+          '0%, 100%': { filter: 'drop-shadow(0 0 5px hsl(var(--primary)))' },
+          '50%': { filter: 'drop-shadow(0 0 20px hsl(var(--primary)))' },
+        },
+        'fade-in-content': {
+          'from': { opacity: '0' },
+          'to': { opacity: '1' },
         }
       },
       animation: {
@@ -123,6 +131,8 @@ export default {
         'logo-spin': 'logo-spin 10s linear infinite',
         'slide-in-from-left': 'slide-in-from-left 1s ease-out forwards',
         'fade-in-from-right': 'fade-in-from-right 1s ease-out 0.5s forwards',
+        'glow': 'glow 3s ease-in-out infinite',
+        'fade-in-content': 'fade-in-content 1s ease-in forwards',
       },
     },
   },

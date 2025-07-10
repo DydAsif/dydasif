@@ -1,3 +1,7 @@
+
+"use client";
+import React, { useState, useEffect } from 'react';
+import { Intro } from '@/components/layout/intro';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Hero } from '@/components/sections/hero';
@@ -9,19 +13,49 @@ import { Socials } from '@/components/sections/socials';
 import { Contact } from '@/components/sections/contact';
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const [introFinished, setIntroFinished] = useState(false);
+
+  useEffect(() => {
+    // Check session storage to see if the intro has already run
+    const hasIntroRun = sessionStorage.getItem('introRun');
+    if (hasIntroRun) {
+      setLoading(false);
+      setIntroFinished(true);
+    } else {
+      const timer = setTimeout(() => {
+        setLoading(false);
+        sessionStorage.setItem('introRun', 'true');
+      }, 4000); // Duration of the intro animation
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleAnimationComplete = () => {
+    setIntroFinished(true);
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <About />
-        <Services />
-        <ProjectPresentation />
-        <Certifications />
-        <Socials />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Intro 
+        isLoading={loading} 
+        onAnimationComplete={handleAnimationComplete} 
+      />
+      {!loading && (
+        <div className={`flex flex-col min-h-screen ${introFinished ? 'animate-fade-in-content' : 'opacity-0'}`}>
+          <Header />
+          <main className="flex-1">
+            <Hero />
+            <About />
+            <Services />
+            <ProjectPresentation />
+            <Certifications />
+            <Socials />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
