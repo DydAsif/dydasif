@@ -100,13 +100,9 @@ export default {
             height: '0',
           },
         },
-        'logo-spin': {
-          'from': {
-            transform: 'rotateY(0deg)',
-          },
-          'to': {
-            transform: 'rotateY(360deg)',
-          },
+        'shimmer': {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' },
         },
         'slide-in-from-left': {
           '0%': { transform: 'translateX(-100%)', opacity: '0' },
@@ -128,7 +124,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'logo-spin': 'logo-spin 10s linear infinite',
+        'shimmer': 'shimmer 5s linear infinite',
         'slide-in-from-left': 'slide-in-from-left 1s ease-out forwards',
         'fade-in-from-right': 'fade-in-from-right 1s ease-out 0.5s forwards',
         'glow': 'glow 3s ease-in-out infinite',
