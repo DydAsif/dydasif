@@ -13,6 +13,62 @@ const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string
   }
 };
 
+const NeonSmokeBackground = () => {
+    const particles = React.useMemo(() => {
+        const particleArray = [];
+        const numParticles = 50; 
+        for (let i = 0; i < numParticles; i++) {
+            const corner = Math.floor(Math.random() * 4);
+            let xStart, yStart, xEnd, yEnd;
+            const vw = 100;
+            const vh = 100;
+
+            switch (corner) {
+                case 0: // Top-left
+                    xStart = `${Math.random() * 20 - 10}vw`;
+                    yStart = `${Math.random() * 20 - 10}vh`;
+                    break;
+                case 1: // Top-right
+                    xStart = `${vw - (Math.random() * 20 - 10)}vw`;
+                    yStart = `${Math.random() * 20 - 10}vh`;
+                    break;
+                case 2: // Bottom-left
+                    xStart = `${Math.random() * 20 - 10}vw`;
+                    yStart = `${vh - (Math.random() * 20 - 10)}vh`;
+                    break;
+                default: // Bottom-right
+                    xStart = `${vw - (Math.random() * 20 - 10)}vw`;
+                    yStart = `${vh - (Math.random() * 20 - 10)}vh`;
+                    break;
+            }
+            
+            xEnd = `${Math.random() * 60 + 20}vw`;
+            yEnd = `${Math.random() * 60 + 20}vh`;
+
+            particleArray.push({
+                id: i,
+                style: {
+                    '--particle-size': `${Math.random() * 5 + 2}px`,
+                    '--animation-duration': `${Math.random() * 10 + 10}s`,
+                    '--animation-delay': `-${Math.random() * 20}s`,
+                    '--x-start': xStart,
+                    '--y-start': yStart,
+                    '--x-end': xEnd,
+                    '--y-end': yEnd,
+                } as React.CSSProperties
+            });
+        }
+        return particleArray;
+    }, []);
+
+    return (
+        <div className="particle-container">
+            {particles.map(p => <div key={p.id} className="particle" style={p.style} />)}
+        </div>
+    );
+};
+
+
 export function Hero() {
   return (
     <section 
@@ -21,13 +77,8 @@ export function Hero() {
     >
         <div className="absolute inset-0 bg-background -z-20" />
         
-        {/* Smoky Thunder Background */}
-        <div className="absolute inset-0 z-[-1] overflow-hidden bg-black/50">
-           <div className="absolute inset-0 animate-smoke bg-[radial-gradient(ellipse_at_center,_rgba(128,128,128,0.2)_0%,rgba(0,0,0,0)_70%)]" style={{ animationDelay: '0s' }}></div>
-           <div className="absolute inset-0 animate-smoke bg-[radial-gradient(ellipse_at_top_left,_rgba(128,128,128,0.2)_0%,rgba(0,0,0,0)_60%)]" style={{ animationDelay: '-5s' }}></div>
-           <div className="absolute inset-0 animate-smoke bg-[radial-gradient(ellipse_at_bottom_right,_rgba(128,128,128,0.2)_0%,rgba(0,0,0,0)_65%)]" style={{ animationDelay: '-10s' }}></div>
-           <div className="absolute inset-0 bg-primary/40 [mask-image:radial-gradient(ellipse_at_center,white_10%,transparent_80%)]" style={{ animation: `thunder-flash 8s linear infinite` }}></div>
-           <div className="absolute inset-0 bg-primary/30 [mask-image:radial-gradient(ellipse_at_top_left,white_5%,transparent_70%)]" style={{ animation: `thunder-flash 7s linear 2s infinite` }}></div>
+        <div className="absolute inset-0 z-[-1] overflow-hidden">
+            <NeonSmokeBackground />
         </div>
         
         <div className="container mx-auto max-w-7xl px-4 md:px-6">
