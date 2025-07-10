@@ -57,7 +57,12 @@ export function Certifications() {
         </div>
         <div className="mx-auto grid items-stretch gap-8 sm:max-w-4xl sm:grid-cols-1 md:grid-cols-2 lg:max-w-5xl mt-12">
           {certifications.map((cert, index) => (
-            <Card key={index} className="bg-card border border-border shadow-lg hover:shadow-primary/20 hover:scale-105 hover:border-primary transition-all duration-300 rounded-lg flex flex-col">
+            <Card 
+              key={index} 
+              className="bg-card border border-border shadow-lg hover:shadow-primary/20 hover:scale-105 hover:border-primary transition-all duration-300 rounded-lg flex flex-col"
+              data-aos="fade-up"
+              data-aos-delay={`${100 * index}`}
+            >
               <CardHeader className="flex flex-row items-start gap-4 p-6">
                 {cert.icon}
                 <div className="flex flex-col text-left">
