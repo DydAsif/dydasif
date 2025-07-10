@@ -132,7 +132,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'logo-spin': 'logo-spin 10s linear infinite',
+        'logo-spin': 'logo-spin 6s linear infinite',
       },
     },
   },
