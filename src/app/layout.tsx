@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import AOSProvider from '@/components/AOSProvider';
+import { ChatWidget } from '@/components/chat/chat-widget';
 
 export const metadata: Metadata = {
   title: 'Ashfakur Rahman Asif - Digital Marketing Portfolio',
@@ -40,6 +41,7 @@ export default function RootLayout({
         <AOSProvider>
           {children}
         </AOSProvider>
+        <ChatWidget />
         <Toaster />
       </body>
     </html>
