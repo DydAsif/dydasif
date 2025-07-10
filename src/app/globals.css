@@ -23,7 +23,6 @@
     --border: 215 28% 17%;
     --input: 215 28% 17%;
     --ring: 217.2 91.2% 59.8%;
-    --radius: 0.5rem;
   }
 
   .dark {
@@ -59,4 +58,12 @@
   html {
     scroll-behavior: smooth;
   }
+}
+
+.about-bg {
+  background-color: hsl(var(--background));
+  background-image:
+    linear-gradient(hsl(var(--primary)/0.05) 1px, transparent 1px),
+    linear-gradient(to right, hsl(var(--primary)/0.05) 1px, hsl(var(--background)) 1px);
+  background-size: 3rem 3rem;
 }

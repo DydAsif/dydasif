@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export function About() {
   return (
-    <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/20">
+    <section id="about" className="w-full py-12 md:py-24 lg:py-32 about-bg">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="grid gap-10 sm:px-10 md:gap-16 md:grid-cols-2 md:items-center">
           <div className="relative group">
