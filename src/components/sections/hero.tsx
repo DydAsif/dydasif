@@ -13,31 +13,13 @@ const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string
 };
 
 export function Hero() {
-  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
-
-  React.useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  const style = {
-    '--x': `${mousePosition.x}px`,
-    '--y': `${mousePosition.y}px`,
-  } as React.CSSProperties;
 
   return (
     <section 
       id="home"
       className="h-screen flex flex-col items-center justify-center relative text-center z-10 overflow-hidden p-4"
     >
-      <div className="aurora-background" style={style}></div>
+      <div className="dot-grid-background"></div>
       
       <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10">
         <div 
