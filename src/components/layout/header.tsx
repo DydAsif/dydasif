@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
-import Image from 'next/image';
+import { AnimatedLogo } from '@/components/ui/animated-logo';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -73,14 +73,7 @@ export function Header() {
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6">
         <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex items-center gap-3">
-          <div className="w-10 h-10 relative">
-            <Image
-                src="https://i.ibb.co/hZ01W3J/ara-logo-smoke.jpg"
-                alt="ARA Logo"
-                fill
-                className="object-contain"
-            />
-          </div>
+          <AnimatedLogo />
           <span className="hidden sm:inline text-lg font-bold tracking-tight text-primary sm:text-xl">Ashfakur Rahman Asif</span>
         </a>
         <nav className="hidden items-center gap-6 md:flex">
@@ -110,14 +103,7 @@ export function Header() {
           <SheetContent side="right" className="bg-background">
             <div className="grid gap-6 p-6">
               <a href="#home" className="flex items-center gap-3" onClick={(e) => handleLinkClick(e, '#home')}>
-                 <div className="w-10 h-10 relative">
-                    <Image
-                        src="https://i.ibb.co/hZ01W3J/ara-logo-smoke.jpg"
-                        alt="ARA Logo"
-                        fill
-                        className="object-contain"
-                    />
-                  </div>
+                 <AnimatedLogo />
                  <span className="text-xl font-bold tracking-tight text-primary">Ashfakur Rahman Asif</span>
               </a>
               <nav className="grid gap-4">

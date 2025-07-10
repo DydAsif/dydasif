@@ -2,10 +2,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import * as THREE from 'three';
 import FOG from 'vanta/dist/vanta.fog.min';
 import { cn } from '@/lib/utils';
+import { AnimatedLogo } from '@/components/ui/animated-logo';
 
 interface IntroProps {
   onIntroComplete: () => void;
@@ -68,14 +68,7 @@ export const Intro: React.FC<IntroProps> = ({ onIntroComplete }) => {
           'relative w-64 h-64 md:w-96 md:h-96 opacity-100 animate-glow'
         )}
       >
-        <Image
-          src="https://i.ibb.co/hZ01W3J/ara-logo-smoke.jpg"
-          alt="ARA Logo"
-          fill
-          priority
-          className="object-contain"
-          data-ai-hint="logo smoke"
-        />
+        <AnimatedLogo className="w-full h-full" />
       </div>
     </div>
   );
