@@ -1,6 +1,4 @@
-import { Card } from '@/components/ui/card';
-import Image from 'next/image';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ProjectCard } from '@/components/project-card';
 
 const projects = [
   {
@@ -77,32 +75,7 @@ export function ProjectPresentation() {
         </div>
         <div className="mx-auto grid max-w-4xl gap-12">
           {projects.map((project, index) => (
-            <Card key={index} className="bg-card border border-border shadow-lg hover:shadow-primary/20 hover:border-primary transition-all duration-300 rounded-lg overflow-hidden">
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-primary mb-4">{project.title}</h3>
-                <Tabs defaultValue={project.tabs[0].value} className="w-full">
-                  <TabsList className="grid w-full grid-cols-3 bg-secondary/50">
-                    {project.tabs.map(tab => (
-                      <TabsTrigger key={tab.value} value={tab.value}>{tab.trigger}</TabsTrigger>
-                    ))}
-                  </TabsList>
-                  {project.tabs.map(tab => (
-                    <TabsContent key={tab.value} value={tab.value} className="mt-4">
-                      <p className="text-muted-foreground mb-4 font-semibold">{tab.content}</p>
-                      <div className="relative aspect-video">
-                        <Image
-                          src={tab.imageUrl}
-                          alt={tab.alt}
-                          fill
-                          className="object-cover rounded-md border border-border"
-                          data-ai-hint={tab.imageHint}
-                        />
-                      </div>
-                    </TabsContent>
-                  ))}
-                </Tabs>
-              </div>
-            </Card>
+             <ProjectCard key={index} project={project} />
           ))}
         </div>
       </div>
