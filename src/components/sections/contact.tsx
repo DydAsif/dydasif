@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -10,13 +11,27 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { submitContactForm } from '@/app/actions';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Mail, Linkedin, Facebook } from 'lucide-react';
+import { Card } from '../ui/card';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }).max(500, { message: 'Message must be less than 500 characters.' }),
 });
+
+const socialLinks = [
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/ashfakur-rahman-asif-42231b369/',
+    icon: <Linkedin className="h-5 w-5" />,
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/share/12KAR3Dqt58/',
+    icon: <Facebook className="h-5 w-5" />,
+  },
+];
 
 export function Contact() {
   const { toast } = useToast();
@@ -53,61 +68,94 @@ export function Contact() {
 
   return (
     <section id="contact" className="w-full py-12 md:py-24 lg:py-32 section-bg">
-      <div className="container mx-auto grid max-w-7xl items-center justify-center gap-4 px-4 text-center md:px-6">
-        <div className="space-y-3">
-          <h2 className="text-3xl font-headline font-bold tracking-tighter md:text-4xl/tight">Get in Touch</h2>
-          <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Have a project in mind or just want to say hi? Fill out the form below.
-          </p>
+      <div className="container mx-auto max-w-7xl px-4 md:px-6">
+        <div className="text-center mb-12">
+            <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl text-primary">Get in Touch</h2>
+            <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed mt-4">
+                Have a project in mind or just want to say hi? I'd love to hear from you.
+            </p>
         </div>
-        <div className="mx-auto w-full max-w-sm lg:max-w-md">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="sr-only">Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your Name" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="sr-only">Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your Email" type="email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="sr-only">Message</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder="Your Message" {...field} rows={5} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground" disabled={isSubmitting}>
-                {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Send Message'}
-              </Button>
-            </form>
-          </Form>
-        </div>
+
+        <Card className="p-8 lg:p-10 border-border/50 bg-card/80 shadow-2xl shadow-primary/5">
+             <div className="grid lg:grid-cols-2 lg:gap-12">
+                <div className="space-y-4 flex flex-col justify-center">
+                    <h3 className="text-2xl font-bold text-primary">Contact Information</h3>
+                    <p className="text-muted-foreground">
+                        Feel free to reach out via email or connect with me on social media. I'm always open to discussing new projects and opportunities.
+                    </p>
+                    <div className="space-y-4">
+                        <a href="mailto:dydfreelancer@gmail.com" className="flex items-center gap-4 text-muted-foreground hover:text-primary transition-colors">
+                            <Mail className="h-6 w-6 text-primary" />
+                            <span>dydfreelancer@gmail.com</span>
+                        </a>
+                        <div className="flex items-center gap-4">
+                             {socialLinks.map((link) => (
+                              <a 
+                                key={link.href} 
+                                href={link.href} 
+                                aria-label={link.label}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-muted-foreground hover:text-primary transition-colors p-2 rounded-full hover:bg-secondary"
+                              >
+                                {link.icon}
+                              </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mt-8 lg:mt-0">
+                     <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="sr-only">Name</FormLabel>
+                                <FormControl>
+                                <Input placeholder="Your Name" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="sr-only">Email</FormLabel>
+                                <FormControl>
+                                <Input placeholder="Your Email" type="email" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="message"
+                            render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="sr-only">Message</FormLabel>
+                                <FormControl>
+                                <Textarea placeholder="Your Message" {...field} rows={5} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            )}
+                        />
+                        <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-lg" disabled={isSubmitting}>
+                            {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Send Message'}
+                        </Button>
+                        </form>
+                    </Form>
+                </div>
+
+            </div>
+        </Card>
       </div>
     </section>
   );
