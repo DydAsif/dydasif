@@ -17,20 +17,30 @@ export default function Home() {
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    // Check if the intro has already run in this session
-    if (sessionStorage.getItem('introRun')) {
+    if (typeof window !== 'undefined' && sessionStorage.getItem('introShown')) {
       setShowIntro(false);
       setContentVisible(true);
     } else {
-        // If it's the first time, mark that the intro will run
-        sessionStorage.setItem('introRun', 'true');
+        setShowIntro(true);
+        setContentVisible(false);
     }
   }, []);
 
   const handleIntroComplete = () => {
+    if (typeof window !== 'undefined') {
+        sessionStorage.setItem('introShown', 'true');
+    }
     setShowIntro(false);
-    setContentVisible(true);
+    // Add a slight delay to allow the intro to fade out completely before the content fades in
+    setTimeout(() => {
+      setContentVisible(true);
+    }, 100);
   };
+
+  // If we haven't determined whether to show the intro, show nothing to prevent flashes
+  if (typeof window !== 'undefined' && !sessionStorage.getItem('introShown') && !contentVisible && showIntro === false) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-background">

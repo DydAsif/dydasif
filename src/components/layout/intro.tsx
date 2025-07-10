@@ -4,92 +4,64 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Text } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 
 type IntroProps = {
   onIntroComplete: () => void;
 };
 
-const SmokeParticle = ({ position }: { position: THREE.Vector3 }) => {
-  const ref = useRef<THREE.Sprite>(null);
-  const velocity = useMemo(() => new THREE.Vector3((Math.random() - 0.5) * 0.02, Math.random() * 0.02 + 0.01, (Math.random() - 0.5) * 0.02), []);
-  const initialOpacity = useMemo(() => Math.random() * 0.5, []);
+const SmokeEffect = () => {
+  const group = useRef<THREE.Group>(null);
+  const texture = useMemo(() => new THREE.TextureLoader().load('https://i.ibb.co/Xz4x2Vp/smoke.png'), []);
+  const particles = useRef<THREE.Sprite[]>([]).current;
+
+  useEffect(() => {
+    if (!group.current) return;
+    for (let i = 0; i < 50; i++) {
+      const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.4 });
+      const sprite = new THREE.Sprite(material);
+      sprite.position.set(
+        (Math.random() - 0.5) * 6,
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4
+      );
+      sprite.scale.set(1.5, 1.5, 1);
+      group.current.add(sprite);
+      particles.push(sprite);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useFrame(() => {
-    if (ref.current) {
-      ref.current.position.add(velocity);
-      ref.current.material.opacity -= 0.005;
+    particles.forEach((sprite) => {
+      sprite.position.y += 0.005;
+      sprite.material.opacity -= 0.003;
+      sprite.scale.x += 0.005;
+      sprite.scale.y += 0.005;
 
-      if (ref.current.material.opacity <= 0) {
-        ref.current.position.set(position.x, position.y, position.z);
-        ref.current.material.opacity = initialOpacity;
+      if (sprite.material.opacity <= 0) {
+        sprite.position.set(
+            (Math.random() - 0.5) * 6,
+            -2,
+            (Math.random() - 0.5) * 4
+        );
+        sprite.material.opacity = 0.5;
+        sprite.scale.set(1.5, 1.5, 1);
       }
-    }
+    });
   });
 
-  const smokeTexture = useMemo(() => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 128;
-    canvas.height = 128;
-    const context = canvas.getContext('2d');
-    if (context) {
-      const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
-      gradient.addColorStop(0, 'rgba(255,255,255,0.5)');
-      gradient.addColorStop(1, 'rgba(255,255,255,0)');
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, 128, 128);
-    }
-    return new THREE.CanvasTexture(canvas);
-  }, []);
-
-  return (
-    <sprite ref={ref} scale={[1, 1, 1]} position={position}>
-      <spriteMaterial attach="material" map={smokeTexture} transparent opacity={initialOpacity} />
-    </sprite>
-  );
+  return <group ref={group} />;
 };
 
-const SmokeEffect = () => {
-  const particles = useMemo(() => {
-    const particleArray = [];
-    for (let i = 0; i < 50; i++) {
-      particleArray.push(
-        <SmokeParticle 
-          key={i} 
-          position={new THREE.Vector3(
-            (Math.random() - 0.5) * 5,
-            (Math.random() - 0.5) * 2 - 1,
-            (Math.random() - 0.5) * 2
-          )} 
-        />
-      );
-    }
-    return particleArray;
-  }, []);
-
-  return <>{particles}</>;
+const LogoModel = () => {
+    const texture = useMemo(() => new THREE.TextureLoader().load('https://i.ibb.co/hZ01W3J/ara-logo-smoke.jpg'), []);
+    const material = useMemo(() => new THREE.MeshBasicMaterial({ map: texture, transparent: true }), [texture]);
+    const geometry = useMemo(() => new THREE.PlaneGeometry(3.5, 3.5), []);
+  
+    return <mesh geometry={geometry} material={material} />;
 };
 
-const Logo = () => {
-  return (
-    <Text
-        font="/fonts/Poppins-Bold.ttf"
-        fontSize={1}
-        letterSpacing={-0.05}
-        color="hsl(var(--primary))"
-        anchorX="center"
-        anchorY="middle"
-    >
-      ARA
-      <meshStandardMaterial
-        emissive={'hsl(var(--primary))'}
-        emissiveIntensity={0.5}
-        roughness={0.2}
-        metalness={0.8}
-      />
-    </Text>
-  );
-};
 
 export function Intro({ onIntroComplete }: IntroProps) {
   const [fadeOut, setFadeOut] = useState(false);
@@ -119,14 +91,13 @@ export function Intro({ onIntroComplete }: IntroProps) {
   return (
     <div
       ref={containerRef}
-      className={`fixed inset-0 z-[100] bg-background transition-opacity duration-1000 ease-out ${fadeOut ? 'opacity-0' : 'opacity-100'}`}
+      className={`fixed inset-0 z-[100] bg-black transition-opacity duration-1000 ease-out ${fadeOut ? 'opacity-0' : 'opacity-100'}`}
     >
-      <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} />
-        <Logo />
+      <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
+        <ambientLight intensity={1.5} />
         <SmokeEffect />
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+        <LogoModel />
+        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.3} />
       </Canvas>
     </div>
   );
