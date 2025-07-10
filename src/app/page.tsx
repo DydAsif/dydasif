@@ -13,35 +13,30 @@ import { Socials } from '@/components/sections/socials';
 import { Contact } from '@/components/sections/contact';
 
 export default function Home() {
-  const [introState, setIntroState] = useState<'loading' | 'intro' | 'main'>('loading');
+  const [introState, setIntroState] = useState<'intro' | 'main'>('intro');
 
   useEffect(() => {
     // This effect runs only once on the client
     if (sessionStorage.getItem('introShown')) {
       setIntroState('main');
     } else {
-      setIntroState('intro');
+      // Show intro on first visit of the session
+      const timer = setTimeout(() => {
+        sessionStorage.setItem('introShown', 'true');
+        setIntroState('main');
+      }, 4000); // Duration of the intro
+      return () => clearTimeout(timer);
     }
   }, []);
 
-  const handleIntroComplete = () => {
-    sessionStorage.setItem('introShown', 'true');
-    setIntroState('main');
-  };
 
   const showIntro = introState === 'intro';
-  const showMainContent = introState === 'main';
-
-  // Render nothing during the 'loading' state to prevent flashes of content
-  if (introState === 'loading') {
-    return <div className="fixed inset-0 bg-background" />; 
-  }
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      {showIntro && <Intro onIntroComplete={handleIntroComplete} />}
+      {showIntro && <Intro onIntroComplete={() => setIntroState('main')} />}
       
-      <div className={`transition-opacity duration-1000 ${showMainContent ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`transition-opacity duration-1000 ${!showIntro ? 'opacity-100' : 'opacity-0'}`}>
         <Header />
         <main className="flex-1">
           <Hero />
