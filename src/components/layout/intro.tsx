@@ -60,10 +60,7 @@ export const Intro: React.FC<IntroProps> = ({ isLoading, onAnimationComplete }) 
     >
       <div
         className={cn(
-          'relative transition-all duration-1000 ease-in-out delay-[3000ms]',
-          isLoading
-            ? 'w-64 h-64 md:w-96 md:h-96 opacity-100 animate-glow'
-            : 'w-10 h-10 top-5 left-5 -translate-x-1/2 -translate-y-1/2 absolute opacity-0'
+          'relative w-64 h-64 md:w-96 md:h-96 opacity-100 animate-glow'
         )}
       >
         <Image
