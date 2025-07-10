@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
@@ -12,6 +12,40 @@ const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string
   }
 };
 
+const AnimatedBackground = () => {
+    const particles = useMemo(() => {
+        const particleArray = [];
+        const particleCount = 50; 
+        for (let i = 0; i < particleCount; i++) {
+            const size = Math.random() * 5 + 2; 
+            const left = Math.random() * 100; 
+            const animationDuration = Math.random() * 15 + 10;
+            const animationDelay = Math.random() * 15; 
+            particleArray.push({
+                id: i,
+                style: {
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    left: `${left}%`,
+                    animationDuration: `${animationDuration}s`,
+                    animationDelay: `${animationDelay}s`,
+                    opacity: Math.random() * 0.5 + 0.1,
+                },
+            });
+        }
+        return particleArray;
+    }, []);
+
+    return (
+        <div className="particle-container">
+            {particles.map((p) => (
+                <div key={p.id} className="particle" style={p.style}></div>
+            ))}
+        </div>
+    );
+};
+
+
 export function Hero() {
 
   return (
@@ -19,7 +53,7 @@ export function Hero() {
       id="home"
       className="h-screen flex flex-col items-center justify-center relative text-center z-10 overflow-hidden p-4"
     >
-      <div className="shimmer-background"></div>
+      <AnimatedBackground />
       
       <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10">
         <div 
