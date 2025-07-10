@@ -24,9 +24,9 @@ const projects = [
         trigger: 'Result',
         value: 'result',
         content: '100% purchase tracking & EMQ 8.7',
-        imageUrl: 'https://placehold.co/800x400.png',
+        imageUrl: 'https://i.ibb.co/7xFM6xw/Result-final.png',
         imageHint: 'dashboard graph success',
-        alt: 'Screenshot of Events Manager showing successful purchase tracking'
+        alt: 'Screenshot of Events Manager showing successful purchase tracking and improved event match quality'
       }
     ]
   },
