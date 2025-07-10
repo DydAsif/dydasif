@@ -20,8 +20,9 @@ export function Hero() {
     >
       <div className="w-full h-full absolute top-0 left-0 bg-background -z-10" />
 
-      <div id="profileImage"
-        className="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-white shadow-2xl absolute opacity-0 z-10"
+      <div
+        id="profileImageContainer" // Using a container for positioning
+        className="absolute"
         style={{
           animation: 'image-zoom-in 1s ease-out 0.5s forwards, image-slide-right 1.2s ease-in-out 2s forwards',
         }}
@@ -31,7 +32,7 @@ export function Hero() {
           alt="Ashfakur Rahman Asif"
           width={176}
           height={176}
-          className="rounded-full object-cover"
+          className="rounded-full object-cover w-32 h-32 md:w-44 md:h-44 border-4 border-white shadow-2xl"
           data-ai-hint="professional man"
           priority
         />
@@ -79,10 +80,7 @@ export function Hero() {
       </div>
 
       <div 
-        className="absolute bottom-8 animate-bounce text-primary/80 z-20 opacity-0"
-        style={{
-          animation: 'button-fade-up 1s ease-out 5.2s forwards'
-        }}
+        className="absolute bottom-8 animate-bounce text-primary/80"
       >
         <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
       </div>
