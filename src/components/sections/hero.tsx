@@ -19,7 +19,23 @@ export function Hero() {
       id="home"
       className="h-screen flex flex-col items-center justify-center relative text-center z-10 overflow-hidden p-4"
     >
-        <div className="absolute inset-0 bg-background -z-10" />
+        <div className="absolute inset-0 bg-background -z-20" />
+        {/* Animated Background Particles */}
+        <div className="absolute inset-0 z-[-1] overflow-hidden">
+            <div className="particle-container">
+                {[...Array(20)].map((_, i) => (
+                    <div key={i} className="particle" style={{
+                        '--particle-size': `${Math.random() * 3 + 1}px`,
+                        '--animation-duration': `${Math.random() * 10 + 10}s`,
+                        '--animation-delay': `${Math.random() * -20}s`,
+                        '--x-start': `${Math.random() * 100}vw`,
+                        '--y-start': `${Math.random() * 100}vh`,
+                        '--x-end': `${Math.random() * 100}vw`,
+                        '--y-end': `${Math.random() * 100}vh`,
+                    } as React.CSSProperties} />
+                ))}
+            </div>
+        </div>
         
         <div className="container mx-auto max-w-7xl px-4 md:px-6">
             <div 
@@ -53,7 +69,7 @@ export function Hero() {
                 className="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-from-right"
                 style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
             >
-                <Button asChild size="lg" className="hover:animate-glow">
+                <Button asChild size="lg" className="bg-primary hover:bg-cyan-400 text-primary-foreground transition-all duration-300 animate-glow-blue">
                      <a
                         href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
                         target="_blank"
@@ -62,7 +78,7 @@ export function Hero() {
                         Download CV
                       </a>
                 </Button>
-                <Button asChild variant="secondary" size="lg" className="hover:animate-glow">
+                <Button asChild variant="secondary" size="lg" className="bg-secondary hover:bg-green-500 text-secondary-foreground transition-all duration-300 animate-glow-green">
                      <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
                         Hire Me
                       </a>
@@ -79,3 +95,4 @@ export function Hero() {
     </section>
   );
 }
+
