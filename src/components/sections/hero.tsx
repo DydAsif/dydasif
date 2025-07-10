@@ -19,7 +19,7 @@ export function Hero() {
       id="home"
       className="h-screen flex flex-col items-center justify-center relative text-center z-10 overflow-hidden p-4"
     >
-      <div className="dot-grid-background"></div>
+      <div className="shimmer-background"></div>
       
       <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10">
         <div 
@@ -37,13 +37,13 @@ export function Hero() {
             />
             <div className="text-center md:text-left">
                 <h1 
-                    className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent"
+                    className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
                 >
                     Ashfakur Rahman Asif
                 </h1>
 
                 <p 
-                    className="text-lg md:text-2xl font-semibold mt-2 text-primary/90 tracking-wide"
+                    className="text-lg md:text-2xl font-semibold mt-2 text-primary-foreground/90 tracking-wide"
                 >
                     Digital Marketing & Tracking Expert
                 </p>
