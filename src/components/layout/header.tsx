@@ -33,9 +33,7 @@ export function Header() {
     observer.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-            // A special check for the hero section which has the id "home"
             if (entry.target.id === 'home') {
-                 // Check if we are near the top of the page
                  if (window.scrollY < window.innerHeight / 2) {
                     setActiveSection('#home');
                  }
@@ -60,7 +58,6 @@ export function Header() {
     const targetElement = document.querySelector(href);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth' });
-      // Manually set active section on click for instant feedback
       setActiveSection(href);
     }
     if (isMenuOpen) {

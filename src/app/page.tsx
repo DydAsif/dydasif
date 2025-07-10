@@ -27,7 +27,6 @@ export default function Home() {
   const handleIntroComplete = () => {
     setIntroFinished(true);
     sessionStorage.setItem('introRun', 'true');
-    // A short delay to ensure the intro fade-out is complete before content appears
     setTimeout(() => {
         setShowIntro(false);
     }, 500);

@@ -27,10 +27,10 @@ export const Intro: React.FC<IntroProps> = ({ onIntroComplete }) => {
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0x2353a, // Light blue
-          midtoneColor: 0x1a237e, // Darker blue
-          lowlightColor: 0x0,     // Black
-          baseColor: 0x0,         // Black
+          highlightColor: 0x2353a,
+          midtoneColor: 0x1a237e,
+          lowlightColor: 0x0,
+          baseColor: 0x0,
           blurFactor: 0.6,
           speed: 1.2,
           zoom: 0.6
@@ -40,7 +40,7 @@ export const Intro: React.FC<IntroProps> = ({ onIntroComplete }) => {
 
     const timer = setTimeout(() => {
       setFadingOut(true);
-    }, 4000); // Start fading out after 4 seconds
+    }, 4000);
 
     return () => {
       clearTimeout(timer);
