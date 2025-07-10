@@ -172,3 +172,48 @@
   animation: focus-glow 2s ease-in-out infinite;
   box-shadow: 0 0 8px 2px hsl(var(--primary) / 0.6);
 }
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: hsl(var(--primary));
+  }
+}
+
+.animated-placeholder::placeholder {
+  color: transparent;
+}
+
+.animated-placeholder {
+  position: relative;
+}
+
+.animated-placeholder::after {
+  content: attr(placeholder);
+  position: absolute;
+  left: 0.75rem; /* Corresponds to px-3 */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  overflow: hidden;
+  white-space: nowrap;
+  color: hsl(var(--muted-foreground));
+  border-right: 0.15em solid hsl(var(--primary));
+  animation:
+    typing 2s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+  animation-fill-mode: forwards;
+  width: 0;
+}
