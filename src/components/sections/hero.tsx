@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -80,9 +79,9 @@ export function Hero() {
       </div>
 
       <div 
-        className="absolute bottom-8 animate-bounce text-primary/80 opacity-0"
+        className="absolute bottom-8 text-primary/80 opacity-0"
          style={{
-          animation: 'button-fade-up 1s ease-out 4.2s forwards'
+          animation: 'button-fade-up 1s ease-out 4.2s forwards, bounce 2s infinite 5.2s'
         }}
       >
         <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
