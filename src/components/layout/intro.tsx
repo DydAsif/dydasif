@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import FOG from 'vanta/dist/vanta.fog.min';
 import { cn } from '@/lib/utils';
-import { AnimatedLogo } from '@/components/ui/animated-logo';
+import Image from 'next/image';
 
 interface IntroProps {
   onIntroComplete: () => void;
@@ -68,7 +68,11 @@ export const Intro: React.FC<IntroProps> = ({ onIntroComplete }) => {
           'relative w-64 h-64 md:w-96 md:h-96 opacity-100 animate-glow'
         )}
       >
-        <AnimatedLogo className="w-full h-full" />
+        <img
+            src="https://i.ibb.co/hZ01W3J/ara-logo-smoke.jpg"
+            alt="ARA Smoky Logo"
+            className="w-full h-full object-contain"
+          />
       </div>
     </div>
   );
