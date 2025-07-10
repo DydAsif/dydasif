@@ -17,8 +17,9 @@ const SmokeEffect = () => {
 
   useEffect(() => {
     if (!group.current) return;
+    // Reduce particle count for performance
     for (let i = 0; i < 50; i++) {
-      const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.4 });
+      const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.4, depthWrite: false });
       const sprite = new THREE.Sprite(material);
       sprite.position.set(
         (Math.random() - 0.5) * 6,
@@ -78,8 +79,10 @@ export function Intro({ onIntroComplete }: IntroProps) {
   useEffect(() => {
     if (fadeOut) {
       const el = containerRef.current;
-      const handleTransitionEnd = () => {
-        onIntroComplete();
+      const handleTransitionEnd = (event: TransitionEvent) => {
+        if (event.propertyName === 'opacity') {
+            onIntroComplete();
+        }
       };
       el?.addEventListener('transitionend', handleTransitionEnd);
       return () => {

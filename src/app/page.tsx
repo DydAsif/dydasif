@@ -16,6 +16,7 @@ export default function Home() {
   const [introState, setIntroState] = useState<'loading' | 'intro' | 'main'>('loading');
 
   useEffect(() => {
+    // This effect runs only once on the client
     if (sessionStorage.getItem('introShown')) {
       setIntroState('main');
     } else {
@@ -28,15 +29,19 @@ export default function Home() {
     setIntroState('main');
   };
 
+  const showIntro = introState === 'intro';
+  const showMainContent = introState === 'main';
+
+  // Render nothing during the 'loading' state to prevent flashes of content
   if (introState === 'loading') {
-    return null; // Render nothing until we've checked session storage
+    return null; 
   }
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      {introState === 'intro' && <Intro onIntroComplete={handleIntroComplete} />}
+      {showIntro && <Intro onIntroComplete={handleIntroComplete} />}
       
-      <div className={`transition-opacity duration-1000 ${introState === 'main' ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`transition-opacity duration-1000 ${showMainContent ? 'opacity-100' : 'opacity-0'}`}>
         <Header />
         <main className="flex-1">
           <Hero />
