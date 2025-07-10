@@ -14,41 +14,41 @@ import { Contact } from '@/components/sections/contact';
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
-  const [introFinished, setIntroFinished] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    const hasIntroRun = sessionStorage.getItem('introRun');
-    if (hasIntroRun) {
+    // Check if the intro has already run in this session
+    if (sessionStorage.getItem('introRun')) {
       setShowIntro(false);
-      setIntroFinished(true);
+      setContentVisible(true);
+    } else {
+        // If it's the first time, mark that the intro will run
+        sessionStorage.setItem('introRun', 'true');
     }
   }, []);
 
   const handleIntroComplete = () => {
-    setIntroFinished(true);
-    sessionStorage.setItem('introRun', 'true');
-    setTimeout(() => {
-        setShowIntro(false);
-    }, 500);
+    setShowIntro(false);
+    setContentVisible(true);
   };
 
-  if (showIntro) {
-    return <Intro onIntroComplete={handleIntroComplete} />;
-  }
-
   return (
-    <div className={`flex flex-col min-h-screen ${introFinished ? 'animate-fade-in-content' : 'opacity-0'}`}>
-      <Header />
-      <main className="flex-1">
-        <Hero />
-        <About />
-        <Services />
-        <ProjectPresentation />
-        <Certifications />
-        <Socials />
-        <Contact />
-      </main>
-      <Footer />
+    <div className="flex flex-col min-h-screen bg-background">
+      {showIntro && <Intro onIntroComplete={handleIntroComplete} />}
+      
+      <div className={`transition-opacity duration-1000 ${contentVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <Header />
+        <main className="flex-1">
+          <Hero />
+          <About />
+          <Services />
+          <ProjectPresentation />
+          <Certifications />
+          <Socials />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 }

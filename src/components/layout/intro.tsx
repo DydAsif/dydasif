@@ -1,79 +1,133 @@
 
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import * as THREE from 'three';
-import FOG from 'vanta/dist/vanta.fog.min';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Text } from '@react-three/drei';
 
-interface IntroProps {
+type IntroProps = {
   onIntroComplete: () => void;
-}
+};
 
-export const Intro: React.FC<IntroProps> = ({ onIntroComplete }) => {
-  const vantaRef = useRef(null);
-  const [vantaEffect, setVantaEffect] = useState<any>(null);
-  const [fadingOut, setFadingOut] = useState(false);
+const SmokeParticle = ({ position }: { position: THREE.Vector3 }) => {
+  const ref = useRef<THREE.Sprite>(null);
+  const velocity = useMemo(() => new THREE.Vector3((Math.random() - 0.5) * 0.02, Math.random() * 0.02 + 0.01, (Math.random() - 0.5) * 0.02), []);
+  const initialOpacity = useMemo(() => Math.random() * 0.5, []);
 
-  useEffect(() => {
-    if (!vantaEffect && vantaRef.current) {
-      setVantaEffect(
-        FOG({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: false,
-          touchControls: false,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          highlightColor: 0x2353a,
-          midtoneColor: 0x1a237e,
-          lowlightColor: 0x0,
-          baseColor: 0x0,
-          blurFactor: 0.6,
-          speed: 1.2,
-          zoom: 0.6
-        })
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.position.add(velocity);
+      ref.current.material.opacity -= 0.005;
+
+      if (ref.current.material.opacity <= 0) {
+        ref.current.position.set(position.x, position.y, position.z);
+        ref.current.material.opacity = initialOpacity;
+      }
+    }
+  });
+
+  const smokeTexture = useMemo(() => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
+    const context = canvas.getContext('2d');
+    if (context) {
+      const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
+      gradient.addColorStop(0, 'rgba(255,255,255,0.5)');
+      gradient.addColorStop(1, 'rgba(255,255,255,0)');
+      context.fillStyle = gradient;
+      context.fillRect(0, 0, 128, 128);
+    }
+    return new THREE.CanvasTexture(canvas);
+  }, []);
+
+  return (
+    <sprite ref={ref} scale={[1, 1, 1]} position={position}>
+      <spriteMaterial attach="material" map={smokeTexture} transparent opacity={initialOpacity} />
+    </sprite>
+  );
+};
+
+const SmokeEffect = () => {
+  const particles = useMemo(() => {
+    const particleArray = [];
+    for (let i = 0; i < 50; i++) {
+      particleArray.push(
+        <SmokeParticle 
+          key={i} 
+          position={new THREE.Vector3(
+            (Math.random() - 0.5) * 5,
+            (Math.random() - 0.5) * 2 - 1,
+            (Math.random() - 0.5) * 2
+          )} 
+        />
       );
     }
+    return particleArray;
+  }, []);
 
+  return <>{particles}</>;
+};
+
+const Logo = () => {
+  return (
+    <Text
+        font="/fonts/Poppins-Bold.ttf"
+        fontSize={1}
+        letterSpacing={-0.05}
+        color="hsl(var(--primary))"
+        anchorX="center"
+        anchorY="middle"
+    >
+      ARA
+      <meshStandardMaterial
+        emissive={'hsl(var(--primary))'}
+        emissiveIntensity={0.5}
+        roughness={0.2}
+        metalness={0.8}
+      />
+    </Text>
+  );
+};
+
+export function Intro({ onIntroComplete }: IntroProps) {
+  const [fadeOut, setFadeOut] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
-      setFadingOut(true);
-    }, 4000);
+      setFadeOut(true);
+    }, 4000); 
 
-    return () => {
-      clearTimeout(timer);
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
-  
-  const handleTransitionEnd = (e: React.TransitionEvent<HTMLDivElement>) => {
-    if (e.propertyName === 'opacity' && fadingOut) {
-      onIntroComplete();
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (fadeOut) {
+      const el = containerRef.current;
+      const handleTransitionEnd = () => {
+        onIntroComplete();
+      };
+      el?.addEventListener('transitionend', handleTransitionEnd);
+      return () => {
+        el?.removeEventListener('transitionend', handleTransitionEnd);
+      };
     }
-  };
+  }, [fadeOut, onIntroComplete]);
 
   return (
     <div
-      ref={vantaRef}
-      onTransitionEnd={handleTransitionEnd}
-      className={cn(
-        'fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-1000 ease-in-out',
-        fadingOut ? 'opacity-0' : 'opacity-100'
-      )}
+      ref={containerRef}
+      className={`fixed inset-0 z-[100] bg-background transition-opacity duration-1000 ease-out ${fadeOut ? 'opacity-0' : 'opacity-100'}`}
     >
-      <div
-        className={cn(
-          'relative w-64 h-64 md:w-96 md:h-96 opacity-100 animate-glow'
-        )}
-      >
-        <img
-            src="https://i.ibb.co/hZ01W3J/ara-logo-smoke.jpg"
-            alt="ARA Smoky Logo"
-            className="w-full h-full object-contain"
-          />
-      </div>
+      <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} intensity={1} />
+        <Logo />
+        <SmokeEffect />
+        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+      </Canvas>
     </div>
   );
-};
+}
