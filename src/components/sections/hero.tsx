@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -10,7 +11,6 @@ const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string
     element.scrollIntoView({ behavior: 'smooth' });
   }
 };
-
 
 export function Hero() {
   return (
