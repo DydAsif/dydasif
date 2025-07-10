@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useEffect, useMemo } from 'react';
+import React, { useRef, useMemo } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import * as THREE from 'three';
 
 const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string) => {
   e.preventDefault();
@@ -12,38 +14,100 @@ const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string
   }
 };
 
-const AnimatedBackground = () => {
-    const particles = useMemo(() => {
-        const particleArray = [];
-        const particleCount = 50; 
-        for (let i = 0; i < particleCount; i++) {
-            const size = Math.random() * 5 + 2; 
-            const left = Math.random() * 100; 
-            const animationDuration = Math.random() * 15 + 10;
-            const animationDelay = Math.random() * 15; 
-            particleArray.push({
-                id: i,
-                style: {
-                    width: `${size}px`,
-                    height: `${size}px`,
-                    left: `${left}%`,
-                    animationDuration: `${animationDuration}s`,
-                    animationDelay: `${animationDelay}s`,
-                    opacity: Math.random() * 0.5 + 0.1,
-                },
-            });
+const Particles = () => {
+    const { size, viewport } = useThree();
+    const mouse = useRef([0, 0]);
+    
+    const numParticles = size.width < 768 ? 3000 : 5000;
+
+    const [positions, colors] = useMemo(() => {
+        const positions = new Float32Array(numParticles * 3);
+        const colors = new Float32Array(numParticles * 3);
+        const color = new THREE.Color();
+
+        for (let i = 0; i < numParticles; i++) {
+            positions.set([(Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20], i * 3);
+            color.setHSL(0.6, 0.7, 0.5 + Math.random() * 0.1);
+            colors.set([color.r, color.g, color.b], i * 3);
         }
-        return particleArray;
-    }, []);
+
+        return [positions, colors];
+    }, [numParticles]);
+
+    const pointsRef = useRef<THREE.Points>(null!);
+    const linesRef = useRef<THREE.LineSegments>(null!);
+    const linesGeometryRef = useRef<THREE.BufferGeometry>(null!);
+    
+    const linesPositions = useMemo(() => new Float32Array(200 * 3), []);
+
+    useFrame((state, delta) => {
+        mouse.current[0] = state.pointer.x * viewport.width / 2;
+        mouse.current[1] = state.pointer.y * viewport.height / 2;
+
+        pointsRef.current.rotation.y += delta * 0.05;
+        
+        const positions = (pointsRef.current.geometry as THREE.BufferGeometry).attributes.position.array as Float32Array;
+        let lineVertexIndex = 0;
+
+        for (let i = 0; i < numParticles; i++) {
+            const ix = i * 3, iy = i * 3 + 1, iz = i * 3 + 2;
+            const particlePosition = new THREE.Vector3(positions[ix], positions[iy], positions[iz]);
+
+            const mouseDistance = particlePosition.distanceTo(new THREE.Vector3(mouse.current[0], mouse.current[1], 0));
+
+            if (mouseDistance < 1.5 && lineVertexIndex < 198) {
+                 linesPositions[lineVertexIndex++] = particlePosition.x;
+                 linesPositions[lineVertexIndex++] = particlePosition.y;
+                 linesPositions[lineVertexIndex++] = particlePosition.z;
+                 linesPositions[lineVertexIndex++] = mouse.current[0];
+                 linesPositions[lineVertexIndex++] = mouse.current[1];
+                 linesPositions[lineVertexIndex++] = 0;
+            }
+        }
+        
+        for (let i = lineVertexIndex; i < linesPositions.length; i++) {
+            linesPositions[i] = 0;
+        }
+
+        if (linesGeometryRef.current) {
+            linesGeometryRef.current.attributes.position.needsUpdate = true;
+            linesGeometryRef.current.setDrawRange(0, lineVertexIndex/3);
+        }
+    });
 
     return (
-        <div className="particle-container">
-            {particles.map((p) => (
-                <div key={p.id} className="particle" style={p.style}></div>
-            ))}
-        </div>
+        <>
+            <points ref={pointsRef}>
+                <bufferGeometry>
+                    <bufferAttribute attach="attributes-position" count={numParticles} array={positions} itemSize={3} />
+                    <bufferAttribute attach="attributes-color" count={numParticles} array={colors} itemSize={3} />
+                </bufferGeometry>
+                <pointsMaterial size={0.02} vertexColors={true} sizeAttenuation={true} />
+            </points>
+            <lineSegments ref={linesRef}>
+                 <bufferGeometry ref={linesGeometryRef}>
+                    <bufferAttribute
+                      attach="attributes-position"
+                      count={linesPositions.length / 3}
+                      array={linesPositions}
+                      itemSize={3}
+                    />
+                 </bufferGeometry>
+                 <lineBasicMaterial color="hsl(var(--primary))" transparent opacity={0.5} />
+            </lineSegments>
+        </>
     );
 };
+
+
+const AnimatedBackground = () => (
+    <div className="absolute top-0 left-0 w-full h-full z-0">
+        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+            <ambientLight intensity={0.5} />
+            <Particles />
+        </Canvas>
+    </div>
+);
 
 
 export function Hero() {
