@@ -99,3 +99,27 @@
   position: relative;
   z-index: 1;
 }
+
+.section-bg {
+  position: relative;
+  background-color: hsl(var(--background));
+}
+
+.section-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, hsl(var(--border) / 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+  mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black, transparent 70%);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.section-bg > * {
+  position: relative;
+  z-index: 1;
+}
+

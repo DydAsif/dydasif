@@ -52,7 +52,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="w-full py-12 md:py-24 lg:py-32">
+    <section id="contact" className="w-full py-12 md:py-24 lg:py-32 section-bg">
       <div className="container mx-auto grid max-w-7xl items-center justify-center gap-4 px-4 text-center md:px-6">
         <div className="space-y-3">
           <h2 className="text-3xl font-headline font-bold tracking-tighter md:text-4xl/tight">Get in Touch</h2>
