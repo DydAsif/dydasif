@@ -100,6 +100,11 @@
   z-index: 1;
 }
 
+@keyframes scroll-grid {
+  0% { background-position: 0 0; }
+  100% { background-position: 3rem 6rem; }
+}
+
 .section-bg {
   position: relative;
   background-color: hsl(var(--background));
@@ -116,10 +121,10 @@
   mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black, transparent 70%);
   opacity: 0.5;
   z-index: 0;
+  animation: scroll-grid 30s linear infinite;
 }
 
 .section-bg > * {
   position: relative;
   z-index: 1;
 }
-
