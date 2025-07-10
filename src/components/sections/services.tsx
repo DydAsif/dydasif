@@ -89,7 +89,7 @@ const tools: { name: string; logo: string | JSX.Element; displayName: string }[]
 
 export function Services() {
   return (
-    <section id="services" className="w-full py-12 md:py-24 lg:py-32 section-bg" data-aos="fade-up" data-aos-duration="1200">
+    <section id="services" className="w-full py-12 md:py-24 lg:py-32 services-bg" data-aos="fade-up" data-aos-duration="1200">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
