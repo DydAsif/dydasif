@@ -83,8 +83,7 @@ export function Hero() {
         
         <div className="container mx-auto max-w-7xl px-4 md:px-6">
             <div 
-                className="flex flex-col md:flex-row items-center justify-center gap-6 animate-fade-in-from-right"
-                style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}
+                className="flex flex-col md:flex-row items-center justify-center gap-6"
             >
                  <Image
                   src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
@@ -110,8 +109,7 @@ export function Hero() {
                 </div>
             </div>
             <div 
-                className="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-from-right"
-                style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
+                className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
             >
                 <Button asChild size="lg" className="bg-primary hover:bg-cyan-400 text-primary-foreground transition-all duration-300">
                      <a
@@ -132,7 +130,6 @@ export function Hero() {
         
         <div 
             className="absolute bottom-8 text-primary/80 animate-bounce"
-             style={{ animationDelay: '1.2s' }}
         >
             <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
         </div>
