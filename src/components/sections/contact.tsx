@@ -76,7 +76,11 @@ export function Contact() {
             </p>
         </div>
 
-        <Card className="p-8 lg:p-10 border-border/50 bg-card/80 shadow-2xl shadow-primary/5">
+        <Card 
+          className="p-8 lg:p-10 border-border/50 bg-card/80 shadow-[0_0_15px_hsl(var(--primary)/0.1)] transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)] hover:-translate-y-2"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
              <div className="grid lg:grid-cols-2 lg:gap-12">
                 <div className="space-y-4 flex flex-col justify-center">
                     <h3 className="text-2xl font-bold text-primary">Contact Information</h3>
