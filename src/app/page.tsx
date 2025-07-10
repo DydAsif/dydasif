@@ -13,48 +13,43 @@ import { Socials } from '@/components/sections/socials';
 import { Contact } from '@/components/sections/contact';
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
+  const [showIntro, setShowIntro] = useState(true);
   const [introFinished, setIntroFinished] = useState(false);
 
   useEffect(() => {
     const hasIntroRun = sessionStorage.getItem('introRun');
     if (hasIntroRun) {
-      setLoading(false);
+      setShowIntro(false);
       setIntroFinished(true);
-    } else {
-      const timer = setTimeout(() => {
-        setLoading(false);
-      }, 4000); 
-      return () => clearTimeout(timer);
     }
   }, []);
 
-  const handleAnimationComplete = () => {
+  const handleIntroComplete = () => {
     setIntroFinished(true);
     sessionStorage.setItem('introRun', 'true');
+    // A short delay to ensure the intro fade-out is complete before content appears
+    setTimeout(() => {
+        setShowIntro(false);
+    }, 500);
   };
 
+  if (showIntro) {
+    return <Intro onIntroComplete={handleIntroComplete} />;
+  }
+
   return (
-    <>
-      <Intro 
-        isLoading={loading} 
-        onAnimationComplete={handleAnimationComplete} 
-      />
-      {!loading && (
-        <div className={`flex flex-col min-h-screen ${introFinished ? 'animate-fade-in-content' : 'opacity-0'}`}>
-          <Header />
-          <main className="flex-1">
-            <Hero />
-            <About />
-            <Services />
-            <ProjectPresentation />
-            <Certifications />
-            <Socials />
-            <Contact />
-          </main>
-          <Footer />
-        </div>
-      )}
-    </>
+    <div className={`flex flex-col min-h-screen ${introFinished ? 'animate-fade-in-content' : 'opacity-0'}`}>
+      <Header />
+      <main className="flex-1">
+        <Hero />
+        <About />
+        <Services />
+        <ProjectPresentation />
+        <Certifications />
+        <Socials />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
   );
 }

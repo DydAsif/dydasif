@@ -8,13 +8,13 @@ import FOG from 'vanta/dist/vanta.fog.min';
 import { cn } from '@/lib/utils';
 
 interface IntroProps {
-  isLoading: boolean;
-  onAnimationComplete: () => void;
+  onIntroComplete: () => void;
 }
 
-export const Intro: React.FC<IntroProps> = ({ isLoading, onAnimationComplete }) => {
+export const Intro: React.FC<IntroProps> = ({ onIntroComplete }) => {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
+  const [fadingOut, setFadingOut] = useState(false);
 
   useEffect(() => {
     if (!vantaEffect && vantaRef.current) {
@@ -37,15 +37,20 @@ export const Intro: React.FC<IntroProps> = ({ isLoading, onAnimationComplete }) 
         })
       );
     }
+
+    const timer = setTimeout(() => {
+      setFadingOut(true);
+    }, 4000); // Start fading out after 4 seconds
+
     return () => {
+      clearTimeout(timer);
       if (vantaEffect) vantaEffect.destroy();
     };
   }, [vantaEffect]);
-
+  
   const handleTransitionEnd = (e: React.TransitionEvent<HTMLDivElement>) => {
-    // Ensure we only call the completion callback once the main transition (opacity) is done
-    if (e.propertyName === 'opacity' && !isLoading) {
-      onAnimationComplete();
+    if (e.propertyName === 'opacity' && fadingOut) {
+      onIntroComplete();
     }
   };
 
@@ -54,8 +59,8 @@ export const Intro: React.FC<IntroProps> = ({ isLoading, onAnimationComplete }) 
       ref={vantaRef}
       onTransitionEnd={handleTransitionEnd}
       className={cn(
-        'fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-1000 ease-in-out',
-        isLoading ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        'fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-1000 ease-in-out',
+        fadingOut ? 'opacity-0' : 'opacity-100'
       )}
     >
       <div
