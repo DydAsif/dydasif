@@ -44,10 +44,10 @@ export function About() {
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground md:text-xl/relaxed">
                 <p>
-                  I’m a freelance digital marketing & tracking expert helping businesses optimize ads across Facebook, Google, Shopify, and more.
+                  I’m a freelance digital marketing and tracking expert dedicated to helping businesses optimize their ad performance across platforms like Facebook, Google, and Shopify.
                 </p>
                 <p>
-                  With a deep understanding of analytics and conversion tracking, I build data-driven strategies that deliver measurable results and maximize your return on investment.
+                  My deep understanding of analytics and conversion tracking allows me to build data-driven strategies that deliver measurable results and maximize your return on investment.
                 </p>
                 <div className="pt-4">
                   <h3 className="text-xl font-bold text-primary-foreground mb-4">Key Skills</h3>
