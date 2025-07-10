@@ -20,21 +20,14 @@ export function Hero() {
       className="h-screen flex flex-col items-center justify-center relative text-center z-10 overflow-hidden p-4"
     >
         <div className="absolute inset-0 bg-background -z-20" />
-        {/* Animated Background Particles */}
-        <div className="absolute inset-0 z-[-1] overflow-hidden">
-            <div className="particle-container">
-                {[...Array(20)].map((_, i) => (
-                    <div key={i} className="particle" style={{
-                        '--particle-size': `${Math.random() * 3 + 1}px`,
-                        '--animation-duration': `${Math.random() * 10 + 10}s`,
-                        '--animation-delay': `${Math.random() * -20}s`,
-                        '--x-start': `${Math.random() * 100}vw`,
-                        '--y-start': `${Math.random() * 100}vh`,
-                        '--x-end': `${Math.random() * 100}vw`,
-                        '--y-end': `${Math.random() * 100}vh`,
-                    } as React.CSSProperties} />
-                ))}
-            </div>
+        
+        {/* Smoky Thunder Background */}
+        <div className="absolute inset-0 z-[-1] overflow-hidden bg-black/50">
+           <div className="absolute inset-0 animate-smoke bg-[radial-gradient(ellipse_at_center,_rgba(128,128,128,0.2)_0%,rgba(0,0,0,0)_70%)]" style={{ animationDelay: '0s' }}></div>
+           <div className="absolute inset-0 animate-smoke bg-[radial-gradient(ellipse_at_top_left,_rgba(128,128,128,0.2)_0%,rgba(0,0,0,0)_60%)]" style={{ animationDelay: '-5s' }}></div>
+           <div className="absolute inset-0 animate-smoke bg-[radial-gradient(ellipse_at_bottom_right,_rgba(128,128,128,0.2)_0%,rgba(0,0,0,0)_65%)]" style={{ animationDelay: '-10s' }}></div>
+           <div className="absolute inset-0 bg-primary/40 [mask-image:radial-gradient(ellipse_at_center,white_10%,transparent_80%)]" style={{ animation: `thunder-flash 8s linear infinite` }}></div>
+           <div className="absolute inset-0 bg-primary/30 [mask-image:radial-gradient(ellipse_at_top_left,white_5%,transparent_70%)]" style={{ animation: `thunder-flash 7s linear 2s infinite` }}></div>
         </div>
         
         <div className="container mx-auto max-w-7xl px-4 md:px-6">
@@ -95,5 +88,3 @@ export function Hero() {
     </section>
   );
 }
-
-
