@@ -69,7 +69,7 @@ export function Hero() {
                 className="mt-8 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-from-right"
                 style={{ animationDelay: '0.8s', animationFillMode: 'forwards' }}
             >
-                <Button asChild size="lg" className="bg-primary hover:bg-cyan-400 text-primary-foreground transition-all duration-300 animate-glow-blue">
+                <Button asChild size="lg" className="bg-primary hover:bg-cyan-400 text-primary-foreground transition-all duration-300">
                      <a
                         href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
                         target="_blank"
@@ -78,7 +78,7 @@ export function Hero() {
                         Download CV
                       </a>
                 </Button>
-                <Button asChild variant="secondary" size="lg" className="bg-secondary hover:bg-green-500 text-secondary-foreground transition-all duration-300 animate-glow-green">
+                <Button asChild variant="secondary" size="lg" className="bg-secondary hover:bg-green-500 text-secondary-foreground transition-all duration-300">
                      <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
                         Hire Me
                       </a>
@@ -95,4 +95,5 @@ export function Hero() {
     </section>
   );
 }
+
 

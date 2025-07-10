@@ -76,14 +76,6 @@
       height: var(--particle-size);
       animation: particle-anim var(--animation-duration) var(--animation-delay) linear infinite;
   }
-
-  .animate-glow-blue:hover {
-      animation: glow-blue 1.5s ease-in-out infinite;
-  }
-
-  .animate-glow-green:hover {
-      animation: glow-green 1.5s ease-in-out infinite;
-  }
 }
 
 @keyframes particle-anim {
@@ -95,16 +87,6 @@
     transform: translate(var(--x-end), var(--y-end));
     opacity: 0;
   }
-}
-
-@keyframes glow-blue {
-    0%, 100% { box-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff; }
-    50% { box-shadow: 0 0 20px #4f86f7, 0 0 30px #4f86f7; }
-}
-
-@keyframes glow-green {
-    0%, 100% { box-shadow: 0 0 5px #10B981, 0 0 10px #10B981; }
-    50% { box-shadow: 0 0 20px #34D399, 0 0 30px #34D399; }
 }
 
 @keyframes smoke-anim {
