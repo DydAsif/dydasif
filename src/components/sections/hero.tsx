@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -23,16 +24,16 @@ export function Hero() {
         <Image
           src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
           alt="Ashfakur Rahman Asif"
-          width={160}
-          height={160}
-          className="rounded-full object-cover w-40 h-40 shadow-2xl relative z-10 animate-image-fade-in"
+          width={192}
+          height={192}
+          className="object-cover w-48 h-48 rounded-full shadow-2xl relative z-10 animate-image-fade-in"
           data-ai-hint="professional man"
           priority
           style={{ animationFillMode: 'forwards' }}
         />
 
         <h1 
-            className="text-4xl md:text-6xl font-extrabold tracking-tight mt-6 text-foreground/80 relative z-0 animate-name-fade-in"
+            className="text-4xl md:text-6xl font-extrabold tracking-tight mt-6 bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent relative z-0 animate-name-fade-in"
             style={{ animationFillMode: 'forwards', animationDelay: '0.5s' }}
         >
             Ashfakur Rahman Asif
