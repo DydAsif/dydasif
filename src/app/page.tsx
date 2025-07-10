@@ -34,7 +34,7 @@ export default function Home() {
 
   // Render nothing during the 'loading' state to prevent flashes of content
   if (introState === 'loading') {
-    return null; 
+    return <div className="fixed inset-0 bg-background" />; 
   }
 
   return (

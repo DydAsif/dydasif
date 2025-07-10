@@ -19,7 +19,14 @@ const SmokeEffect = () => {
     if (!group.current) return;
     // Reduce particle count for performance
     for (let i = 0; i < 50; i++) {
-      const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.4, depthWrite: false });
+      const material = new THREE.SpriteMaterial({ 
+        map: texture, 
+        transparent: true, 
+        opacity: 0.4, 
+        depthWrite: false,
+        color: new THREE.Color('hsl(var(--primary))'),
+        blending: THREE.AdditiveBlending,
+      });
       const sprite = new THREE.Sprite(material);
       sprite.position.set(
         (Math.random() - 0.5) * 6,
@@ -80,7 +87,7 @@ export function Intro({ onIntroComplete }: IntroProps) {
     if (fadeOut) {
       const el = containerRef.current;
       const handleTransitionEnd = (event: TransitionEvent) => {
-        if (event.propertyName === 'opacity') {
+        if (event.propertyName === 'opacity' && el && el.style.opacity === '0') {
             onIntroComplete();
         }
       };
@@ -94,7 +101,7 @@ export function Intro({ onIntroComplete }: IntroProps) {
   return (
     <div
       ref={containerRef}
-      className={`fixed inset-0 z-[100] bg-black transition-opacity duration-1000 ease-out ${fadeOut ? 'opacity-0' : 'opacity-100'}`}
+      className={`fixed inset-0 z-[100] bg-black transition-opacity duration-1000 ease-out ${fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
     >
       <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
         <ambientLight intensity={1.5} />
