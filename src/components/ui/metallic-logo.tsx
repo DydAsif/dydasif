@@ -34,7 +34,6 @@ export function parseLogoImage(
     }
 
     const img = new Image();
-    img.crossOrigin = "anonymous";
     img.onload = function () {
       if (file.type === "image/svg+xml") {
         img.width = 1000;
@@ -625,5 +624,3 @@ export function MetallicLogo() {
 
   return <MetallicPaint imageData={processedLogo.imageData} />;
 }
-
-    
