@@ -28,7 +28,7 @@ const projects: Project[] = [
         trigger: 'Result',
         value: 'result',
         content: '100% purchase tracking & EMQ 8.7',
-        imageUrl: '/Result-final.png',
+        imageUrl: 'https://i.ibb.co/tpvzJpVX/Result-final.png',
         imageHint: 'dashboard graph success',
         alt: 'Screenshot of Events Manager showing successful purchase tracking and improved event match quality'
       }
