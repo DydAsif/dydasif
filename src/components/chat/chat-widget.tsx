@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -8,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
-import { AnimatedLogo } from '../ui/animated-logo';
+import { MetallicLogo } from '../ui/metallic-logo';
 
 type Message = {
   role: 'user' | 'model';
@@ -88,7 +89,9 @@ export function ChatWidget() {
       >
         <header className="flex items-center justify-between p-4 border-b border-border bg-secondary/50">
           <div className="flex items-center gap-3">
-            <AnimatedLogo className="w-10 h-10" />
+            <div className="w-10 h-10">
+              <MetallicLogo />
+            </div>
             <div>
                 <h3 className="font-bold text-lg">ARA-Bot</h3>
                 <p className="text-xs text-muted-foreground">Your friendly assistant</p>
