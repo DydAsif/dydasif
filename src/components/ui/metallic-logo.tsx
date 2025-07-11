@@ -594,7 +594,7 @@ function MetallicPaint({
   return <canvas ref={canvasRef} className="block w-full h-full object-contain" />;
 }
 
-const logoUrl = 'https://i.ibb.co/hZ01W3J/ara-logo-smoke.jpg';
+const logoUrl = '/ara-logo-smoke.jpg';
 
 export function MetallicLogo() {
   const [processedLogo, setProcessedLogo] = useState<{
@@ -625,3 +625,5 @@ export function MetallicLogo() {
 
   return <MetallicPaint imageData={processedLogo.imageData} />;
 }
+
+    
