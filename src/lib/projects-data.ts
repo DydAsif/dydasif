@@ -39,7 +39,7 @@ export const projects: Project[] = [
         trigger: 'Result',
         value: 'result',
         content: 'Achieved 100% purchase tracking accuracy and boosted Event Match Quality score to 8.7/10.',
-        imageUrl: 'https://i.ibb.co/QFfvqD7Q/Result.png',
+        imageUrl: 'https://i.ibb.co/tT1FMdR6/Result-final.png',
         imageHint: 'dashboard graph success',
         alt: 'A graph showing a high event match quality score and accurate purchase tracking.',
       }
