@@ -2,11 +2,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import { MetallicLogo } from '../ui/metallic-logo';
-
+import Image from 'next/image';
 
 type IntroProps = {
   onIntroComplete: () => void;
@@ -45,8 +41,8 @@ export function Intro({ onIntroComplete }: IntroProps) {
       className={`fixed inset-0 z-[100] bg-black transition-opacity duration-1000 ease-out ${fadeOut ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
     >
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-[350px] h-[350px]">
-           <MetallicLogo />
+        <div className="w-[200px] h-[200px] rounded-full overflow-hidden animate-pulse">
+            <Image src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png" alt="Loading Logo" width={200} height={200} />
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
-import { MetallicLogo } from '../ui/metallic-logo';
+import Image from 'next/image';
 
 type Message = {
   role: 'user' | 'model';
@@ -90,7 +90,9 @@ export function ChatWidget() {
         <header className="flex items-center justify-between p-4 border-b border-border bg-secondary/50">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10">
-              <MetallicLogo />
+               <Avatar className="w-10 h-10 border-2 border-primary">
+                  <AvatarFallback><Bot size={24} /></AvatarFallback>
+                </Avatar>
             </div>
             <div>
                 <h3 className="font-bold text-lg">ARA-Bot</h3>

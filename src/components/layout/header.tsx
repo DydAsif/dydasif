@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
-import { MetallicLogo } from '../ui/metallic-logo';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -71,7 +71,7 @@ export function Header() {
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6">
         <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex items-center gap-3">
           <div className="w-12 h-12">
-            <MetallicLogo />
+             <Image src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png" alt="Logo" width={48} height={48} className="rounded-full" />
           </div>
           <span className="hidden sm:inline text-lg font-bold tracking-tight text-primary sm:text-xl">Ashfakur Rahman Asif</span>
         </a>
@@ -103,7 +103,7 @@ export function Header() {
             <div className="grid gap-6 p-6">
               <a href="#home" className="flex items-center gap-3" onClick={(e) => handleLinkClick(e, '#home')}>
                 <div className="w-12 h-12">
-                  <MetallicLogo />
+                  <Image src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png" alt="Logo" width={48} height={48} className="rounded-full" />
                 </div>
                  <span className="text-xl font-bold tracking-tight text-primary">Ashfakur Rahman Asif</span>
               </a>
