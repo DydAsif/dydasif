@@ -1,65 +1,6 @@
 
-import { ProjectCard, Project } from '@/components/project-card';
-import { Badge } from '@/components/ui/badge';
-
-const projects: Project[] = [
-  {
-    title: 'Shopify Purchase Tracking Fix',
-    description: "A client's Shopify store was failing to track purchase events accurately in Facebook Ads, leading to unreliable performance data. By implementing Meta Pixel and the Conversion API (CAPI) through Google Tag Manager with proper event deduplication, we achieved 100% purchase tracking accuracy and boosted the Event Match Quality (EMQ) score to 8.7/10.",
-    tags: ["Shopify", "Facebook CAPI", "GTM", "Deduplication", "EMQ"],
-    tabs: [
-      {
-        trigger: 'Problem',
-        value: 'problem',
-        content: 'Purchase events not tracking properly on Facebook Ads.',
-        imageUrl: 'https://placehold.co/800x400.png',
-        imageHint: 'error screen analytics',
-      },
-      {
-        trigger: 'Solution',
-        value: 'solution',
-        content: 'Setup Meta Pixel + CAPI via GTM with deduplication.',
-        imageUrl: 'https://placehold.co/800x400.png',
-        imageHint: 'code snippet gtm',
-      },
-      {
-        trigger: 'Result',
-        value: 'result',
-        content: '100% purchase tracking & EMQ 8.7',
-        imageUrl: 'https://i.ibb.co/QFfvqD7Q/Result.png',
-        imageHint: 'dashboard graph success',
-      }
-    ]
-  },
-  {
-    title: 'GA4 + Google Ads Tracking on WordPress',
-    description: "A WordPress-based business had zero conversion tracking in Google Analytics 4 and Google Ads, making it impossible to measure campaign effectiveness. I implemented a robust tracking setup using Google Tag Manager to correctly map GA4 events and Google Ads conversions, resulting in an average of 18 accurately tracked conversions per week.",
-    tags: ["WordPress", "GA4", "Google Ads", "GTM", "Conversion Tracking"],
-     tabs: [
-      {
-        trigger: 'Problem',
-        value: 'problem',
-        content: 'Conversions not recorded in GA4 or Ads.',
-        imageUrl: 'https://placehold.co/800x400.png',
-        imageHint: 'zero conversions chart',
-      },
-      {
-        trigger: 'Solution',
-        value: 'solution',
-        content: 'GA4 + Ads tag added via GTM with proper event mapping.',
-        imageUrl: 'https://placehold.co/800x400.png',
-        imageHint: 'flowchart gtm wordpress',
-      },
-      {
-        trigger: 'Result',
-        value: 'result',
-        content: '18 tracked conversions per week.',
-        imageUrl: 'https://placehold.co/800x400.png',
-        imageHint: 'graph increasing conversions',
-      }
-    ]
-  }
-];
+import { ProjectCard } from '@/components/project-card';
+import { projects } from '@/lib/projects-data';
 
 export function ProjectPresentation() {
   return (
@@ -74,31 +15,9 @@ export function ProjectPresentation() {
           </div>
         </div>
         
-        <div className="space-y-24">
+        <div className="space-y-12">
           {projects.map((project, index) => (
-            <div key={index} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div 
-                className={`lg:order-${index % 2 === 0 ? 1 : 2}`}
-                data-aos={`fade-${index % 2 === 0 ? 'right' : 'left'}`}
-                data-aos-duration="800"
-              >
-                <ProjectCard project={project} />
-              </div>
-              <div 
-                className={`space-y-6 lg:order-${index % 2 === 0 ? 2 : 1}`}
-                data-aos={`fade-${index % 2 === 0 ? 'left' : 'right'}`}
-                data-aos-duration="800"
-                data-aos-delay="200"
-              >
-                 <h3 className="text-3xl font-bold text-primary">{project.title}</h3>
-                 <p className="text-muted-foreground text-lg">{project.description}</p>
-                 <div className="flex flex-wrap gap-2">
-                    {project.tags.map(tag => (
-                        <Badge key={tag} variant="secondary" className="font-semibold">{tag}</Badge>
-                    ))}
-                 </div>
-              </div>
-            </div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
 
