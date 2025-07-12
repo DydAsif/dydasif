@@ -14,7 +14,6 @@ const projects: Project[] = [
         content: 'Purchase events not tracking properly on Facebook Ads.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'error screen analytics',
-        alt: 'Screenshot of Facebook Ads showing tracking errors'
       },
       {
         trigger: 'Solution',
@@ -22,15 +21,13 @@ const projects: Project[] = [
         content: 'Setup Meta Pixel + CAPI via GTM with deduplication.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'code snippet gtm',
-        alt: 'Screenshot of Google Tag Manager setup for Meta Pixel'
       },
       {
         trigger: 'Result',
         value: 'result',
         content: '100% purchase tracking & EMQ 8.7',
-        imageUrl: '/Result-final.png',
+        imageUrl: 'https://i.ibb.co/QFfvqD7/Result.png',
         imageHint: 'dashboard graph success',
-        alt: 'Screenshot of Events Manager showing successful purchase tracking and improved event match quality'
       }
     ]
   },
@@ -45,7 +42,6 @@ const projects: Project[] = [
         content: 'Conversions not recorded in GA4 or Ads.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'zero conversions chart',
-        alt: 'Screenshot of GA4 showing no conversion data'
       },
       {
         trigger: 'Solution',
@@ -53,7 +49,6 @@ const projects: Project[] = [
         content: 'GA4 + Ads tag added via GTM with proper event mapping.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'flowchart gtm wordpress',
-        alt: 'Screenshot of GTM setup for GA4 and Google Ads'
       },
       {
         trigger: 'Result',
@@ -61,7 +56,6 @@ const projects: Project[] = [
         content: '18 tracked conversions per week.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'graph increasing conversions',
-        alt: 'Screenshot of Google Ads showing tracked conversions'
       }
     ]
   }
