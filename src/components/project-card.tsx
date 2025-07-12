@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Badge } from '@/components/ui/badge';
 
@@ -13,7 +13,6 @@ type Tab = {
   content: string;
   imageUrl: string;
   imageHint: string;
-  alt: string;
 };
 
 export type Project = {
@@ -36,20 +35,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.tabs.map((tab, index) => (
               <CarouselItem key={index}>
                 <div className="p-1">
-                  <Card className="overflow-hidden border-2 border-primary/20 shadow-lg">
-                    <CardContent className="flex aspect-video items-center justify-center p-0 relative">
-                       <Image
-                          src={tab.imageUrl}
-                          alt=""
-                          fill
-                          className="object-cover"
-                          data-ai-hint={tab.imageHint}
-                        />
-                         <Badge variant="secondary" className="absolute top-2 left-2 text-lg font-bold bg-black/50 text-white">
-                          {tab.trigger}
-                        </Badge>
-                    </CardContent>
-                  </Card>
+                  <div className="overflow-hidden relative aspect-video rounded-lg border-2 border-primary/20 shadow-lg">
+                    <Image
+                      src={tab.imageUrl}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      data-ai-hint={tab.imageHint}
+                    />
+                    <Badge variant="secondary" className="absolute top-2 left-2 text-lg font-bold bg-black/50 text-white">
+                      {tab.trigger}
+                    </Badge>
+                  </div>
                 </div>
               </CarouselItem>
             ))}
