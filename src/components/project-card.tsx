@@ -40,7 +40,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                     <CardContent className="flex aspect-video items-center justify-center p-0 relative">
                        <Image
                           src={tab.imageUrl}
-                          alt={tab.alt}
+                          alt=""
                           fill
                           className="object-cover"
                           data-ai-hint={tab.imageHint}
