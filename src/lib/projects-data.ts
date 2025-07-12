@@ -1,4 +1,3 @@
-
 export type Project = {
   title: string;
   description: string;
@@ -39,7 +38,7 @@ export const projects: Project[] = [
         trigger: 'Result',
         value: 'result',
         content: 'Achieved 100% purchase tracking accuracy and boosted Event Match Quality score to 8.7/10.',
-        imageUrl: 'https://i.ibb.co/tpvzJpW/Result-final.png',
+        imageUrl: '/Result-final.png',
         imageHint: 'dashboard graph success',
         alt: 'A graph showing a high event match quality score and accurate purchase tracking.',
       }
