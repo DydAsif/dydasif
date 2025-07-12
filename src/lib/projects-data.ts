@@ -9,6 +9,7 @@ export type Project = {
     content: string;
     imageUrl: string;
     imageHint: string;
+    alt: string;
   }[];
 };
 
@@ -21,23 +22,26 @@ export const projects: Project[] = [
       {
         trigger: 'Problem',
         value: 'problem',
-        content: 'Purchase events not tracking properly on Facebook Ads.',
+        content: 'Purchase events not tracking properly on Facebook Ads, leading to wasted ad spend and poor optimization.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'error screen analytics',
+        alt: 'Screenshot showing an error in an analytics dashboard.',
       },
       {
         trigger: 'Solution',
         value: 'solution',
-        content: 'Setup Meta Pixel + CAPI via GTM with deduplication.',
+        content: 'Implemented Meta Pixel + CAPI via GTM with event deduplication to ensure data accuracy.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'code snippet gtm',
+        alt: 'A diagram or code snippet showing the GTM and CAPI setup.',
       },
       {
         trigger: 'Result',
         value: 'result',
-        content: '100% purchase tracking & EMQ 8.7',
+        content: 'Achieved 100% purchase tracking accuracy and boosted Event Match Quality score to 8.7/10.',
         imageUrl: '/Result.png',
         imageHint: 'dashboard graph success',
+        alt: 'A graph showing a high event match quality score and accurate purchase tracking.',
       }
     ]
   },
@@ -49,23 +53,26 @@ export const projects: Project[] = [
       {
         trigger: 'Problem',
         value: 'problem',
-        content: 'Conversions not recorded in GA4 or Ads.',
+        content: 'No conversion data was being recorded in GA4 or Google Ads, making campaign ROI impossible to measure.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'zero conversions chart',
+        alt: 'A screenshot of a Google Analytics report showing zero conversions.',
       },
       {
         trigger: 'Solution',
         value: 'solution',
-        content: 'GA4 + Ads tag added via GTM with proper event mapping.',
+        content: 'Added GA4 and Google Ads conversion tags via GTM with proper event mapping for lead submissions.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'flowchart gtm wordpress',
+        alt: 'A flowchart illustrating the data flow from WordPress to GA4 and Google Ads via GTM.',
       },
       {
         trigger: 'Result',
         value: 'result',
-        content: '18 tracked conversions per week.',
+        content: 'Successfully tracked an average of 18 conversions per week, enabling performance-based optimization.',
         imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'graph increasing conversions',
+        alt: 'A graph showing a steady increase in tracked weekly conversions.',
       }
     ]
   }
