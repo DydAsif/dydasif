@@ -385,7 +385,7 @@ function MetallicPaint({
   const lastRenderTime = useRef(0);
 
   function updateUniforms() {
-    if (!gl || !uniforms) return;
+    if (!gl || !uniforms || !Object.keys(uniforms).length) return;
     gl.uniform1f(uniforms.u_edge, params.edge);
     gl.uniform1f(uniforms.u_patternBlur, params.patternBlur);
     gl.uniform1f(uniforms.u_time, 0);
@@ -490,16 +490,15 @@ function MetallicPaint({
     }
 
     initShader();
-    updateUniforms();
   }, []);
 
   useEffect(() => {
-    if (!gl || !uniforms) return;
+    if (!gl || !uniforms || !Object.keys(uniforms).length) return;
     updateUniforms();
   }, [gl, params, uniforms]);
 
   useEffect(() => {
-    if (!gl || !uniforms) return;
+    if (!gl || !uniforms || !Object.keys(uniforms).length) return;
 
     let renderId: number;
 
@@ -523,7 +522,7 @@ function MetallicPaint({
 
   useEffect(() => {
     const canvasEl = canvasRef.current;
-    if (!canvasEl || !gl || !uniforms || !imageData) return;
+    if (!canvasEl || !gl || !uniforms || !imageData || !Object.keys(uniforms).length) return;
 
     function resizeCanvas() {
       if (!canvasEl || !gl || !uniforms || !imageData) return;
@@ -547,7 +546,7 @@ function MetallicPaint({
   }, [gl, uniforms, imageData]);
 
   useEffect(() => {
-    if (!gl || !uniforms || !imageData) return;
+    if (!gl || !uniforms || !imageData || !Object.keys(uniforms).length) return;
 
     const existingTexture = gl.getParameter(gl.TEXTURE_BINDING_2D);
     if (existingTexture) {
@@ -609,7 +608,8 @@ export function MetallicLogo() {
           throw new Error('Network response was not ok');
         }
         const blob = await response.blob();
-        const result = await parseLogoImage(blob);
+        const file = new File([blob], "logo.jpg", { type: blob.type });
+        const result = await parseLogoImage(file);
         setProcessedLogo(result);
       } catch (error) {
         console.error('Failed to load or process logo:', error);
