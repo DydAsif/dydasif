@@ -72,7 +72,7 @@ const freelancePlatforms = [
   },
   {
     label: 'Upwork',
-    href: '#', 
+    href: 'https://www.upwork.com/freelancers/~01263cc6967bba9856', 
     icon: <UpworkIcon />,
     style: "bg-[#14A800] hover:bg-[#14A800]/90 text-white hover:shadow-2xl hover:shadow-[#14A800]/40",
   },
