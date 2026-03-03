@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -70,10 +69,7 @@ export function Header() {
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6">
         <a href="#home" onClick={(e) => handleLinkClick(e, '#home')} className="flex items-center gap-3">
-          <div className="w-12 h-12">
-             <Image src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png" alt="Logo" width={48} height={48} className="rounded-full" />
-          </div>
-          <span className="hidden sm:inline text-lg font-bold tracking-tight text-primary sm:text-xl">Ashfakur Rahman Asif</span>
+          <span className="text-lg font-bold tracking-tight text-primary sm:text-xl">Ashfakur Rahman Asif</span>
         </a>
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
@@ -102,9 +98,6 @@ export function Header() {
           <SheetContent side="right" className="bg-background">
             <div className="grid gap-6 p-6">
               <a href="#home" className="flex items-center gap-3" onClick={(e) => handleLinkClick(e, '#home')}>
-                <div className="w-12 h-12">
-                  <Image src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png" alt="Logo" width={48} height={48} className="rounded-full" />
-                </div>
                  <span className="text-xl font-bold tracking-tight text-primary">Ashfakur Rahman Asif</span>
               </a>
               <nav className="grid gap-4">
