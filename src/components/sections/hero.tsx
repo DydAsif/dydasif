@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useRef, useMemo } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import * as THREE from 'three';
 
 const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string) => {
   e.preventDefault();
@@ -14,112 +12,14 @@ const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string
   }
 };
 
-const Particles = () => {
-    const { size, viewport } = useThree();
-    const mouse = useRef([0, 0]);
-    
-    const numParticles = size.width < 768 ? 3000 : 5000;
-
-    const [positions, colors] = useMemo(() => {
-        const positions = new Float32Array(numParticles * 3);
-        const colors = new Float32Array(numParticles * 3);
-        const color = new THREE.Color();
-
-        for (let i = 0; i < numParticles; i++) {
-            positions.set([(Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20], i * 3);
-            color.setHSL(0.6, 0.7, 0.5 + Math.random() * 0.1);
-            colors.set([color.r, color.g, color.b], i * 3);
-        }
-
-        return [positions, colors];
-    }, [numParticles]);
-
-    const pointsRef = useRef<THREE.Points>(null!);
-    const linesRef = useRef<THREE.LineSegments>(null!);
-    const linesGeometryRef = useRef<THREE.BufferGeometry>(null!);
-    
-    const linesPositions = useMemo(() => new Float32Array(200 * 3), []);
-
-    useFrame((state, delta) => {
-        mouse.current[0] = state.pointer.x * viewport.width / 2;
-        mouse.current[1] = state.pointer.y * viewport.height / 2;
-
-        pointsRef.current.rotation.y += delta * 0.05;
-        
-        const positions = (pointsRef.current.geometry as THREE.BufferGeometry).attributes.position.array as Float32Array;
-        let lineVertexIndex = 0;
-
-        for (let i = 0; i < numParticles; i++) {
-            const ix = i * 3, iy = i * 3 + 1, iz = i * 3 + 2;
-            const particlePosition = new THREE.Vector3(positions[ix], positions[iy], positions[iz]);
-
-            const mouseDistance = particlePosition.distanceTo(new THREE.Vector3(mouse.current[0], mouse.current[1], 0));
-
-            if (mouseDistance < 1.5 && lineVertexIndex < 198) {
-                 linesPositions[lineVertexIndex++] = particlePosition.x;
-                 linesPositions[lineVertexIndex++] = particlePosition.y;
-                 linesPositions[lineVertexIndex++] = particlePosition.z;
-                 linesPositions[lineVertexIndex++] = mouse.current[0];
-                 linesPositions[lineVertexIndex++] = mouse.current[1];
-                 linesPositions[lineVertexIndex++] = 0;
-            }
-        }
-        
-        for (let i = lineVertexIndex; i < linesPositions.length; i++) {
-            linesPositions[i] = 0;
-        }
-
-        if (linesGeometryRef.current) {
-            linesGeometryRef.current.attributes.position.needsUpdate = true;
-            linesGeometryRef.current.setDrawRange(0, lineVertexIndex/3);
-        }
-    });
-
-    return (
-        <>
-            <points ref={pointsRef}>
-                <bufferGeometry>
-                    <bufferAttribute attach="attributes-position" count={numParticles} array={positions} itemSize={3} />
-                    <bufferAttribute attach="attributes-color" count={numParticles} array={colors} itemSize={3} />
-                </bufferGeometry>
-                <pointsMaterial size={0.02} vertexColors={true} sizeAttenuation={true} />
-            </points>
-            <lineSegments ref={linesRef}>
-                 <bufferGeometry ref={linesGeometryRef}>
-                    <bufferAttribute
-                      attach="attributes-position"
-                      count={linesPositions.length / 3}
-                      array={linesPositions}
-                      itemSize={3}
-                    />
-                 </bufferGeometry>
-                 <lineBasicMaterial color="hsl(var(--primary))" transparent opacity={0.5} />
-            </lineSegments>
-        </>
-    );
-};
-
-
-const AnimatedBackground = () => (
-    <div className="absolute top-0 left-0 w-full h-full z-0">
-        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-            <ambientLight intensity={0.5} />
-            <Particles />
-        </Canvas>
-    </div>
-);
-
-
 export function Hero() {
 
   return (
     <section 
       id="home"
-      className="h-screen flex flex-col items-center justify-center relative text-center z-10 overflow-hidden p-4"
+      className="h-screen flex flex-col items-center justify-center relative text-center overflow-hidden p-4 hero-professional-bg"
     >
-      <AnimatedBackground />
-      
-      <div className="container mx-auto max-w-7xl px-4 md:px-6 relative z-10">
+      <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div 
             className="flex flex-col md:flex-row items-center justify-center gap-6"
             data-aos="fade-right" data-aos-duration="1200"
@@ -151,7 +51,7 @@ export function Hero() {
             className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
              data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200"
         >
-            <Button asChild size="lg" className="bg-primary text-primary-foreground transition-all duration-300 hover:bg-primary/80">
+            <Button asChild size="lg">
                  <a
                     href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
                     target="_blank"
@@ -160,7 +60,7 @@ export function Hero() {
                     Download CV
                   </a>
             </Button>
-            <Button asChild variant="secondary" size="lg" className="bg-secondary text-secondary-foreground transition-all duration-300 hover:bg-green-500">
+            <Button asChild variant="secondary" size="lg">
                  <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
                     Hire Me
                   </a>
