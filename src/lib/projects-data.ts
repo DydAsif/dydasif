@@ -38,7 +38,7 @@ export const projects: Project[] = [
         trigger: 'Result',
         value: 'result',
         content: 'Achieved 100% purchase tracking accuracy and boosted Event Match Quality score to 8.7/10.',
-        imageUrl: '/Result-final.png',
+        imageUrl: 'https://placehold.co/800x400.png',
         imageHint: 'dashboard graph success',
         alt: 'A graph showing a high event match quality score and accurate purchase tracking.',
       }
