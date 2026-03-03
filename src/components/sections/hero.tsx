@@ -19,6 +19,11 @@ export function Hero() {
       id="home"
       className="h-screen flex flex-col items-center justify-center relative text-center overflow-hidden p-4 hero-professional-bg"
     >
+       <div className="floating-element-container">
+        <div className="floating-element floating-element-1"></div>
+        <div className="floating-element floating-element-2"></div>
+        <div className="floating-element floating-element-3"></div>
+      </div>
       {/* Adding pb-16 to prevent overlap with the absolutely positioned scroll button */}
       <div className="container mx-auto max-w-7xl px-4 md:px-6 pb-16">
         <div 

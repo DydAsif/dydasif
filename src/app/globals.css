@@ -261,3 +261,53 @@
   position: relative;
   z-index: 1;
 }
+
+@keyframes float {
+  0% { transform: translateY(0px) translateX(0px) scale(1); }
+  33% { transform: translateY(-30px) translateX(20px) scale(1.05); }
+  66% { transform: translateY(20px) translateX(-30px) scale(0.95); }
+  100% { transform: translateY(0px) translateX(0px) scale(1); }
+}
+
+.floating-element-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-element {
+  position: absolute;
+  background-color: hsl(var(--primary) / 0.08);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation-name: float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.floating-element-1 {
+  width: 350px;
+  height: 350px;
+  top: 5%;
+  left: 10%;
+  animation-duration: 22s;
+}
+
+.floating-element-2 {
+  width: 450px;
+  height: 450px;
+  bottom: 5%;
+  right: 10%;
+  animation-duration: 28s;
+  animation-delay: -8s;
+}
+
+.floating-element-3 {
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    left: 45%;
+    animation-duration: 35s;
+    animation-delay: -15s;
+}
