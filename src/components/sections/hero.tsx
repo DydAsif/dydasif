@@ -30,7 +30,7 @@ export function Hero() {
             className="flex flex-col md:flex-row items-center justify-center gap-6"
         >
              <Image
-              src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
+              src="https://i.ibb.co/prPGCmSS/cv.png"
               alt="Ashfakur Rahman Asif"
               width={150}
               height={150}

@@ -50,7 +50,7 @@ export function About() {
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
             <Image
-              src="https://i.ibb.co/yBMzR8nS/upscalemedia-transformed.png"
+              src="https://i.ibb.co/prPGCmSS/cv.png"
               alt="Ashfakur Rahman Asif photo"
               width={500}
               height={500}
