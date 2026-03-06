@@ -41,7 +41,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.tabs.map((tab) => (
               <TabsContent key={tab.value} value={tab.value}>
                 <div className="flex flex-col gap-4 text-center mt-4">
-                  <div className="overflow-hidden relative aspect-[9/4] rounded-lg border-2 border-primary/20 shadow-lg">
+                  <div className="overflow-hidden relative aspect-[9/5] rounded-lg border-2 border-primary/20 shadow-lg">
                     <Image
                       src={tab.imageUrl}
                       alt={tab.alt}
