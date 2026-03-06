@@ -1,3 +1,4 @@
+
 export type Project = {
   title: string;
   description: string;
@@ -38,7 +39,7 @@ export const projects: Project[] = [
         trigger: 'Result',
         value: 'result',
         content: 'Achieved 100% purchase tracking accuracy and boosted Event Match Quality score to 8.7/10.',
-        imageUrl: 'https://i.ibb.co/d4SBvwMZ/Result-final.png',
+        imageUrl: 'https://i.ibb.co/cSHPz8pn/result-portfolio-3.jpg',
         imageHint: 'dashboard graph success',
         alt: 'A graph showing a high event match quality score and accurate purchase tracking.',
       }
@@ -69,7 +70,7 @@ export const projects: Project[] = [
         trigger: 'Result',
         value: 'result',
         content: 'Successfully tracked an average of 18 conversions per week, enabling performance-based optimization.',
-        imageUrl: 'https://placehold.co/800x400.png',
+        imageUrl: 'https://i.ibb.co/cSHPz8pn/result-portfolio-3.jpg',
         imageHint: 'graph increasing conversions',
         alt: 'A graph showing a steady increase in tracked weekly conversions.',
       }
