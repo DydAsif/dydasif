@@ -27,7 +27,7 @@ export function ImageLightbox({ imageUrl, altText, isOpen, onOpenChange }: Image
             width={1280}
             height={720}
             className="object-contain rounded-md h-auto w-full"
-            quality={95}
+            quality={100}
           />
         </div>
       </DialogContent>
