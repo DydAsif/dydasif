@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
@@ -79,7 +80,7 @@ const services = [
     image: 'https://i.ibb.co/2YSPwfFb/GA4-Google-Ads-e-Commerce-Tracking-3.png',
     imageAlt: 'GA4 Google Ads e Commerce Tracking (3)',
     imageHint: 'gtm workflow',
-    fullViewLink: 'https://i.ibb.co/2YSPwfFb/GA4-Google-Ads-e-Commerce-Tracking-3.png',
+    fullViewLink: 'https://drive.google.com/file/d/1NAxkyPEBDGSsZCg2G2sCYxyqOogx8QkG/view?usp=sharing',
   },
 ];
 
