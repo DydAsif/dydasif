@@ -26,6 +26,8 @@ export function ImageLightbox({ imageUrl, altText, isOpen, onOpenChange }: Image
             alt={altText}
             fill
             className="object-contain rounded-md"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1024px"
+            quality={95}
           />
         </div>
       </DialogContent>
