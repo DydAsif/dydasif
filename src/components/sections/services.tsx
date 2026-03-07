@@ -63,7 +63,7 @@ const services = [
     image: 'https://i.ibb.co/LTsbR2D/GA4-Google-Ads-e-Commerce-Tracking.png',
     imageAlt: 'GA4 Google Ads e Commerce Tracking',
     imageHint: 'ga4 analytics',
-    fullViewLink: 'https://i.ibb.co/LTsbR2D/GA4-Google-Ads-e-Commerce-Tracking.png',
+    fullViewLink: 'https://drive.google.com/file/d/1rWNvyxE5wM4qrTAOUi2YZqMN9VWDwIFx/view?usp=sharing',
   },
   {
     icon: <GitBranch className="h-10 w-10 text-primary" />,
