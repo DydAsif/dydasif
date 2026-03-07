@@ -67,7 +67,7 @@ export function Hero() {
         >
             <Button asChild size="lg">
                  <a
-                    href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
+                    href="https://drive.google.com/file/d/1MJ189oOYLJDI2-8HdXNnK_CTUO7fL7ze/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

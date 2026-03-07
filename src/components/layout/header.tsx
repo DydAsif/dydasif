@@ -80,7 +80,7 @@ export function Header() {
         </nav>
         <div className="hidden items-center gap-4 md:flex">
            <a
-            href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1MJ189oOYLJDI2-8HdXNnK_CTUO7fL7ze/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-primary text-primary-foreground rounded-full px-4 py-2 font-bold hover:bg-primary/80 transition shadow-lg text-sm"
@@ -108,7 +108,7 @@ export function Header() {
                 ))}
               </nav>
                <a
-                href="https://drive.google.com/file/d/1aJdlKwU12AptlfBOje1PbkERRTt546fO/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1MJ189oOYLJDI2-8HdXNnK_CTUO7fL7ze/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block text-center bg-primary text-primary-foreground rounded-full px-6 py-3 font-bold hover:bg-primary/80 transition shadow-lg text-lg"
