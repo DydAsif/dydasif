@@ -33,7 +33,7 @@ export const projects: Project[] = [
         caption: "Implemented Meta Pixel and CAPI via GTM with server-side tracking for accurate event deduplication."
     },
     result: {
-        image: 'https://i.ibb.co/rKWj6Srs/GA4-Google-Ads-e-Commerce-Tracking-2.png',
+        image: 'https://placehold.co/900x500/1d283a/9ca3af?text=Result',
         imageAlt: 'Dashboard showing the results: 100% accuracy and 8.7/10 EMQ score',
         imageHint: 'analytics dashboard',
         caption: "Achieved near-perfect purchase tracking and an 8.7/10 Event Match Quality score."
@@ -56,7 +56,7 @@ export const projects: Project[] = [
       caption: "Implemented a complete tracking solution using GTM to send conversion data to GA4 and Google Ads."
     },
     result: {
-      image: 'https://i.ibb.co/LTsbR2D/GA4-Google-Ads-e-Commerce-Tracking.png',
+      image: 'https://placehold.co/900x500/1d283a/9ca3af?text=Result',
       imageAlt: 'GA4 and Google Ads Tracking Report showing weekly conversions',
       imageHint: 'analytics report',
       caption: "Successfully tracking an average of 18 conversions per week, enabling effective campaign optimization."
