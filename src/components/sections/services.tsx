@@ -2,7 +2,7 @@
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-import { Facebook, TrendingUp, GitBranch, ChevronDown, ZoomIn } from 'lucide-react';
+import { Facebook, TrendingUp, GitBranch, ChevronDown, ZoomIn, ExternalLink } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -158,6 +158,12 @@ export function Services() {
                           </div>
                         </div>
                       </div>
+                      <Button asChild variant="outline" size="sm" className="mt-2 w-full">
+                        <a href={service.image} target="_blank" rel="noopener noreferrer">
+                          View Full Resolution
+                          <ExternalLink className="h-4 w-4 ml-2" />
+                        </a>
+                      </Button>
                   </CollapsibleContent>
                 </CardFooter>
               </Card>
