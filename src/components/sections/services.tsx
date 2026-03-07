@@ -75,8 +75,8 @@ const services = [
       'Cross-platform goal & event tracking.',
       'Full funnel conversion analysis.',
     ],
-    image: 'https://i.ibb.co/cSHPz8pn/result-portfolio-3.jpg',
-    imageAlt: 'Multi-platform GTM Screenshot',
+    image: 'https://i.ibb.co/2YSPwfFb/GA4-Google-Ads-e-Commerce-Tracking-3.png',
+    imageAlt: 'GA4 Google Ads e Commerce Tracking (3)',
     imageHint: 'gtm workflow',
   },
 ];
