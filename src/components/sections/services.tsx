@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Facebook, TrendingUp, GitBranch, ChevronDown } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
@@ -55,8 +56,8 @@ const services = [
       'DebugView for real-time testing.',
       'Shopify & WooCommerce DataLayer debug.',
     ],
-    image: 'https://placehold.co/600x400.png',
-    imageAlt: 'GA4 DebugView Screenshot',
+    image: 'https://i.ibb.co/LTsbR2D/GA4-Google-Ads-e-Commerce-Tracking.png',
+    imageAlt: 'GA4 Google Ads e Commerce Tracking',
     imageHint: 'ga4 analytics',
   },
   {
