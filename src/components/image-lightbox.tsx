@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 
 type ImageLightboxProps = {
   imageUrl: string;
@@ -18,6 +18,8 @@ export function ImageLightbox({ imageUrl, altText, isOpen, onOpenChange }: Image
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-5xl w-full p-2 bg-card/90 backdrop-blur-md border-primary/30 shadow-2xl shadow-primary/20">
+        <DialogTitle className="sr-only">{altText}</DialogTitle>
+        <DialogDescription className="sr-only">Enlarged image: {altText}</DialogDescription>
         <div className="relative aspect-video">
           <Image
             src={imageUrl}
