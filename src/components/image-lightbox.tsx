@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -17,7 +16,7 @@ export function ImageLightbox({ imageUrl, altText, isOpen, onOpenChange }: Image
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-[90vw] w-auto p-2 bg-card/90 backdrop-blur-md border-primary/30 shadow-2xl shadow-primary/20">
+      <DialogContent className="max-w-[95vw] w-auto p-2 bg-card/90 backdrop-blur-md border-primary/30 shadow-2xl shadow-primary/20">
         <DialogTitle className="sr-only">{altText}</DialogTitle>
         <DialogDescription className="sr-only">Enlarged image: {altText}</DialogDescription>
         <div className="flex justify-center items-center">
@@ -26,7 +25,7 @@ export function ImageLightbox({ imageUrl, altText, isOpen, onOpenChange }: Image
             alt={altText}
             width={1920}
             height={1080}
-            className="object-contain rounded-md max-w-full max-h-[90vh] h-auto w-auto"
+            className="object-contain rounded-md max-w-full max-h-[95vh] h-auto w-auto"
             unoptimized
           />
         </div>
