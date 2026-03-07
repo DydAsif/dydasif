@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
@@ -48,6 +47,7 @@ const services = [
     image: 'https://i.ibb.co/rKWj6Srs/GA4-Google-Ads-e-Commerce-Tracking-2.png',
     imageAlt: 'GA4 Google Ads e Commerce Tracking (2)',
     imageHint: 'facebook capi analytics',
+    fullViewLink: "https://drive.google.com/file/d/1Mhmus0uXSgiGCtAgBPcDevaR_WAoIMLK/view?usp=drive_link",
   },
   {
     icon: <TrendingUp className="h-10 w-10 text-primary" />,
@@ -63,6 +63,7 @@ const services = [
     image: 'https://i.ibb.co/LTsbR2D/GA4-Google-Ads-e-Commerce-Tracking.png',
     imageAlt: 'GA4 Google Ads e Commerce Tracking',
     imageHint: 'ga4 analytics',
+    fullViewLink: 'https://i.ibb.co/LTsbR2D/GA4-Google-Ads-e-Commerce-Tracking.png',
   },
   {
     icon: <GitBranch className="h-10 w-10 text-primary" />,
@@ -78,6 +79,7 @@ const services = [
     image: 'https://i.ibb.co/2YSPwfFb/GA4-Google-Ads-e-Commerce-Tracking-3.png',
     imageAlt: 'GA4 Google Ads e Commerce Tracking (3)',
     imageHint: 'gtm workflow',
+    fullViewLink: 'https://i.ibb.co/2YSPwfFb/GA4-Google-Ads-e-Commerce-Tracking-3.png',
   },
 ];
 
@@ -159,7 +161,7 @@ export function Services() {
                         </div>
                       </div>
                       <Button asChild variant="outline" size="sm" className="mt-2 w-full">
-                        <a href={service.image} target="_blank" rel="noopener noreferrer">
+                        <a href={service.fullViewLink} target="_blank" rel="noopener noreferrer">
                           View Full Resolution
                           <ExternalLink className="h-4 w-4 ml-2" />
                         </a>
