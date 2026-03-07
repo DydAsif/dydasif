@@ -62,6 +62,17 @@ const WhatsAppIcon = () => (
   </svg>
 );
 
+const QuoraIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="h-8 w-8"
+  >
+    <path d="M11.84 22.02c-5.06 0-9.15-4.09-9.15-9.15s4.09-9.15 9.15-9.15c2.39 0 4.59.92 6.22 2.44.3.29.31.78.02 1.08l-1.3 1.34c-.26.26-.68.28-.97.04-1.12-.9-2.5-1.44-4-1.44-3.23 0-5.85 2.63-5.85 5.85s2.62 5.85 5.85 5.85c1.17 0 2.26-.35 3.17-1a.75.75 0 0 1 1.06 0l1.24 1.24c.3.3.3.78 0 1.08-1.57 1.55-3.77 2.47-6.17 2.47zm7.23-1.63c.2-.2.2-.51 0-.71l-2.12-2.12c-.2-.2-.51-.2-.71 0l-1.68 1.68c-.2.2-.2.51 0 .71l2.12 2.12c.2.2.51.2.71 0l1.68-1.68z" />
+  </svg>
+);
+
 
 const freelancePlatforms = [
   {
@@ -104,6 +115,11 @@ const socialMediaLinks = [
     label: 'Twitter',
     href: '#',
     icon: <Twitter className="h-8 w-8" />,
+  },
+  {
+    label: 'Quora',
+    href: '#',
+    icon: <QuoraIcon />,
   },
   {
     label: 'WhatsApp',

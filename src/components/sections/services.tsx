@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
@@ -69,9 +68,9 @@ const services = [
   {
     icon: <GitBranch className="h-10 w-10 text-primary" />,
     title: 'Multi-Platform + Funnel Automation',
-    description: 'Tracking setup for Pinterest, Reddit, & LinkedIn. Funnel automation using Stape.io and CRM webhook integration.',
+    description: 'Tracking setup for Pinterest, Reddit, Quora, & LinkedIn. Funnel automation using Stape.io and CRM webhook integration.',
     details: [
-      'Pinterest, Reddit & LinkedIn Tag setup.',
+      'Pinterest, Reddit, Quora & LinkedIn Tag setup.',
       'Stape.io funnel building & testing.',
       'Webhook & CRM routing automation.',
       'Cross-platform goal & event tracking.',
@@ -92,6 +91,7 @@ const tools: { name: string; logo: string | JSX.Element; displayName: string }[]
     { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', displayName: 'WordPress' },
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
+    { name: 'Quora', logo: 'https://cdn.simpleicons.org/quora/00ccff', displayName: 'Quora' },
     { name: 'Stape.io', logo: <StapeLogo />, displayName: 'Stape' },
 ];
 
