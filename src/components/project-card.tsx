@@ -71,6 +71,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                       data-ai-hint={project[tab.value].imageHint}
+                      unoptimized
                     />
                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="flex items-center gap-2 text-white font-semibold">
