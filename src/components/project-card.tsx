@@ -69,7 +69,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                       src={project[tab.value].image}
                       alt={project[tab.value].imageAlt}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain group-hover:scale-105 transition-transform duration-300"
                       data-ai-hint={project[tab.value].imageHint}
                       unoptimized
                     />
