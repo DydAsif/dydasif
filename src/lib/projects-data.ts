@@ -50,8 +50,8 @@ export const projects: Project[] = [
       caption: "No conversion data in GA4 and Google Ads, making campaign ROI impossible to measure."
     },
     solution: {
-      image: 'https://placehold.co/900x450/1d283a/9ca3af?text=Solution',
-      imageAlt: 'GTM setup for GA4 and Google Ads',
+      image: 'https://i.ibb.co/q38TBYsL/sol2.jpg',
+      imageAlt: 'sol2',
       imageHint: 'gtm workspace',
       caption: "Implemented a complete tracking solution using GTM to send conversion data to GA4 and Google Ads."
     },
