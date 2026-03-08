@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from 'react';
@@ -63,7 +62,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               {TABS.map(tab => (
                 <TabsContent key={tab.value} value={tab.value}>
                   <div 
-                    className="relative mt-4 aspect-[2/1] rounded-lg overflow-hidden border-2 border-border/50 group cursor-pointer"
+                    className="relative mt-4 aspect-[16/11] rounded-lg overflow-hidden border-2 border-border/50 group cursor-pointer"
                     onClick={() => openLightbox(project[tab.value])}
                   >
                     <Image
