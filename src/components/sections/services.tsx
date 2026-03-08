@@ -91,7 +91,6 @@ const tools: { name: string; logo: string | JSX.Element; displayName: string }[]
     { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', displayName: 'WordPress' },
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
-    { name: 'Quora', logo: 'https://cdn.simpleicons.org/quora/00ccff', displayName: 'Quora' },
     { name: 'Stape.io', logo: <StapeLogo />, displayName: 'Stape' },
 ];
 
