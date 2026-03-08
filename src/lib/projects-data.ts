@@ -33,8 +33,8 @@ export const projects: Project[] = [
         caption: "Implemented Meta Pixel and CAPI via GTM with server-side tracking for accurate event deduplication."
     },
     result: {
-        image: 'https://placehold.co/900x450/1d283a/9ca3af?text=Result',
-        imageAlt: 'Dashboard showing the results: 100% accuracy and 8.7/10 EMQ score',
+        image: 'https://i.ibb.co/1Yykhn02/result1.jpg',
+        imageAlt: 'result1',
         imageHint: 'analytics dashboard',
         caption: "Achieved near-perfect purchase tracking and an 8.7/10 Event Match Quality score."
     }
