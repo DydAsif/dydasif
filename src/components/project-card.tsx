@@ -8,6 +8,7 @@ import type { Project, ProjectDetail } from '@/lib/projects-data';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ImageLightbox } from '@/components/image-lightbox';
 import { ZoomIn } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type ProjectCardProps = {
   project: Project;
@@ -18,10 +19,10 @@ type TabValue = 'problem' | 'solution' | 'result';
 
 const TAB_VALUES: TabValue[] = ['problem', 'solution', 'result'];
 
-const TABS: { value: TabValue; label: string }[] = [
-    { value: 'problem', label: 'Problem' },
-    { value: 'solution', label: 'Solution' },
-    { value: 'result', label: 'Result' },
+const TABS: { value: TabValue; label: string; className: string; }[] = [
+    { value: 'problem', label: 'Problem', className: 'tab-problem' },
+    { value: 'solution', label: 'Solution', className: 'tab-solution' },
+    { value: 'result', label: 'Result', className: 'tab-result' },
 ];
 
 
@@ -59,8 +60,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         data-aos="fade-up"
         data-aos-delay={`${100 * index}`}
       >
-        <div className="grid md:grid-cols-5 items-stretch">
-          <div className="md:col-span-2 p-6 lg:p-8 flex flex-col">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 items-stretch">
+          <div className="md:col-span-2 lg:col-span-2 p-6 lg:p-8 flex flex-col">
             <h3 className="text-2xl font-bold text-primary mb-3">{project.title}</h3>
             <p className="text-muted-foreground mb-4 flex-grow">{project.description}</p>
             <div className="flex flex-wrap gap-2">
@@ -70,14 +71,20 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             </div>
           </div>
           <div 
-            className="md:col-span-3 p-6 lg:p-8 bg-secondary/20 h-full flex flex-col justify-between"
+            className="md:col-span-3 lg:col-span-3 p-6 lg:p-8 bg-secondary/20 h-full flex flex-col justify-between"
             onMouseEnter={() => setIsAutoPlaying(false)}
             onMouseLeave={() => setIsAutoPlaying(true)}
           >
             <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as TabValue)} className="w-full">
-              <TabsList className="grid w-full grid-cols-3">
+               <TabsList className="grid w-full grid-cols-3">
                 {TABS.map(tab => (
-                  <TabsTrigger key={tab.value} value={tab.value}>{tab.label}</TabsTrigger>
+                  <TabsTrigger
+                    key={tab.value}
+                    value={tab.value}
+                    className={cn("transition-all duration-300", tab.className)}
+                  >
+                    {tab.label}
+                  </TabsTrigger>
                 ))}
               </TabsList>
               

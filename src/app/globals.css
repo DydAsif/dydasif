@@ -23,6 +23,9 @@
     --border: 215 28% 17%;
     --input: 215 28% 17%;
     --ring: 217.2 91.2% 59.8%;
+    --neon-red: 0 80% 60%;
+    --neon-green: 130 70% 50%;
+    --neon-blue: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -310,4 +313,17 @@
     left: 45%;
     animation-duration: 35s;
     animation-delay: -15s;
+}
+
+.tab-problem[data-state=active],
+.tab-problem:hover {
+  box-shadow: 0 0 20px hsl(var(--neon-red) / 0.6);
+}
+.tab-solution[data-state=active],
+.tab-solution:hover {
+  box-shadow: 0 0 20px hsl(var(--neon-blue) / 0.6);
+}
+.tab-result[data-state=active],
+.tab-result:hover {
+  box-shadow: 0 0 20px hsl(var(--neon-green) / 0.6);
 }
