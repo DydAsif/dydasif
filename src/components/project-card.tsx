@@ -41,8 +41,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         data-aos="fade-up"
         data-aos-delay={`${100 * index}`}
       >
-        <div className="grid md:grid-cols-2 items-stretch">
-          <div className="md:col-span-1 p-6 lg:p-8 flex flex-col">
+        <div className="grid md:grid-cols-5 items-stretch">
+          <div className="md:col-span-2 p-6 lg:p-8 flex flex-col">
             <h3 className="text-2xl font-bold text-primary mb-3">{project.title}</h3>
             <p className="text-muted-foreground mb-4 flex-grow">{project.description}</p>
             <div className="flex flex-wrap gap-2">
@@ -51,7 +51,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               ))}
             </div>
           </div>
-          <div className="md:col-span-1 p-6 lg:p-8 bg-secondary/20 h-full flex flex-col justify-between">
+          <div className="md:col-span-3 p-6 lg:p-8 bg-secondary/20 h-full flex flex-col justify-between">
             <Tabs defaultValue="problem" onValueChange={(value) => setActiveTab(value as TabValue)} className="w-full">
               <TabsList className="grid w-full grid-cols-3">
                 {TABS.map(tab => (
