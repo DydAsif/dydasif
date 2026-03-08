@@ -21,7 +21,7 @@ export const projects: Project[] = [
     description: "A client's Shopify store was failing to track purchase events accurately in Facebook Ads, leading to unreliable performance data. By implementing Meta Pixel and the Conversion API (CAPI) through Google Tag Manager with proper event deduplication, we achieved 100% purchase tracking accuracy and boosted the Event Match Quality (EMQ) score to 8.7/10.",
     tags: ["Shopify", "Facebook CAPI", "GTM", "Deduplication", "EMQ"],
     problem: {
-      image: 'https://i.ibb.co/zWwkbNj7/Untitled-design-1.png',
+      image: 'https://i.ibb.co/B2XJ62x6/550-1.png',
       imageAlt: 'Facebook Events Manager showing poor event match quality and deduplication issues.',
       imageHint: 'facebook events error',
       caption: "Purchase events not tracking properly on Facebook Ads, leading to wasted ad spend and poor optimization."
