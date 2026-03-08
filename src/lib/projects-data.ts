@@ -44,8 +44,8 @@ export const projects: Project[] = [
     description: "A WordPress-based business had zero conversion tracking in Google Analytics 4 and Google Ads, making it impossible to measure campaign effectiveness. I implemented a robust tracking setup using Google Tag Manager to correctly map GA4 events and Google Ads conversions, resulting in an average of 18 accurately tracked conversions per week.",
     tags: ["WordPress", "GA4", "Google Ads", "GTM", "Conversion Tracking"],
     problem: {
-      image: 'https://placehold.co/900x450/1d283a/9ca3af?text=Problem',
-      imageAlt: 'Illustration of no conversion tracking',
+      image: 'https://i.ibb.co/8DhXzRMj/prob-2-ss.jpg',
+      imageAlt: 'prob-2-ss',
       imageHint: 'empty chart',
       caption: "No conversion data in GA4 and Google Ads, making campaign ROI impossible to measure."
     },
