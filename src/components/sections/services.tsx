@@ -68,9 +68,9 @@ const services = [
   {
     icon: <GitBranch className="h-10 w-10 text-primary" />,
     title: 'Multi-Platform + Funnel Automation',
-    description: 'Tracking setup for Pinterest, Reddit, Quora, & LinkedIn. Funnel automation using Stape.io and CRM webhook integration.',
+    description: 'Tracking setup for Pinterest, Reddit, & LinkedIn. Funnel automation using Stape.io and CRM webhook integration.',
     details: [
-      'Pinterest, Reddit, Quora & LinkedIn Tag setup.',
+      'Pinterest, Reddit, & LinkedIn Tag setup.',
       'Stape.io funnel building & testing.',
       'Webhook & CRM routing automation.',
       'Cross-platform goal & event tracking.',
@@ -118,7 +118,7 @@ export function Services() {
           {services.map((service, index) => (
             <Collapsible key={index} asChild>
               <Card
-                className="bg-gradient-to-br from-card to-secondary border border-border shadow-lg hover:shadow-2xl hover:shadow-primary/20 hover:border-primary transition-all duration-300 rounded-lg flex flex-col hover:-translate-y-1.5"
+                className="bg-gradient-to-br from-card to-secondary border border-border shadow-lg hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:border-primary transition-all duration-300 rounded-lg flex flex-col hover:-translate-y-1.5"
                 data-aos="fade-up"
                 data-aos-delay={`${100 * (index + 1)}`}
               >

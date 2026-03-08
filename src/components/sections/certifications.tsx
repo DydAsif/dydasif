@@ -59,7 +59,7 @@ export function Certifications() {
           {certifications.map((cert, index) => (
             <Card 
               key={index} 
-              className="bg-card border border-border shadow-lg hover:shadow-primary/20 hover:scale-105 hover:border-primary transition-all duration-300 rounded-lg flex flex-col"
+              className="bg-card border border-border shadow-lg hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:scale-105 hover:border-primary transition-all duration-300 rounded-lg flex flex-col"
               data-aos="fade-up"
               data-aos-delay={`${100 * index}`}
             >

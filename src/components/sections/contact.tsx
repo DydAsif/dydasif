@@ -77,7 +77,7 @@ export function Contact() {
         </div>
 
         <Card 
-          className="p-8 lg:p-10 border-border/50 bg-card/80 shadow-[0_0_15px_hsl(var(--primary)/0.1)] transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)] hover:-translate-y-2"
+          className="p-8 lg:p-10 border-border/50 bg-card/80 shadow-[0_0_15px_hsl(var(--primary)/0.1)] transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:-translate-y-2"
           data-aos="fade-up"
           data-aos-duration="800"
         >

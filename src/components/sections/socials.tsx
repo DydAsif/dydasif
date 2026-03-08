@@ -127,7 +127,7 @@ export function Socials() {
 
         <div className="mx-auto grid max-w-5xl items-stretch gap-8 lg:grid-cols-2 lg:gap-12 mt-16">
           <div 
-             className="relative rounded-2xl border border-border bg-card/50 p-8 backdrop-blur-sm shadow-[0_0_15px_hsl(var(--primary)/0.1)] transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)] hover:-translate-y-2"
+             className="relative rounded-2xl border border-border bg-card/50 p-8 backdrop-blur-sm shadow-[0_0_15px_hsl(var(--primary)/0.1)] transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:-translate-y-2"
              data-aos="fade-right" data-aos-duration="800"
           >
             <h3 className="mb-6 text-2xl font-bold text-white text-center">Hire Me On Freelance Platforms</h3>
@@ -148,7 +148,7 @@ export function Socials() {
           </div>
           
           <div 
-             className="relative rounded-2xl border border-border bg-card/50 p-8 backdrop-blur-sm flex flex-col shadow-[0_0_15px_hsl(var(--primary)/0.1)] transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.2)] hover:-translate-y-2"
+             className="relative rounded-2xl border border-border bg-card/50 p-8 backdrop-blur-sm flex flex-col shadow-[0_0_15px_hsl(var(--primary)/0.1)] transition-all duration-300 hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:-translate-y-2"
              data-aos="fade-left" data-aos-duration="800"
           >
             <h3 className="mb-6 text-2xl font-bold text-white text-center shrink-0">Let's Connect on Social Media</h3>

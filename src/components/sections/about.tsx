@@ -25,7 +25,7 @@ export function About() {
         <div className="grid gap-10 lg:gap-16 lg:grid-cols-3 lg:items-center">
           
           <Card 
-            className="bg-card/80 border-border/50 shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300 rounded-lg"
+            className="bg-card/80 border-border/50 shadow-lg hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:scale-105 transition-all duration-300 rounded-lg"
             data-aos="fade-right"
             data-aos-duration="800"
           >
@@ -60,7 +60,7 @@ export function About() {
           </div>
 
           <Card 
-            className="bg-card/80 border-border/50 shadow-lg hover:shadow-primary/20 hover:scale-105 transition-all duration-300 rounded-lg"
+            className="bg-card/80 border-border/50 shadow-lg hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:scale-105 transition-all duration-300 rounded-lg"
             data-aos="fade-left"
             data-aos-duration="800"
           >

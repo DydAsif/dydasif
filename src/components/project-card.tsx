@@ -55,7 +55,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <>
       <Card 
-        className="bg-card/80 border-border/50 shadow-lg hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 rounded-2xl overflow-hidden"
+        className="bg-card/80 border-border/50 shadow-lg hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:-translate-y-2 transition-all duration-300 rounded-2xl overflow-hidden"
         data-aos="fade-up"
         data-aos-delay={`${100 * index}`}
       >
