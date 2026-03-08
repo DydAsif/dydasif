@@ -27,8 +27,8 @@ export const projects: Project[] = [
       caption: "Purchase events not tracking properly on Facebook Ads, leading to wasted ad spend and poor optimization."
     },
     solution: {
-        image: 'https://placehold.co/900x450/1d283a/9ca3af?text=Solution',
-        imageAlt: 'Diagram of the solution implemented with GTM and CAPI',
+        image: 'https://i.ibb.co/RmkpK9G/sol1.jpg',
+        imageAlt: 'sol1',
         imageHint: 'tracking solution',
         caption: "Implemented Meta Pixel and CAPI via GTM with server-side tracking for accurate event deduplication."
     },
