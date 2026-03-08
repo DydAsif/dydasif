@@ -56,8 +56,8 @@ export const projects: Project[] = [
       caption: "Implemented a complete tracking solution using GTM to send conversion data to GA4 and Google Ads."
     },
     result: {
-      image: 'https://placehold.co/900x450/1d283a/9ca3af?text=Result',
-      imageAlt: 'GA4 and Google Ads Tracking Report showing weekly conversions',
+      image: 'https://i.ibb.co/0jqRTnsN/result2.jpg',
+      imageAlt: 'result2',
       imageHint: 'analytics report',
       caption: "Successfully tracking an average of 18 conversions per week, enabling effective campaign optimization."
     }
