@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -16,28 +16,46 @@ type ProjectCardProps = {
 
 type TabValue = 'problem' | 'solution' | 'result';
 
+const TAB_VALUES: TabValue[] = ['problem', 'solution', 'result'];
+
+const TABS: { value: TabValue; label: string }[] = [
+    { value: 'problem', label: 'Problem' },
+    { value: 'solution', label: 'Solution' },
+    { value: 'result', label: 'Result' },
+];
+
+
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const [activeTab, setActiveTab] = useState<TabValue>('problem');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<ProjectDetail | null>(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setActiveTab(currentTab => {
+        const currentIndex = TAB_VALUES.indexOf(currentTab);
+        const nextIndex = (currentIndex + 1) % TAB_VALUES.length;
+        return TAB_VALUES[nextIndex];
+      });
+    }, 4000); // Auto-slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
   const openLightbox = (detail: ProjectDetail) => {
     setSelectedImage(detail);
     setLightboxOpen(true);
   };
   
-  const TABS: { value: TabValue; label: string }[] = [
-    { value: 'problem', label: 'Problem' },
-    { value: 'solution', label: 'Solution' },
-    { value: 'result', label: 'Result' },
-  ];
-
   const activeDetail = project[activeTab];
 
   return (
     <>
       <Card 
-        className="bg-card/80 border-border/50 shadow-lg hover:shadow-primary/20 transition-all duration-300 rounded-2xl overflow-hidden"
+        className="bg-card/80 border-border/50 shadow-lg hover:shadow-primary/20 hover:-translate-y-2 transition-all duration-300 rounded-2xl overflow-hidden"
         data-aos="fade-up"
         data-aos-delay={`${100 * index}`}
       >
@@ -51,8 +69,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               ))}
             </div>
           </div>
-          <div className="md:col-span-3 p-6 lg:p-8 bg-secondary/20 h-full flex flex-col justify-between">
-            <Tabs defaultValue="problem" onValueChange={(value) => setActiveTab(value as TabValue)} className="w-full">
+          <div 
+            className="md:col-span-3 p-6 lg:p-8 bg-secondary/20 h-full flex flex-col justify-between"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+          >
+            <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as TabValue)} className="w-full">
               <TabsList className="grid w-full grid-cols-3">
                 {TABS.map(tab => (
                   <TabsTrigger key={tab.value} value={tab.value}>{tab.label}</TabsTrigger>
