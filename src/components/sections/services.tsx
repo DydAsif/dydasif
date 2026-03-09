@@ -64,11 +64,15 @@ const StapeIcon = () => (
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       className="h-10 w-10 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125"
-      fill="currentColor"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="6"
     >
+      <path d="M30 20 L70 20 L70 80 L30 80 L30 20 Z M30 50 L70 50" />
       <path
-        fillRule="evenodd"
-        d="M20 15 L 80 15 L 50 50 L 80 85 L 20 85 L 50 50 Z M65,28 C70,33 70,43 65,48 C75,43 75,33 65,28 Z"
+        d="M60 40 C55 45, 55 55, 60 60"
+        strokeWidth="8"
+        strokeLinecap="round"
       />
     </svg>
   );
