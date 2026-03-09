@@ -4,8 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import type { Project, ProjectTag } from '@/lib/projects-data';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, ZoomIn } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ImageLightbox } from '@/components/image-lightbox';
 
 type TabValue = 'problem' | 'solution' | 'result';
 
@@ -34,13 +35,13 @@ const Tag = ({ tag }: { tag: ProjectTag }) => (
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [activeTab, setActiveTab] = useState<TabValue>('problem');
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const activeDetail = project[activeTab];
 
   const startAutoSlide = () => {
-    // Clear any existing interval to avoid duplicates
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -54,16 +55,13 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   };
 
   const handleTabClick = (tab: TabValue) => {
-    // Clear pause timeout and slide interval
     if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
     if (intervalRef.current) clearInterval(intervalRef.current);
 
     setActiveTab(tab);
 
-    // Pause for a while before resuming
     pauseTimeoutRef.current = setTimeout(() => {
       startAutoSlide();
-       // Immediately go to the next slide after pause ends, then continue cycle
       setActiveTab(prevTab => {
         const currentIndex = TAB_SEQUENCE.indexOf(prevTab);
         const nextIndex = (currentIndex + 1) % TAB_SEQUENCE.length;
@@ -73,12 +71,10 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   };
   
   useEffect(() => {
-    // Start with an offset
     const startDelay = setTimeout(() => {
       startAutoSlide();
     }, index * 1000);
 
-    // Cleanup on unmount
     return () => {
       clearTimeout(startDelay);
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -87,95 +83,112 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   }, [index]);
 
   return (
-    <div className="new-project-card">
-      {/* Left Column */}
-      <div className="new-project-card-left">
-        <h3 className="new-project-title">{project.title}</h3>
-        <p className="new-project-description">{project.description}</p>
-        
-        <div className="space-y-3">
-          <p className="new-project-results-label">Key Results</p>
-          {project.keyResults.map((result, i) => (
-            <div key={i} className="new-project-result-item">
-              <CheckCircle className="h-4 w-4 text-[#22c55e] shrink-0" />
-              <span>{result}</span>
+    <>
+      <div className="new-project-card">
+        {/* Left Column */}
+        <div className="new-project-card-left">
+          <h3 className="new-project-title">{project.title}</h3>
+          <p className="new-project-description">{project.description}</p>
+          
+          <div className="space-y-3">
+            <p className="new-project-results-label">Key Results</p>
+            {project.keyResults.map((result, i) => (
+              <div key={i} className="new-project-result-item">
+                <CheckCircle className="h-4 w-4 text-[#22c55e] shrink-0" />
+                <span>{result}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="new-project-tags-row">
+            {project.tags.map(tag => (
+              <Tag key={tag.name} tag={tag} />
+            ))}
+          </div>
+        </div>
+
+        {/* Right Column */}
+        <div className="new-project-card-right">
+          <div className="new-project-tab-switcher">
+            {TABS.map(tab => (
+              <button
+                key={tab.value}
+                onClick={() => handleTabClick(tab.value)}
+                className={cn(
+                  'new-project-tab-button',
+                  activeTab === tab.value ? 'text-white' : 'text-slate-400'
+                )}
+              >
+                {activeTab === tab.value && (
+                  <motion.div
+                    layoutId={`active-project-pill-${index}`}
+                    className={cn(
+                      'absolute inset-0',
+                      tabActiveClasses[tab.value]
+                    )}
+                    style={{ borderRadius: 9999 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{tab.label}</span>
+              </button>
+            ))}
+          </div>
+          
+          <div className="tab-progress-bar-container">
+            <div
+              key={activeTab}
+              className={cn('tab-progress-bar-fill', tabActiveClasses[activeTab])}
+            />
+          </div>
+          
+          <div className="new-project-browser-mockup">
+            <div className="new-project-mockup-header">
+              <div className="new-project-mockup-dot bg-[#ef4444]"></div>
+              <div className="new-project-mockup-dot bg-[#f59e0b]"></div>
+              <div className="new-project-mockup-dot bg-[#22c55e]"></div>
             </div>
-          ))}
-        </div>
-
-        <div className="new-project-tags-row">
-          {project.tags.map(tag => (
-            <Tag key={tag.name} tag={tag} />
-          ))}
-        </div>
-      </div>
-
-      {/* Right Column */}
-      <div className="new-project-card-right">
-        <div className="new-project-tab-switcher">
-           {TABS.map(tab => (
-            <button
-              key={tab.value}
-              onClick={() => handleTabClick(tab.value)}
-              className={cn(
-                'new-project-tab-button',
-                activeTab === tab.value ? 'text-white' : 'text-slate-400'
-              )}
+            <div
+              className="new-project-mockup-image-wrapper group cursor-pointer"
+              onClick={() => setLightboxOpen(true)}
             >
-              {activeTab === tab.value && (
-                <motion.div
-                  layoutId={`active-project-pill-${index}`}
-                  className={cn(
-                    'absolute inset-0',
-                    tabActiveClasses[tab.value]
-                  )}
-                  style={{ borderRadius: 9999 }}
-                  transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10">{tab.label}</span>
-            </button>
-          ))}
-        </div>
-        
-         <div className="tab-progress-bar-container">
-          <div
-            key={activeTab} // This is crucial to reset the animation
-            className={cn('tab-progress-bar-fill', tabActiveClasses[activeTab])}
-          />
-        </div>
-        
-        <div className="new-project-browser-mockup">
-          <div className="new-project-mockup-header">
-            <div className="new-project-mockup-dot bg-[#ef4444]"></div>
-            <div className="new-project-mockup-dot bg-[#f59e0b]"></div>
-            <div className="new-project-mockup-dot bg-[#22c55e]"></div>
+              <AnimatePresence mode="wait">
+                  <motion.div
+                      key={activeTab}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'linear' }}
+                      className="absolute inset-0"
+                  >
+                      <Image
+                          src={activeDetail.image}
+                          alt={activeDetail.imageAlt}
+                          fill
+                          className="new-project-mockup-image"
+                          data-ai-hint={activeDetail.imageHint}
+                          unoptimized
+                      />
+                  </motion.div>
+              </AnimatePresence>
+               <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex items-center gap-2 text-white font-semibold">
+                  <ZoomIn className="h-6 w-6" />
+                  <span>View Image</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="new-project-mockup-image-wrapper">
-             <AnimatePresence mode="wait">
-                <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'linear' }}
-                    className="absolute inset-0"
-                >
-                    <Image
-                        src={activeDetail.image}
-                        alt={activeDetail.imageAlt}
-                        fill
-                        className="new-project-mockup-image"
-                        data-ai-hint={activeDetail.imageHint}
-                        unoptimized
-                    />
-                </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
 
-        <p className="new-project-caption">{activeDetail.caption}</p>
+          <p className="new-project-caption">{activeDetail.caption}</p>
+        </div>
       </div>
-    </div>
+      <ImageLightbox
+        isOpen={lightboxOpen}
+        onOpenChange={setLightboxOpen}
+        imageUrl={activeDetail.image}
+        altText={activeDetail.imageAlt}
+      />
+    </>
   );
 }
