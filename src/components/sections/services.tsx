@@ -62,18 +62,18 @@ const services = [
 const StapeIcon = () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 100 100"
+      viewBox="0 0 24 24"
       className="h-10 w-10 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125"
       fill="none"
       stroke="currentColor"
-      strokeWidth="6"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     >
-      <path d="M30 20 L70 20 L70 80 L30 80 L30 20 Z M30 50 L70 50" />
-      <path
-        d="M60 40 C55 45, 55 55, 60 60"
-        strokeWidth="8"
-        strokeLinecap="round"
-      />
+      {/* Hourglass */}
+      <path d="M5 2 L19 2 L12 12 L19 22 L5 22 L12 12 Z" />
+      {/* Clear 'S' inside, thicker stroke */}
+      <path d="M16.5 8.5 C 15 7.5, 13 7.5, 11.5 8.5 C 10 9.5, 10 11.5, 11.5 12.5 C 13 13.5, 15 13.5, 16.5 14.5 C 18 15.5, 18 17.5, 16.5 18.5 C 15 19.5, 13 19.5, 11.5 18.5" strokeWidth="2.5" />
     </svg>
   );
 
