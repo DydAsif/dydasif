@@ -15,17 +15,22 @@ export type ProjectTag = {
 export type Project = {
   title: string;
   description: string;
+  keyResults: string[];
   tags: ProjectTag[];
   problem: ProjectDetail;
   solution: ProjectDetail;
   result: ProjectDetail;
-  caseStudyUrl: string;
 };
 
 export const projects: Project[] = [
   {
     title: 'Shopify Purchase Tracking Fix',
-    description: "A client's Shopify store was failing to track purchase events accurately in Facebook Ads, leading to unreliable performance data. By implementing Meta Pixel and the Conversion API (CAPI) through Google Tag Manager with proper event deduplication, we achieved 100% purchase tracking accuracy and boosted the Event Match Quality (EMQ) score to 8.7/10.",
+    description: "A client's Shopify store was failing to track purchase events accurately in Facebook Ads, leading to unreliable performance data. By implementing Meta Pixel and the Conversion API (CAPI) through Google Tag Manager with proper event deduplication, we achieved near-perfect purchase tracking accuracy.",
+    keyResults: [
+      "100% Purchase Tracking Accuracy",
+      "EMQ Score Boosted to 8.7/10",
+      "Zero Data Loss Post-Implementation"
+    ],
     tags: [
         { name: "Shopify", icon: ShoppingCart },
         { name: "Facebook CAPI", icon: Facebook },
@@ -50,11 +55,15 @@ export const projects: Project[] = [
         imageHint: 'analytics dashboard',
         caption: "Achieved near-perfect purchase tracking accuracy and an 8.7/10 Event Match Quality score."
     },
-    caseStudyUrl: "#",
   },
   {
     title: 'GA4 & Google Ads on WordPress',
-    description: "A WordPress-based business had zero conversion tracking in Google Analytics 4 and Google Ads, making it impossible to measure campaign effectiveness. I implemented a robust tracking setup using Google Tag Manager to correctly map GA4 events and Google Ads conversions, resulting in an average of 18 accurately tracked conversions per week.",
+    description: "A WordPress-based business had zero conversion tracking in Google Analytics 4 and Google Ads, making it impossible to measure campaign effectiveness. I implemented a robust tracking setup using Google Tag Manager to correctly map GA4 events and Google Ads conversions.",
+    keyResults: [
+      "Avg. 18+ Weekly Conversions Tracked",
+      "Full GA4 & Google Ads Integration",
+      "Enabled Data-Driven Optimization"
+    ],
     tags: [
         { name: "WordPress", icon: GitBranch },
         { name: "GA4", icon: BarChart },
@@ -79,6 +88,5 @@ export const projects: Project[] = [
       imageHint: 'analytics report',
       caption: "Successfully tracking an average of 18 conversions per week, enabling data-driven campaign optimization."
     },
-    caseStudyUrl: "#",
   }
 ];
