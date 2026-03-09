@@ -126,41 +126,18 @@
 .floating-element-3 { width: 250px; height: 250px; top: 50%; left: 45%; animation-duration: 35s; animation-delay: -15s; }
 
 /* Project Card Redesign Styles */
-
 .project-card-glow {
   position: relative;
-  border-radius: 1.25rem; /* 20px */
-  border: 1px solid hsl(var(--border) / 0.5);
   background-color: hsl(var(--card));
-  transition: transform 300ms ease, box-shadow 300ms ease;
-  box-shadow: 0 0 15px hsl(var(--primary)/0.1);
+  border: 1px solid hsl(var(--border) / 0.5);
+  border-radius: 1.25rem; /* 20px */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card-glow:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 30px -5px hsl(var(--primary) / 0.2), 0 0 30px hsl(var(--primary)/0.4);
-}
-
-.project-card-glow::before {
-  content: "";
-  position: absolute;
-  inset: -1.5px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from 180deg at 50% 50%,
-    hsl(var(--neon-blue) / 0.8),
-    hsl(var(--primary) / 0.8),
-    hsl(var(--neon-blue) / 0.8)
-  );
-  filter: blur(16px);
-  opacity: 0;
-  transition: opacity 300ms ease;
-  z-index: -1;
-  animation: rotate-gradient 6s linear infinite;
-}
-
-.project-card-glow:hover::before {
-  opacity: 1;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px hsl(var(--primary) / 0.15),
+    0 0 40px hsl(var(--primary) / 0.2);
 }
 
 .gradient-text {
@@ -172,38 +149,14 @@
 }
 
 .glowing-tag {
-  color: white;
-  border-radius: 9999px;
-  padding: 0.375rem 1rem; /* 6px 16px */
-  font-size: 0.875rem; /* text-sm */
-  font-weight: 600; /* semibold */
-  position: relative;
-  overflow: hidden;
-  background-color: hsl(var(--secondary) / 0.7);
-  border: 1px solid hsl(var(--border));
-  transition: all 0.3s ease;
+    background-color: hsl(var(--secondary) / 0.7);
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem; /* 4px 12px */
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 500; /* medium */
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border));
 }
-.glowing-tag::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--tag-glow-color);
-  box-shadow: 0 0 8px var(--tag-glow-color);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-.glowing-tag:hover::after {
-  transform: scaleX(1);
-}
-.glowing-tag:hover {
-  transform: translateY(-2px);
-  border-color: var(--tag-glow-color);
-}
-
 
 .pill-tab-switcher {
   background-color: hsl(var(--secondary) / 0.5);
@@ -215,17 +168,9 @@
   color: hsl(var(--muted-foreground));
   transition: color 0.3s ease;
 }
-
-.pill-tab-button.pill-problem-active {
-    color: hsl(var(--neon-orange));
+.pill-tab-button:hover {
+  color: hsl(var(--foreground));
 }
-.pill-tab-button.pill-solution-active {
-    color: hsl(var(--neon-blue));
-}
-.pill-tab-button.pill-result-active {
-    color: hsl(var(--neon-green));
-}
-
 
 .pill-tab-indicator {
   position: absolute;
@@ -233,126 +178,43 @@
   bottom: 0;
   height: 100%;
   border-radius: 9999px;
+  box-shadow: 0 0 15px 2px var(--glow-color);
+  background-color: var(--bg-color);
   z-index: 5;
 }
 
 .pill-problem {
-  background: linear-gradient(90deg, #ff8c00, #ff4500); /* Orange */
+  --glow-color: hsl(var(--neon-orange) / 0.7);
+  --bg-color: hsl(var(--neon-orange) / 0.9);
 }
 .pill-solution {
-  background: linear-gradient(90deg, hsl(var(--neon-blue)), hsl(var(--primary))); /* Blue/Cyan */
+  --glow-color: hsl(var(--neon-blue) / 0.7);
+  --bg-color: hsl(var(--neon-blue) / 0.9);
 }
 .pill-result {
-  background: linear-gradient(90deg, #32cd32, hsl(var(--neon-green))); /* Green */
+  --glow-color: hsl(var(--neon-green) / 0.7);
+  --bg-color: hsl(var(--neon-green) / 0.9);
 }
 
 
 .browser-mockup {
-  border: 2px solid hsl(var(--border) / 0.6);
+  border: 1px solid hsl(var(--border) / 0.3);
   background: linear-gradient(145deg, hsl(var(--secondary)), hsl(var(--card)));
 }
 
 .browser-mockup-header {
-  border-bottom: 2px solid hsl(var(--border) / 0.6);
-  background-color: hsl(var(--secondary) / 0.3);
+  border-bottom: 1px solid hsl(var(--border) / 0.3);
+  background-color: hsl(var(--background) / 0.3);
 }
 
 .case-study-button {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  color: hsl(var(--primary));
+  background-color: hsl(var(--primary) / 0.1);
+  border: 1px solid hsl(var(--primary) / 0.3);
 }
 
-.case-study-button .arrow-icon {
-  transition: transform 0.3s ease-in-out;
-}
-
-.case-study-button:hover .arrow-icon {
-  transform: translateX(4px);
-}
-
-.case-study-button::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(100deg, transparent 20%, hsl(var(--primary) / 0.3) 50%, transparent 80%);
-  transform: skewX(-20deg);
-  transition: left 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.case-study-button:hover::after {
-  left: 150%;
-}
-
-.timeline-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-.timeline-container::before {
-  content: '';
-  position: absolute;
-  top: 4rem;
-  bottom: 4rem;
-  left: 1.5rem;
-  width: 2px;
-  background-color: hsl(var(--border) / 0.3);
-}
-
-@media (min-width: 1024px) {
-  .timeline-container {
-    gap: 0;
-  }
-  .timeline-container::before {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-.timeline-item {
-  position: relative;
-  padding-left: 3rem;
-}
-.timeline-item::after {
-  content: "";
-  position: absolute;
-  top: 3.5rem;
-  left: 1.5rem;
-  transform: translateX(-50%);
-  width: 1rem;
-  height: 1rem;
-  border-radius: 99px;
-  background-color: hsl(var(--background));
-  border: 3px solid hsl(var(--primary));
-  z-index: 1;
-}
-
-@media (min-width: 1024px) {
-  .timeline-item {
-    padding-left: 0;
-    width: 50%;
-  }
-  .timeline-item:nth-child(odd) {
-    align-self: flex-start;
-    padding-right: 2rem;
-  }
-  .timeline-item:nth-child(even) {
-    align-self: flex-end;
-    padding-left: 2rem;
-  }
-  .timeline-item::after {
-    left: auto;
-  }
-  .timeline-item:nth-child(odd)::after {
-    right: -0.5rem;
-    transform: translateX(50%);
-  }
-  .timeline-item:nth-child(even)::after {
-    left: -0.5rem;
-    transform: translateX(-50%);
-  }
+.case-study-button:hover {
+  background-color: hsl(var(--primary) / 0.2);
+  border-color: hsl(var(--primary) / 0.5);
 }

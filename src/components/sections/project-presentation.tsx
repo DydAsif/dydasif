@@ -15,11 +15,9 @@ export function ProjectPresentation() {
           </div>
         </div>
         
-        <div className="timeline-container">
-          {projects.map((project, index) => (
-            <div key={project.title} className="timeline-item">
-              <ProjectCard project={project} index={index} />
-            </div>
+        <div className="grid gap-8 lg:gap-12">
+          {projects.map((project) => (
+            <ProjectCard key={project.title} project={project} />
           ))}
         </div>
 
