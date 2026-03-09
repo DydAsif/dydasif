@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import type { Project, ProjectTag } from '@/lib/projects-data';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,12 +21,6 @@ const tabGradients = {
   result: 'pill-result',
 };
 
-const tabActiveStyles = {
-  problem: 'text-orange-400',
-  solution: 'text-blue-400',
-  result: 'text-green-400',
-};
-
 const GlowingTag = ({ tag }: { tag: ProjectTag }) => (
   <div className="glowing-tag inline-flex items-center gap-1.5">
     <tag.icon className="h-3 w-3" />
@@ -36,44 +30,13 @@ const GlowingTag = ({ tag }: { tag: ProjectTag }) => (
 
 export function ProjectCard({ project }: { project: Project }) {
   const [activeTab, setActiveTab] = useState<TabValue>('problem');
-  const [isHovered, setIsHovered] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const startAutoSlide = () => {
-    stopAutoSlide();
-    intervalRef.current = setInterval(() => {
-        setActiveTab(prevTab => {
-            const currentIndex = TABS.findIndex(t => t.value === prevTab);
-            const nextIndex = (currentIndex + 1) % TABS.length;
-            return TABS[nextIndex].value;
-        });
-    }, 4000);
-  };
-  
-  const stopAutoSlide = () => {
-      if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-          intervalRef.current = null;
-      }
-  };
-
-  useEffect(() => {
-    if (!isHovered) {
-        startAutoSlide();
-    } else {
-        stopAutoSlide();
-    }
-    return () => stopAutoSlide();
-  }, [isHovered]);
-
 
   const activeDetail = project[activeTab];
 
   return (
     <div
       className="project-card-glow rounded-2xl p-6 md:p-8"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      data-aos="fade-up"
     >
       <div className="grid md:grid-cols-2 gap-8">
         {/* Left Side: Text Content */}
@@ -101,7 +64,7 @@ export function ProjectCard({ project }: { project: Project }) {
                 onClick={() => setActiveTab(tab.value)}
                 className={cn(
                   "pill-tab-button relative w-full rounded-full px-3 py-1.5 text-xs font-medium",
-                   activeTab === tab.value ? tabActiveStyles[tab.value] : ""
+                  activeTab === tab.value ? 'text-white' : ""
                 )}
               >
                 {tab.label}
@@ -119,7 +82,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </div>
 
           {/* Browser Mockup and Image */}
-          <div className="browser-mockup w-full rounded-lg overflow-hidden shadow-lg shadow-black/20 flex-grow">
+          <div className="browser-mockup w-full rounded-lg overflow-hidden shadow-lg shadow-black/20 flex-grow group">
             <div className="browser-mockup-header h-7 flex items-center px-3 gap-1.5">
               <div className="h-2 w-2 rounded-full bg-red-500"></div>
               <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
@@ -129,9 +92,9 @@ export function ProjectCard({ project }: { project: Project }) {
                <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTab}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     className="absolute inset-0"
                   >
@@ -139,15 +102,12 @@ export function ProjectCard({ project }: { project: Project }) {
                         src={activeDetail.image}
                         alt={activeDetail.imageAlt}
                         fill
-                        className="object-cover"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
                         data-ai-hint={activeDetail.imageHint}
                         unoptimized
                     />
                   </motion.div>
                 </AnimatePresence>
-            </div>
-            <div className="bg-secondary/20 text-center p-2 text-[11px] text-muted-foreground">
-              <p>{activeDetail.caption}</p>
             </div>
           </div>
         </div>

@@ -10,7 +10,6 @@ export type ProjectDetail = {
 export type ProjectTag = {
     name: string;
     icon: React.FC<React.SVGProps<SVGSVGElement>>;
-    color: string;
 };
 
 export type Project = {
@@ -28,10 +27,10 @@ export const projects: Project[] = [
     title: 'Shopify Purchase Tracking Fix',
     description: "A client's Shopify store was failing to track purchase events accurately in Facebook Ads, leading to unreliable performance data. By implementing Meta Pixel and the Conversion API (CAPI) through Google Tag Manager with proper event deduplication, we achieved 100% purchase tracking accuracy and boosted the Event Match Quality (EMQ) score to 8.7/10.",
     tags: [
-        { name: "Shopify", icon: ShoppingCart, color: "var(--tag-color-3)" },
-        { name: "Facebook CAPI", icon: Facebook, color: "var(--tag-color-5)" },
-        { name: "GTM", icon: Settings, color: "var(--tag-color-1)" },
-        { name: "Deduplication", icon: GitBranch, color: "var(--tag-color-2)" },
+        { name: "Shopify", icon: ShoppingCart },
+        { name: "Facebook CAPI", icon: Facebook },
+        { name: "GTM", icon: Settings },
+        { name: "Deduplication", icon: GitBranch },
     ],
     problem: {
       image: 'https://i.ibb.co/HTHLrdV3/prob-1.jpg',
@@ -57,10 +56,10 @@ export const projects: Project[] = [
     title: 'GA4 & Google Ads on WordPress',
     description: "A WordPress-based business had zero conversion tracking in Google Analytics 4 and Google Ads, making it impossible to measure campaign effectiveness. I implemented a robust tracking setup using Google Tag Manager to correctly map GA4 events and Google Ads conversions, resulting in an average of 18 accurately tracked conversions per week.",
     tags: [
-        { name: "WordPress", icon: GitBranch, color: "var(--tag-color-5)" },
-        { name: "GA4", icon: BarChart, color: "var(--tag-color-4)" },
-        { name: "Google Ads", icon: TrendingUp, color: "var(--tag-color-1)" },
-        { name: "GTM", icon: Settings, color: "var(--tag-color-2)" },
+        { name: "WordPress", icon: GitBranch },
+        { name: "GA4", icon: BarChart },
+        { name: "Google Ads", icon: TrendingUp },
+        { name: "GTM", icon: Settings },
     ],
     problem: {
       image: 'https://i.ibb.co/8DhXzRMj/prob-2-ss.jpg',
