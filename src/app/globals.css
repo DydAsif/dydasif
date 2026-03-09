@@ -395,3 +395,12 @@
 .glowing-ring-animation {
     animation: glowing-ring 4s ease-in-out infinite;
 }
+
+.about-photo-frame {
+  background-color: #080d14;
+  box-shadow: inset 0 0 40px 20px #080d14;
+}
+
+.about-photo-img {
+  filter: brightness(0.7) contrast(1.1);
+}

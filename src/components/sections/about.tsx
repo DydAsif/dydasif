@@ -93,13 +93,13 @@ export function About() {
             data-aos-delay="200"
           >
             <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-            <div className="relative bg-card p-2 rounded-lg overflow-hidden shadow-2xl border-2 border-primary/20">
+            <div className="relative p-2 rounded-lg overflow-hidden shadow-2xl border-2 border-primary/20 about-photo-frame">
                 <Image
                   src="https://i.ibb.co/yBgznW1r/Gemini-Generated-Image-fu4jc9fu4jc9fu4j-1.png"
                   alt="Ashfakur Rahman Asif photo"
                   width={500}
                   height={500}
-                  className="relative object-cover w-full h-auto rounded-md"
+                  className="relative object-cover w-full h-auto rounded-md about-photo-img"
                   data-ai-hint="professional man"
                 />
               </div>
