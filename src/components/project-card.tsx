@@ -66,7 +66,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </div>
 
           {/* Right Side: Image Showcase */}
-          <div className="flex flex-col md:flex-[0_0_55%]">
+          <div className="flex flex-col md:flex-[0_0_55%] min-w-0">
               <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as TabValue)} className="w-full">
                 <TabsList className="grid w-full grid-cols-3 rounded-full p-1 mb-4 h-auto bg-secondary/50">
                     {TABS.map(tab => (
@@ -103,7 +103,7 @@ export function ProjectCard({ project }: { project: Project }) {
                                   src={activeDetail.image}
                                   alt={activeDetail.imageAlt}
                                   fill
-                                  className="object-cover w-full h-auto block"
+                                  className="object-cover"
                                   data-ai-hint={activeDetail.imageHint}
                                   unoptimized
                               />
