@@ -92,14 +92,19 @@ export function About() {
             data-aos-duration="800"
             data-aos-delay="200"
           >
-            <Image
-              src="https://i.ibb.co/yBgznW1r/Gemini-Generated-Image-fu4jc9fu4jc9fu4j-1.png"
-              alt="Ashfakur Rahman Asif photo"
-              width={500}
-              height={500}
-              className="relative object-cover w-[300px] h-[300px] shadow-2xl rounded-lg"
-              data-ai-hint="professional man"
-            />
+            <div 
+                className="rounded-lg border border-primary/20 shadow-lg hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:scale-105 transition-all duration-300 p-2"
+                style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a1628 100%)' }}
+            >
+                <Image
+                  src="https://i.ibb.co/yBgznW1r/Gemini-Generated-Image-fu4jc9fu4jc9fu4j-1.png"
+                  alt="Ashfakur Rahman Asif photo"
+                  width={500}
+                  height={500}
+                  className="relative object-cover w-[300px] h-[300px] rounded-lg"
+                  data-ai-hint="professional man"
+                />
+            </div>
           </div>
 
           <Card 
