@@ -327,3 +327,13 @@
 .tab-result:hover {
   box-shadow: 0 0 20px hsl(var(--neon-green) / 0.6);
 }
+
+.tab-problem[data-state=active] {
+  color: hsl(var(--neon-red));
+}
+.tab-solution[data-state=active] {
+  color: hsl(var(--neon-blue));
+}
+.tab-result[data-state=active] {
+  color: hsl(var(--neon-green));
+}
