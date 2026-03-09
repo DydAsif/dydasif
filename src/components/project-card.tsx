@@ -74,14 +74,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <div
-      className="project-card-glow"
+      className="project-card-glow min-h-[400px]"
       data-aos="fade-up"
       data-aos-delay={`${100 * index}`}
       data-aos-duration="800"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="p-8 grid lg:grid-cols-2 gap-8 items-center">
+      <div className="p-8 grid lg:grid-cols-2 gap-8 items-stretch h-full">
         {/* Left Side: Text Content */}
         <div className="flex flex-col h-full">
           <h3 className="text-3xl font-bold mb-3 gradient-text">{project.title}</h3>
@@ -131,7 +131,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               <div className="h-3 w-3 rounded-full bg-yellow-500/70"></div>
               <div className="h-3 w-3 rounded-full bg-green-500/70"></div>
             </div>
-            <div className="relative flex-grow min-h-[250px] md:min-h-[300px] p-4 bg-black/20">
+            <div className="relative flex-grow p-4 bg-black/20">
                <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTab}
@@ -146,7 +146,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                             src={activeDetail.image}
                             alt={activeDetail.imageAlt}
                             fill
-                            className="object-contain object-center group-hover:scale-105 transition-transform duration-300"
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
                             data-ai-hint={activeDetail.imageHint}
                             unoptimized
                         />
