@@ -1,31 +1,12 @@
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-import { Facebook, TrendingUp, GitBranch, ChevronDown, ZoomIn, ExternalLink } from 'lucide-react';
+import { Facebook, TrendingUp, GitBranch, ChevronDown, ZoomIn, ExternalLink, Server } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ImageLightbox } from '../image-lightbox';
-
-const StapeLogo = () => (
-    <svg
-      role="img"
-      viewBox="0 0 100 100"
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125"
-      aria-label="Stape.io logo"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        fill="#00ccff"
-        transform="translate(100, 0) scale(-1, 1)"
-        d="M60.8333 0H0V100H60.8333L29.1667 50L60.8333 0ZM73.2031 46.5208C73.2031 43.6458 72.5781 41.1198 71.3281 38.9427C70.0781 36.7656 68.3073 35.0781 65.9115 33.8802C63.5156 32.6823 60.7188 32.0833 57.5208 32.0833C53.75 32.0833 50.4688 33.0599 47.6771 35.0182C44.8854 36.9766 42.7188 39.7318 41.1719 43.2839L46.3542 45.5469C46.8099 44.4219 47.5026 43.4948 48.4323 42.7656C49.362 42.0365 50.4688 41.4583 51.75 41.0312C53.0312 40.6042 54.3385 40.3906 55.6719 40.3906C57.474 40.3906 59.0104 40.8568 60.2812 41.7891C61.5521 42.7214 62.1875 44.0859 62.1875 45.8828C62.1875 46.9922 61.9401 48.0078 61.4453 48.9323C60.9505 49.8568 60.2318 50.6901 59.2891 51.4323L53.0729 56.849C50.612 58.7448 48.9505 60.9661 48.086 63.513C47.2214 66.0599 46.7891 68.7995 46.7891 71.7318V71.8984C46.7891 74.7734 47.4141 77.3 48.6641 79.4766C49.9141 81.6536 51.6849 83.3411 54.0807 84.5391C56.4766 85.737 59.2734 86.3359 62.4714 86.3359C66.0156 86.3359 69.1719 85.4193 71.9323 83.5859C74.6927 81.7526 76.8177 79.1484 78.3073 75.7734L73.125 73.5104C72.6693 74.6354 71.9766 75.5625 71.0469 76.2917C70.1172 77.0208 69.0104 77.6016 67.7292 78.0286C66.4479 78.4557 65.1406 78.6693 63.8073 78.6693C62.0052 78.6693 60.4688 78.1927 59.1979 77.2604C57.9271 76.3281 57.2917 74.9635 57.2917 73.1667V73.0833C57.2917 71.974 57.5391 70.9583 58.0339 70.0339C58.5286 69.1094 59.2474 68.276 60.1875 67.5339L66.4036 62.1172C68.8646 60.2214 70.526 58.0026 71.3906 55.4557C72.2552 52.9089 72.6875 50.1693 72.6875 47.237V47.3125L73.2031 46.5208Z"
-      />
-    </svg>
-);
-
 
 const services = [
   {
@@ -86,7 +67,7 @@ const tools: { name: string; logo: string | JSX.Element; displayName: string }[]
     { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', displayName: 'WordPress' },
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
-    { name: 'Stape.io', logo: <StapeLogo />, displayName: 'Stape' },
+    { name: 'Stape.io', logo: <Server className="h-10 w-10 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125" />, displayName: 'Stape.io' },
 ];
 
 export function Services() {
