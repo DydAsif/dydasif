@@ -97,7 +97,7 @@ export function Hero() {
         <div data-aos="zoom-in" data-aos-duration="800" className="relative mb-6">
             <div className="absolute -inset-2 rounded-full glowing-ring-animation"></div>
             <Image
-              src="https://i.ibb.co/S4G9CF0g/prt-img.png"
+              src="https://i.ibb.co/P3pHX2D/last.png"
               alt="Ashfakur Rahman Asif"
               width={200}
               height={200}

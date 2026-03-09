@@ -102,7 +102,7 @@ export function About() {
                 style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a1628 100%)' }}
             >
                 <Image
-                  src="https://i.ibb.co/S4G9CF0g/prt-img.png"
+                  src="https://i.ibb.co/P3pHX2D/last.png"
                   alt="Ashfakur Rahman Asif photo"
                   width={320}
                   height={420}

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description: 'Digital Marketing Strategist & Tracking Expert specializing in GA4, Meta CAPI, and funnel automation.',
     images: [
       {
-        url: 'https://i.ibb.co/S4G9CF0g/prt-img.png',
+        url: 'https://i.ibb.co/P3pHX2D/last.png',
         width: 1200,
         height: 630,
         alt: 'Ashfakur Rahman Asif - Digital Marketing Portfolio',
