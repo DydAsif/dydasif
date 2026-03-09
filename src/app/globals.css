@@ -79,6 +79,8 @@
 @keyframes focus-glow { 0%, 100% { box-shadow: 0 0 0 2px transparent; } 50% { box-shadow: 0 0 8px 2px hsl(var(--primary) / 0.6); } }
 @keyframes typing { from { width: 0; } to { width: 100%; } }
 @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: hsl(var(--primary)); } }
+@keyframes progress-bar-fill { from { width: 0%; } to { width: 100%; } }
+
 
 /* Section Backgrounds */
 .section-bg {
@@ -136,7 +138,7 @@
 
 /* New Project Section Redesign */
 .new-project-card {
-  max-width: 1100px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   background-color: #111827;
@@ -144,7 +146,7 @@
   border-radius: 16px;
   display: grid;
   grid-template-columns: 420px 1fr;
-  min-height: 460px;
+  min-height: 480px;
   box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
   overflow: hidden;
 }
@@ -263,12 +265,31 @@
   color: white;
 }
 
+.tab-progress-bar-container {
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: -12px;
+  margin-bottom: 16px;
+}
+
+.tab-progress-bar-fill {
+  height: 100%;
+  animation: progress-bar-fill 3s linear forwards;
+}
+.tab-progress-bar-fill.active-problem { background-color: #ef4444; }
+.tab-progress-bar-fill.active-solution { background-color: #3b82f6; }
+.tab-progress-bar-fill.active-result { background-color: #22c55e; }
+
+
 .new-project-browser-mockup {
   background-color: #1e293b;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .new-project-mockup-header {
@@ -290,7 +311,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  aspect-ratio: 900 / 550;
+  flex-grow: 1;
 }
 
 .new-project-mockup-image {

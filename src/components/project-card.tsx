@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import type { Project, ProjectTag } from '@/lib/projects-data';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -15,6 +15,10 @@ const TABS: { value: TabValue; label: string }[] = [
   { value: 'result', label: 'Result' },
 ];
 
+const TAB_SEQUENCE: TabValue[] = ['problem', 'solution', 'result'];
+const AUTO_SLIDE_INTERVAL = 3000; // 3 seconds
+const USER_PAUSE_DURATION = 8000; // 8 seconds
+
 const tabActiveClasses: Record<TabValue, string> = {
   problem: 'active-problem',
   solution: 'active-solution',
@@ -28,9 +32,59 @@ const Tag = ({ tag }: { tag: ProjectTag }) => (
   </div>
 );
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [activeTab, setActiveTab] = useState<TabValue>('problem');
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const activeDetail = project[activeTab];
+
+  const startAutoSlide = () => {
+    // Clear any existing interval to avoid duplicates
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+      setActiveTab(prevTab => {
+        const currentIndex = TAB_SEQUENCE.indexOf(prevTab);
+        const nextIndex = (currentIndex + 1) % TAB_SEQUENCE.length;
+        return TAB_SEQUENCE[nextIndex];
+      });
+    }, AUTO_SLIDE_INTERVAL);
+  };
+
+  const handleTabClick = (tab: TabValue) => {
+    // Clear pause timeout and slide interval
+    if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    setActiveTab(tab);
+
+    // Pause for a while before resuming
+    pauseTimeoutRef.current = setTimeout(() => {
+      startAutoSlide();
+       // Immediately go to the next slide after pause ends, then continue cycle
+      setActiveTab(prevTab => {
+        const currentIndex = TAB_SEQUENCE.indexOf(prevTab);
+        const nextIndex = (currentIndex + 1) % TAB_SEQUENCE.length;
+        return TAB_SEQUENCE[nextIndex];
+      });
+    }, USER_PAUSE_DURATION);
+  };
+  
+  useEffect(() => {
+    // Start with an offset
+    const startDelay = setTimeout(() => {
+      startAutoSlide();
+    }, index * 1000);
+
+    // Cleanup on unmount
+    return () => {
+      clearTimeout(startDelay);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    };
+  }, [index]);
 
   return (
     <div className="new-project-card">
@@ -62,7 +116,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {TABS.map(tab => (
             <button
               key={tab.value}
-              onClick={() => setActiveTab(tab.value)}
+              onClick={() => handleTabClick(tab.value)}
               className={cn(
                 'new-project-tab-button',
                 activeTab === tab.value && tabActiveClasses[tab.value]
@@ -71,6 +125,13 @@ export function ProjectCard({ project }: { project: Project }) {
               {tab.label}
             </button>
           ))}
+        </div>
+        
+         <div className="tab-progress-bar-container">
+          <div
+            key={activeTab} // This is crucial to reset the animation
+            className={cn('tab-progress-bar-fill', tabActiveClasses[activeTab])}
+          />
         </div>
         
         <div className="new-project-browser-mockup">
@@ -86,7 +147,7 @@ export function ProjectCard({ project }: { project: Project }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
+                    transition={{ duration: 0.3, ease: 'linear' }}
                     className="absolute inset-0"
                 >
                     <Image
