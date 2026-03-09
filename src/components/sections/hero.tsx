@@ -14,7 +14,12 @@ const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string
   }
 };
 
-const subtitles = ["Digital Marketing Expert", "Tracking & Analytics Specialist", "Facebook Pixel Expert"];
+const subtitles = [
+    'Digital Marketing Expert', 
+    'Facebook Pixel & CAPI Specialist', 
+    'GA4 & Google Ads Expert', 
+    'Tracking & Analytics Pro'
+];
 
 function Counter({ to, duration = 2 }: { to: number; duration?: number }) {
     const [count, setCount] = useState(0);
@@ -59,6 +64,7 @@ export function Hero() {
   const [currentSubtitle, setCurrentSubtitle] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(120);
+  const [particles, setParticles] = useState<React.JSX.Element[]>([]);
   
   useEffect(() => {
     const handleTyping = () => {
@@ -82,11 +88,36 @@ export function Hero() {
     return () => clearTimeout(typingTimeout);
   }, [currentSubtitle, isDeleting, index, typingSpeed]);
 
+  useEffect(() => {
+    const generateParticles = () => {
+      const particleArray = [...Array(50)].map((_, i) => (
+        <div
+          key={i}
+          className="particle"
+          style={
+            {
+              '--x': `${Math.random() * 100}vw`,
+              '--y': `${Math.random() * 100}vh`,
+              '--d': `${Math.random() * 10 + 15}s`,
+              '--delay': `${Math.random() * -25}s`,
+              '--s': `${Math.random() * 2 + 1}px`,
+            } as React.CSSProperties
+          }
+        ></div>
+      ));
+      setParticles(particleArray);
+    };
+    generateParticles();
+  }, []);
+
   return (
     <section 
       id="home"
       className="h-screen min-h-[800px] flex flex-col items-center justify-center relative text-center overflow-hidden p-4 hero-professional-bg"
     >
+       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            {particles}
+        </div>
        <div className="floating-element-container">
         <div className="floating-element floating-element-1"></div>
         <div className="floating-element floating-element-2"></div>
@@ -114,6 +145,10 @@ export function Hero() {
         >
             Ashfakur Rahman Asif
         </h1>
+        <div 
+          data-aos="fade-up" data-aos-duration="800" data-aos-delay="150"
+          className="mt-2 h-0.5 w-48 bg-primary/70 glow-underline"
+        ></div>
 
         <p 
             data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
@@ -134,7 +169,7 @@ export function Hero() {
             </Button>
             <Button asChild variant="secondary" size="lg" className="h-14 px-10 text-lg font-bold transition-transform transform hover:scale-105 shadow-lg shadow-black/20 hover:shadow-black/40">
                  <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
-                    Hire Me
+                    Let's Talk
                   </a>
             </Button>
         </div>

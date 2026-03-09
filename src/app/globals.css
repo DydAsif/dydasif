@@ -395,3 +395,39 @@
 .glowing-ring-animation {
     animation: glowing-ring 4s ease-in-out infinite;
 }
+
+@keyframes float-particles {
+  0% {
+    transform: translateY(0vh);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-30vh);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  background-color: hsl(var(--primary));
+  border-radius: 50%;
+  animation: float-particles linear infinite;
+  top: var(--y);
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  animation-duration: var(--d);
+  animation-delay: var(--delay);
+}
+
+@keyframes glowing-line {
+  0%, 100% { box-shadow: 0 0 4px hsl(var(--primary) / 0.6); }
+  50% { box-shadow: 0 0 8px hsl(var(--primary) / 0.9); }
+}
+
+.glow-underline {
+  animation: glowing-line 3s ease-in-out infinite;
+}
