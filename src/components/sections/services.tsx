@@ -60,15 +60,17 @@ const services = [
 ];
 
 const StapeSIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    className="h-10 w-10 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125"
-  >
-    <path d="M11.5,4.5 C15.5,4.5 17.5,7 17.5,9.5 C17.5,12 15.5,13.5 13.5,14 C12.5,14.25 11.5,15 11.5,16.5 C11.5,18 10,19.5 8.5,19.5 C4.5,19.5 2.5,17 2.5,14.5 C2.5,12 4.5,10.5 6.5,10 C7.5,9.75 8.5,9 8.5,7.5 C8.5,6 10,4.5 11.5,4.5Z" />
-  </svg>
-);
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 52 48"
+      fill="currentColor"
+      className="h-10 w-10 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125"
+    >
+      <path
+        d="M0 0 L 24 24 L 0 48 L 12 48 L 36 24 L 12 0 Z M 49.5,33.1c-1.7,2-3.8,3.5-6.4,4.4c-2.6,0.9-5.3,0.9-8.1-0.1c-2.8-1-5.1-2.6-7-4.9 c-1.8-2.3-2.7-5-2.7-8.2c0-3.3,0.9-6.1,2.6-8.5c1.8-2.4,4.1-4.2,6.9-5.3c2.8-1.1,5.5-1.1,8.1,0c2.6,1,4.8,2.7,6.4,4.9l-3.6,2.1 c-1.1-1.4-2.5-2.4-4.2-3c-1.7-0.6-3.4-0.6-5.1,0c-1.8,0.6-3.2,1.6-4.3,2.9c-1.1,1.4-1.6,3.1-1.6,5.1c0,2,0.5,3.8,1.6,5.1 c1.1,1.4,2.5,2.4,4.3,2.9c1.8,0.6,3.4,0.6,5.1,0c1.7-0.6,3.1-1.6,4.2-3L49.5,33.1z"
+      />
+    </svg>
+  );
 
 
 const tools: { name: string; logo: string | JSX.Element; displayName: string }[] = [
