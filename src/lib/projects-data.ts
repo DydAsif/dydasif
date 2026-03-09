@@ -30,6 +30,7 @@ export const projects: Project[] = [
     keyResults: [
       "100% Purchase Tracking Accuracy",
       "EMQ Score Boosted to 8.7/10",
+      "Zero Data Loss Post-Implementation",
     ],
     tags: [
         { name: "Shopify", icon: ShoppingCart },
@@ -54,10 +55,6 @@ export const projects: Project[] = [
         imageAlt: 'Facebook Events Manager showing an 8.7/10 Event Match Quality score',
         imageHint: 'analytics dashboard',
         caption: "Achieved near-perfect purchase tracking accuracy and an 8.7/10 Event Match Quality score.",
-        resultDetails: [
-            "All Events Tracked & Active",
-            "100% Purchase Tracking Accuracy Achieved"
-        ]
     },
   },
   {
