@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-import { Facebook, TrendingUp, GitBranch, ChevronDown, ZoomIn, ExternalLink, Server } from 'lucide-react';
+import { Facebook, TrendingUp, GitBranch, ChevronDown, ZoomIn, ExternalLink } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -59,6 +59,18 @@ const services = [
   },
 ];
 
+const StapeSIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className="h-10 w-10 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125"
+  >
+    <path d="M11.5,4.5 C15.5,4.5 17.5,7 17.5,9.5 C17.5,12 15.5,13.5 13.5,14 C12.5,14.25 11.5,15 11.5,16.5 C11.5,18 10,19.5 8.5,19.5 C4.5,19.5 2.5,17 2.5,14.5 C2.5,12 4.5,10.5 6.5,10 C7.5,9.75 8.5,9 8.5,7.5 C8.5,6 10,4.5 11.5,4.5Z" />
+  </svg>
+);
+
+
 const tools: { name: string; logo: string | JSX.Element; displayName: string }[] = [
     { name: 'Google Tag Manager', logo: 'https://cdn.simpleicons.org/googletagmanager/00ccff', displayName: 'GTM' },
     { name: 'Meta (Facebook)', logo: 'https://cdn.simpleicons.org/meta/00ccff', displayName: 'Meta' },
@@ -67,7 +79,7 @@ const tools: { name: string; logo: string | JSX.Element; displayName: string }[]
     { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', displayName: 'WordPress' },
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
-    { name: 'Stape.io', logo: <Server className="h-10 w-10 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125" />, displayName: 'Stape.io' },
+    { name: 'Stape.io', logo: <StapeSIcon />, displayName: 'Stape.io' },
 ];
 
 export function Services() {
