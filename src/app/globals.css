@@ -330,10 +330,13 @@
 
 .tab-problem[data-state=active] {
   color: hsl(var(--neon-red));
+  background-color: hsl(var(--neon-red) / 0.15);
 }
 .tab-solution[data-state=active] {
   color: hsl(var(--neon-blue));
+  background-color: hsl(var(--neon-blue) / 0.15);
 }
 .tab-result[data-state=active] {
   color: hsl(var(--neon-green));
+  background-color: hsl(var(--neon-green) / 0.15);
 }
