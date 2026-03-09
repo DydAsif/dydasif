@@ -180,7 +180,7 @@
 }
 
 .project-tag {
-  @apply inline-flex items-center gap-2 rounded-md border border-border bg-secondary/30 px-3 py-1.5 text-sm font-medium text-muted-foreground transition-all duration-200 ease-in-out;
+  @apply inline-flex items-center gap-2 rounded-md border border-border bg-secondary/30 px-[18px] py-[10px] text-sm font-medium text-muted-foreground transition-all duration-200 ease-in-out;
 }
 
 .project-tag:hover {
