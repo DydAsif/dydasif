@@ -113,16 +113,27 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       {/* Right Column */}
       <div className="new-project-card-right">
         <div className="new-project-tab-switcher">
-          {TABS.map(tab => (
+           {TABS.map(tab => (
             <button
               key={tab.value}
               onClick={() => handleTabClick(tab.value)}
               className={cn(
                 'new-project-tab-button',
-                activeTab === tab.value && tabActiveClasses[tab.value]
+                activeTab === tab.value ? 'text-white' : 'text-slate-400'
               )}
             >
-              {tab.label}
+              {activeTab === tab.value && (
+                <motion.div
+                  layoutId={`active-project-pill-${index}`}
+                  className={cn(
+                    'absolute inset-0',
+                    tabActiveClasses[tab.value]
+                  )}
+                  style={{ borderRadius: 9999 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{tab.label}</span>
             </button>
           ))}
         </div>
