@@ -385,3 +385,13 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 }
+
+@keyframes glowing-ring {
+  0% { box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--primary)); }
+  50% { box-shadow: 0 0 20px hsl(var(--primary)/0.7), 0 0 30px hsl(var(--primary)/0.7), 0 0 40px hsl(var(--primary)/0.5); }
+  100% { box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--primary)); }
+}
+
+.glowing-ring-animation {
+    animation: glowing-ring 4s ease-in-out infinite;
+}

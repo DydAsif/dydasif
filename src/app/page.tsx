@@ -7,7 +7,6 @@ import { About } from '@/components/sections/about';
 import { Services } from '@/components/sections/services';
 import { ProjectPresentation } from '@/components/sections/project-presentation';
 import { Certifications } from '@/components/sections/certifications';
-import { Socials } from '@/components/sections/socials';
 import { Contact } from '@/components/sections/contact';
 
 export default function Home() {
@@ -22,7 +21,6 @@ export default function Home() {
           <Services />
           <ProjectPresentation />
           <Certifications />
-          <Socials />
           <Contact />
         </main>
         <Footer />

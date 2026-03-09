@@ -1,8 +1,10 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { useInView } from 'framer-motion';
+import { TrendingUp, CheckCircle, UserCheck } from 'lucide-react';
 
 const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string) => {
   e.preventDefault();
@@ -12,73 +14,134 @@ const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string
   }
 };
 
+const subtitles = ["Digital Marketing Expert", "Tracking & Analytics Specialist", "Facebook Pixel Expert"];
+
+function Counter({ to, duration = 2 }: { to: number; duration?: number }) {
+    const [count, setCount] = useState(0);
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+    useEffect(() => {
+        if (isInView) {
+            let start = 0;
+            const end = to;
+            if (start === end) return;
+
+            let startTime: number | null = null;
+            const step = (timestamp: number) => {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+                setCount(Math.floor(progress * end));
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    }, [isInView, to, duration]);
+
+    return <span ref={ref}>{count}</span>;
+}
+
+const StatItem = ({ to, text, icon }: { to: number; text: string; icon: React.ReactNode }) => (
+    <div className="flex flex-col items-center gap-2 text-center">
+        <div className="text-primary">{icon}</div>
+        <p className="text-3xl md:text-4xl font-bold text-white">
+            <Counter to={to} />+
+        </p>
+        <p className="text-sm text-muted-foreground">{text}</p>
+    </div>
+);
+
+
 export function Hero() {
+  const [index, setIndex] = useState(0);
+  const [currentSubtitle, setCurrentSubtitle] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(120);
+  
+  useEffect(() => {
+    const handleTyping = () => {
+      const fullText = subtitles[index];
+      if (isDeleting) {
+        setCurrentSubtitle(fullText.substring(0, currentSubtitle.length - 1));
+        setTypingSpeed(50);
+      } else {
+        setCurrentSubtitle(fullText.substring(0, currentSubtitle.length + 1));
+        setTypingSpeed(120);
+      }
+
+      if (!isDeleting && currentSubtitle === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && currentSubtitle === '') {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % subtitles.length);
+      }
+    };
+    const typingTimeout = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(typingTimeout);
+  }, [currentSubtitle, isDeleting, index, typingSpeed]);
 
   return (
     <section 
       id="home"
-      className="h-screen flex flex-col items-center justify-center relative text-center overflow-hidden p-4 hero-professional-bg"
+      className="h-screen min-h-[800px] flex flex-col items-center justify-center relative text-center overflow-hidden p-4 hero-professional-bg"
     >
        <div className="floating-element-container">
         <div className="floating-element floating-element-1"></div>
         <div className="floating-element floating-element-2"></div>
         <div className="floating-element floating-element-3"></div>
       </div>
-      {/* Adding pb-16 to prevent overlap with the absolutely positioned scroll button */}
-      <div className="container mx-auto max-w-7xl px-4 md:px-6 pb-16">
-        <div 
-            className="flex flex-col md:flex-row items-center justify-center gap-6"
-        >
-             <Image
+      
+      <div className="z-10 flex flex-col items-center justify-center">
+        <div data-aos="zoom-in" data-aos-duration="800" className="relative mb-6">
+            <div className="absolute -inset-2 rounded-full glowing-ring-animation"></div>
+            <Image
               src="https://i.ibb.co/yBgznW1r/Gemini-Generated-Image-fu4jc9fu4jc9fu4j-1.png"
               alt="Ashfakur Rahman Asif"
-              width={150}
-              height={150}
-              className="object-cover w-28 h-28 md:w-36 md:h-36 rounded-full shadow-2xl border-4 border-primary/50"
+              width={200}
+              height={200}
+              className="relative object-cover w-48 h-48 md:w-52 md:h-52 rounded-full shadow-2xl border-4 border-primary/50"
               data-ai-hint="professional man"
               priority
-              data-aos="zoom-in"
-              data-aos-duration="800"
             />
-            <div 
-                className="text-center md:text-left"
-                data-aos="fade-left"
-                data-aos-duration="800"
-                data-aos-delay="200"
-            >
-                <h1 
-                    className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
-                >
-                    Ashfakur Rahman Asif
-                </h1>
-
-                <p 
-                    className="text-lg md:text-2xl font-semibold mt-2 text-primary-foreground/90 tracking-wide"
-                >
-                    Digital Marketing & Tracking Expert
-                </p>
-            </div>
         </div>
-        <div 
-            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
-             data-aos="fade-up"
-             data-aos-duration="800"
-             data-aos-delay="400"
+        
+        <h1 
+            data-aos="fade-up" data-aos-duration="800" data-aos-delay="100"
+            className="text-4xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
         >
-            <Button asChild size="lg">
-                 <a
-                    href="https://drive.google.com/file/d/1MJ189oOYLJDI2-8HdXNnK_CTUO7fL7ze/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+            Ashfakur Rahman Asif
+        </h1>
+
+        <p 
+            data-aos="fade-up" data-aos-duration="800" data-aos-delay="200"
+            className="text-lg md:text-2xl font-semibold mt-4 text-primary-foreground/90 tracking-wide min-h-[3rem]"
+        >
+            <span>{currentSubtitle}</span>
+            <span className="border-r-2 border-primary animate-ping"></span>
+        </p>
+        
+        <div 
+            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+             data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"
+        >
+            <Button asChild size="lg" className="h-14 px-10 text-lg font-bold transition-transform transform hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-primary/40">
+                 <a href="https://drive.google.com/file/d/1MJ189oOYLJDI2-8HdXNnK_CTUO7fL7ze/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                     Download CV
                   </a>
             </Button>
-            <Button asChild variant="secondary" size="lg">
+            <Button asChild variant="secondary" size="lg" className="h-14 px-10 text-lg font-bold transition-transform transform hover:scale-105 shadow-lg shadow-black/20 hover:shadow-black/40">
                  <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
                     Hire Me
                   </a>
             </Button>
+        </div>
+
+        <div className="mt-16 grid grid-cols-3 gap-8 md:gap-16" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+            <StatItem to={50} text="Projects Completed" icon={<CheckCircle className="w-8 h-8"/>} />
+            <StatItem to={3} text="Years Experience" icon={<TrendingUp className="w-8 h-8"/>} />
+            <StatItem to={100} text="Client Satisfaction" icon={<UserCheck className="w-8 h-8"/>} />
         </div>
       </div>
         
