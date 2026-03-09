@@ -138,7 +138,7 @@
 
 /* New Project Section Redesign */
 .new-project-card {
-  max-width: 1100px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   background-color: #111827;
@@ -148,7 +148,7 @@
   grid-template-columns: 420px 1fr;
   box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
   overflow: hidden;
-  height: 460px;
+  height: 520px;
 }
 
 .new-project-card-left {
@@ -284,16 +284,18 @@
 
 
 .new-project-browser-mockup {
-  background-color: #1e293b;
+  background-color: #0f172a;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  padding: 12px; /* Added padding to create a thicker frame */
+  border: 1px solid #1e293b;
 }
 
 .new-project-mockup-header {
-  background-color: #0f172a;
-  padding: 10px 14px;
+  background-color: transparent;
+  padding: 0 0 10px 2px;
   display: flex;
   gap: 6px;
   align-items: center;
@@ -312,6 +314,7 @@
   overflow: hidden;
   aspect-ratio: 900 / 500;
   background-color: #0f172a;
+  border-radius: 6px;
 }
 
 .new-project-mockup-image {
@@ -333,7 +336,7 @@
 }
 
 /* Responsive */
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .new-project-card {
     grid-template-columns: 1fr;
     width: 100%;

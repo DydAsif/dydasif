@@ -181,6 +181,17 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           </div>
 
           <p className="new-project-caption">{activeDetail.caption}</p>
+          
+          {activeTab === 'result' && activeDetail.resultDetails && (
+            <div className="mt-auto pt-4 space-y-2">
+              {activeDetail.resultDetails.map((detail, i) => (
+                <div key={i} className="flex items-center gap-2 text-sm bg-green-900/50 text-green-200 border border-green-600/30 rounded-md px-3 py-1.5">
+                  <CheckCircle className="h-4 w-4 text-green-400 shrink-0" />
+                  <span>{detail}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <ImageLightbox
