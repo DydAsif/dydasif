@@ -181,6 +181,16 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           </div>
 
           <p className="new-project-caption">{activeDetail.caption}</p>
+
+          {activeDetail.details && (
+            <div className="new-project-details-container">
+              {activeDetail.details.map((detail, i) => (
+                <div key={i} className={cn('new-project-detail-item', detail.color)}>
+                  <span>{detail.text}</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <ImageLightbox

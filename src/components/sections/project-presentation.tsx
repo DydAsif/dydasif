@@ -15,7 +15,7 @@ export function ProjectPresentation() {
           </div>
         </div>
         
-        <div className="space-y-8">
+        <div className="space-y-12">
             {projects.map((project, index) => (
                 <ProjectCard key={index} project={project} index={index} />
             ))}
