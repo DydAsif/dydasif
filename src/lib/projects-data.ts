@@ -81,34 +81,5 @@ export const projects: Project[] = [
       caption: "Successfully tracking an average of 18 conversions per week, enabling data-driven campaign optimization."
     },
     caseStudyUrl: "#",
-  },
-   {
-    title: 'E-commerce Funnel Optimization',
-    description: "An online retailer experienced a significant drop-off rate during their checkout process. By setting up a complete e-commerce funnel in GA4, we identified the exact leakage points and implemented UI/UX improvements, which increased the overall conversion rate by 22% and boosted Average Order Value (AOV).",
-    tags: [
-        { name: "E-commerce", icon: ShoppingCart, color: "var(--tag-color-3)" },
-        { name: "GA4", icon: BarChart, color: "var(--tag-color-4)" },
-        { name: "Funnel Analysis", icon: GitBranch, color: "var(--tag-color-1)" },
-        { name: "CRO", icon: TrendingUp, color: "var(--tag-color-2)" },
-    ],
-    problem: {
-      image: 'https://i.ibb.co/3m4wL2z/prob3.jpg',
-      imageAlt: 'Analytics showing high checkout abandonment rate',
-      imageHint: 'chart dropoff',
-      caption: "A high cart abandonment rate was severely impacting the store's revenue and profitability."
-    },
-    solution: {
-      image: 'https://i.ibb.co/dGtL7Gg/sol3.jpg',
-      imageAlt: 'GA4 funnel exploration report highlighting drop-off points',
-      imageHint: 'analytics funnel',
-      caption: "Created a detailed GA4 funnel report to visualize the user journey and pinpoint UX friction points."
-    },
-    result: {
-      image: 'https://i.ibb.co/N1WfPjH/result3.jpg',
-      imageAlt: 'Dashboard showing a 22% increase in conversion rate',
-      imageHint: 'chart increase',
-      caption: "A 22% uplift in conversion rate and higher AOV after implementing data-backed UI/UX changes."
-    },
-    caseStudyUrl: "#",
   }
 ];
