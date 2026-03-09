@@ -1,3 +1,4 @@
+"use client";
 
 import { Button } from '@/components/ui/button';
 import { Linkedin, Instagram, Facebook, Twitter } from 'lucide-react';
@@ -113,6 +114,14 @@ const socialMediaLinks = [
 
 
 export function Socials() {
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string) => {
+    e.preventDefault();
+    const element = document.querySelector(selector);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="social-links" className="w-full py-12 md:py-24 lg:py-32 section-bg">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
@@ -168,6 +177,22 @@ export function Socials() {
             </div>
           </div>
         </div>
+        
+        <div 
+          className="mt-20 text-center"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <p className="text-lg text-muted-foreground">
+            Or, have a specific question or project proposal?
+          </p>
+          <Button asChild size="lg" className="mt-6">
+            <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
+                Send Me a Message
+            </a>
+          </Button>
+        </div>
+
       </div>
     </section>
   );
