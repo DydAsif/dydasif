@@ -87,22 +87,20 @@ export function About() {
           </Card>
 
           <div 
-            className="relative group order-first lg:order-none"
+            className="relative group order-first lg:order-none flex justify-center"
             data-aos="fade-up"
             data-aos-duration="800"
             data-aos-delay="200"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-lg blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-            <div className="relative p-2 rounded-lg overflow-hidden shadow-2xl border-2 border-primary/20 about-photo-frame">
-                <Image
-                  src="https://i.ibb.co/yBgznW1r/Gemini-Generated-Image-fu4jc9fu4jc9fu4j-1.png"
-                  alt="Ashfakur Rahman Asif photo"
-                  width={500}
-                  height={500}
-                  className="relative object-cover w-full h-auto rounded-md about-photo-img"
-                  data-ai-hint="professional man"
-                />
-              </div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-full blur opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+            <Image
+              src="https://i.ibb.co/yBgznW1r/Gemini-Generated-Image-fu4jc9fu4jc9fu4j-1.png"
+              alt="Ashfakur Rahman Asif photo"
+              width={500}
+              height={500}
+              className="relative object-cover w-[300px] h-[300px] rounded-full border-4 border-primary/20 shadow-2xl"
+              data-ai-hint="professional man"
+            />
           </div>
 
           <Card 
