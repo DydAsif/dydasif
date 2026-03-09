@@ -138,7 +138,6 @@
 
 /* New Project Section Redesign */
 .new-project-card {
-  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
   background-color: #111827;
@@ -146,7 +145,6 @@
   border-radius: 24px;
   display: grid;
   grid-template-columns: 420px 1fr;
-  min-height: 460px;
   box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
   overflow: hidden;
 }
@@ -310,7 +308,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  aspect-ratio: 900 / 500;
+  aspect-ratio: 2 / 1;
   background-color: #0f172a;
 }
 

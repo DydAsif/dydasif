@@ -5,7 +5,7 @@ import { projects } from '@/lib/projects-data';
 export function ProjectPresentation() {
   return (
     <section id="presentation" className="w-full py-20 bg-background">
-      <div className="container mx-auto px-5">
+      <div className="container mx-auto max-w-7xl px-5">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <div className="space-y-3">
             <h2 className="text-4xl font-bold tracking-tighter gradient-text">Projects & Results</h2>
