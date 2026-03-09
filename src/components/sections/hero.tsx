@@ -113,7 +113,7 @@ export function Hero() {
   return (
     <section 
       id="home"
-      className="h-screen min-h-[800px] flex flex-col items-center justify-center relative text-center overflow-hidden p-4 hero-professional-bg"
+      className="h-screen min-h-[800px] w-full flex flex-col justify-center relative text-center overflow-hidden hero-professional-bg"
     >
        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             {particles}
@@ -124,7 +124,7 @@ export function Hero() {
         <div className="floating-element floating-element-3"></div>
       </div>
       
-      <div className="z-10 flex flex-col items-center justify-center">
+      <div className="z-10 flex flex-col items-center justify-center w-full px-4">
         <div data-aos="zoom-in" data-aos-duration="800" className="relative mb-6">
             <div className="absolute -inset-2 rounded-full glowing-ring-animation"></div>
             <Image
@@ -163,18 +163,18 @@ export function Hero() {
              data-aos="fade-up" data-aos-duration="800" data-aos-delay="300"
         >
             <Button asChild size="lg" className="h-14 px-10 text-lg font-bold transition-transform transform hover:scale-105 shadow-lg shadow-primary/20 hover:shadow-primary/40">
-                 <a href="https://drive.google.com/file/d/1MJ189oOYLJDI2-8HdXNnK_CTUO7fL7ze/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                    Download CV
-                  </a>
-            </Button>
-            <Button asChild variant="secondary" size="lg" className="h-14 px-10 text-lg font-bold transition-transform transform hover:scale-105 shadow-lg shadow-black/20 hover:shadow-black/40">
                  <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
                     Let's Talk
                   </a>
             </Button>
+            <Button asChild variant="secondary" size="lg" className="h-14 px-10 text-lg font-bold transition-transform transform hover:scale-105 shadow-lg shadow-black/20 hover:shadow-black/40">
+                 <a href="https://drive.google.com/file/d/1MJ189oOYLJDI2-8HdXNnK_CTUO7fL7ze/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                    Download CV
+                  </a>
+            </Button>
         </div>
 
-        <div className="mt-16 grid grid-cols-3 gap-8 md:gap-16" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+        <div className="mt-16 grid w-full max-w-2xl mx-auto grid-cols-3 gap-8 md:gap-16" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <StatItem to={50} text="Projects Completed" icon={<CheckCircle className="w-8 h-8"/>} />
             <StatItem to={3} text="Years Experience" icon={<TrendingUp className="w-8 h-8"/>} />
             <StatItem to={100} text="Client Satisfaction" icon={<UserCheck className="w-8 h-8"/>} suffix="%" />
