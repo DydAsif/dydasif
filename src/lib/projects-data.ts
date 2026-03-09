@@ -42,12 +42,7 @@ export const projects: Project[] = [
       image: 'https://i.ibb.co/HTHLrdV3/prob-1.jpg',
       imageAlt: 'Facebook Ads showing poor purchase tracking data',
       imageHint: 'facebook events error',
-      caption: "Inaccurate purchase event tracking led to unreliable ad performance data and wasted spend.",
-      details: [
-        { text: "Purchase event: Only 40 total (very low!)", color: 'red' },
-        { text: "No Recent Activity", color: 'red' },
-        { text: "Poor Tracking - Wasted Ad Budget", color: 'red' }
-      ]
+      caption: "Inaccurate purchase event tracking led to unreliable ad performance data and wasted spend."
     },
     solution: {
         image: 'https://i.ibb.co/RmkpK9G/sol1.jpg',
@@ -90,12 +85,7 @@ export const projects: Project[] = [
       image: 'https://i.ibb.co/8DhXzRMj/prob-2-ss.jpg',
       imageAlt: 'Empty Google Analytics 4 dashboard with problem labels',
       imageHint: 'empty chart error',
-      caption: "Without conversion data, the client was flying blind, unable to determine campaign ROI or optimize ad spend.",
-      details: [
-        { text: "No conversion data recorded in GA4", color: 'red' },
-        { text: "Unable to attribute revenue to ad campaigns", color: 'red' },
-        { text: "Poor optimization - Wasted ad budget", color: 'red' }
-      ]
+      caption: "Without conversion data, the client was flying blind, unable to determine campaign ROI or optimize ad spend."
     },
     solution: {
       image: 'https://i.ibb.co/q38TBYsL/sol2.jpg',
