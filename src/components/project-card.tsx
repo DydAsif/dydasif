@@ -1,102 +1,53 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import type { Project, ProjectTag } from '@/lib/projects-data';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 type TabValue = 'problem' | 'solution' | 'result';
 
-const TABS: { value: TabValue; label: string; }[] = [
-    { value: 'problem', label: 'Problem' },
-    { value: 'solution', label: 'Solution' },
-    { value: 'result', label: 'Result' },
+const TABS: { value: TabValue; label: string }[] = [
+  { value: 'problem', label: 'Problem' },
+  { value: 'solution', label: 'Solution' },
+  { value: 'result', label: 'Result' },
 ];
 
-const tabGradients = {
-  problem: 'pill-problem',
-  solution: 'pill-solution',
-  result: 'pill-result',
+const tabColorClasses = {
+  problem: 'data-[state=active]:bg-orange-600',
+  solution: 'data-[state=active]:bg-blue-600',
+  result: 'data-[state=active]:bg-green-600',
 };
 
-const tabTextColors = {
-  problem: 'text-orange-400',
-  solution: 'text-blue-400',
-  result: 'text-green-400',
-};
-
-const tabBgColors = {
-  problem: 'bg-orange-950/50',
-  solution: 'bg-blue-950/50',
-  result: 'bg-green-950/50',
-};
-
-const GlowingTag = ({ tag }: { tag: ProjectTag }) => (
-  <div className="glowing-tag inline-flex items-center gap-1.5">
-    <tag.icon className="h-3 w-3" />
-    <span>{tag.name}</span>
+const Tag = ({ tag }: { tag: ProjectTag }) => (
+  <div className="flex items-center gap-2">
+    <tag.icon className="h-5 w-5 text-primary" />
+    <span className="text-sm font-medium text-muted-foreground">{tag.name}</span>
   </div>
 );
 
 export function ProjectCard({ project }: { project: Project }) {
   const [activeTab, setActiveTab] = useState<TabValue>('problem');
-  const [isHovering, setIsHovering] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const handleTabChange = (value: string) => {
-    setActiveTab(value as TabValue);
-  };
-  
-  const startAutoSlide = () => {
-    stopAutoSlide();
-    intervalRef.current = setInterval(() => {
-      setActiveTab(prevTab => {
-        const currentIndex = TABS.findIndex(t => t.value === prevTab);
-        const nextIndex = (currentIndex + 1) % TABS.length;
-        return TABS[nextIndex].value;
-      });
-    }, 4000); 
-  };
-
-  const stopAutoSlide = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
-  useEffect(() => {
-    if (!isHovering) {
-      startAutoSlide();
-    } else {
-      stopAutoSlide();
-    }
-    return () => stopAutoSlide();
-  }, [isHovering]);
-
   const activeDetail = project[activeTab];
 
   return (
     <div
-      className="project-card-glow rounded-2xl p-6 md:p-8"
+      className="project-card-base rounded-2xl p-6 md:p-8"
       data-aos="fade-up"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
     >
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
         {/* Left Side: Text Content */}
-        <div className="flex flex-col">
-          <h3 className="text-2xl font-bold mb-2 gradient-text">{project.title}</h3>
-          <p className="text-muted-foreground mb-4 text-sm">{project.description}</p>
-          <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-col h-full">
+          <h3 className="text-2xl font-bold mb-3 gradient-text">{project.title}</h3>
+          <p className="text-muted-foreground mb-6 text-base">{project.description}</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 mb-8">
             {project.tags.map(tag => (
-              <GlowingTag key={tag.name} tag={tag} />
+              <Tag key={tag.name} tag={tag} />
             ))}
           </div>
-           <a href={project.caseStudyUrl} target="_blank" rel="noopener noreferrer" className="case-study-button mt-auto self-start inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
+           <a href={project.caseStudyUrl} target="_blank" rel="noopener noreferrer" className="case-study-button mt-auto self-start inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
               View Full Case Study
               <ArrowRight className="h-4 w-4" />
             </a>
@@ -104,60 +55,44 @@ export function ProjectCard({ project }: { project: Project }) {
 
         {/* Right Side: Image Showcase */}
         <div className="flex flex-col">
-          {/* Pill Tab Switcher */}
-            <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-              <TabsList className={cn("relative grid w-full grid-cols-3 rounded-full p-1 mb-4 h-auto pill-tab-switcher")}>
+            <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as TabValue)} className="w-full">
+              <TabsList className="grid w-full grid-cols-3 rounded-full p-1 mb-4 h-auto bg-secondary/50">
                   {TABS.map(tab => (
                     <TabsTrigger
                         key={tab.value}
                         value={tab.value}
                         className={cn(
-                          "pill-tab-button relative w-full rounded-full px-3 py-1.5 text-xs font-medium data-[state=inactive]:text-muted-foreground",
-                           activeTab === tab.value ? `${tabTextColors[tab.value]} font-bold` : ""
+                          "rounded-full text-sm font-medium transition-colors data-[state=inactive]:bg-transparent data-[state=inactive]:text-muted-foreground data-[state=active]:text-white data-[state=active]:shadow-lg",
+                           tab.value === 'problem' && tabColorClasses.problem,
+                           tab.value === 'solution' && tabColorClasses.solution,
+                           tab.value === 'result' && tabColorClasses.result
                         )}
                     >
                         {tab.label}
                     </TabsTrigger>
                   ))}
-                  <motion.div
-                    layoutId={`pill-tab-indicator-${project.title}`}
-                    className={cn("pill-tab-indicator", tabGradients[activeTab], activeTab ? tabBgColors[activeTab] : '')}
-                    style={{
-                      width: `calc(${100 / TABS.length}% - 4px)`,
-                      left: `calc(${TABS.findIndex(t => t.value === activeTab) * (100 / TABS.length)}% + 2px)`,
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
               </TabsList>
-                 <AnimatePresence mode="wait">
-                  <motion.div
-                      key={activeTab}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                        <TabsContent value={activeTab} className="m-0">
-                             <div className="browser-mockup w-full rounded-lg overflow-hidden shadow-lg shadow-black/20 flex-grow group">
-                                <div className="browser-mockup-header h-7 flex items-center px-3 gap-1.5">
-                                <div className="h-2 w-2 rounded-full bg-red-500"></div>
-                                <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
-                                <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                                </div>
-                                <div className="relative aspect-video bg-black/20">
-                                    <Image
-                                        src={activeDetail.image}
-                                        alt={activeDetail.imageAlt}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                        data-ai-hint={activeDetail.imageHint}
-                                        unoptimized
-                                    />
-                                </div>
-                            </div>
-                        </TabsContent>
-                    </motion.div>
-                </AnimatePresence>
+              
+              <TabsContent value={activeTab} className="mt-4">
+                <div className="browser-mockup w-full rounded-lg overflow-hidden shadow-2xl shadow-black/30">
+                    <div className="browser-mockup-header h-9 flex items-center px-4 gap-2">
+                        <div className="h-3.5 w-3.5 rounded-full bg-red-500 border border-black/20"></div>
+                        <div className="h-3.5 w-3.5 rounded-full bg-yellow-500 border border-black/20"></div>
+                        <div className="h-3.5 w-3.5 rounded-full bg-green-500 border border-black/20"></div>
+                    </div>
+                    <div className="relative aspect-[16/10] bg-gray-900">
+                        <Image
+                            src={activeDetail.image}
+                            alt={activeDetail.imageAlt}
+                            fill
+                            className="object-contain"
+                            data-ai-hint={activeDetail.imageHint}
+                            unoptimized
+                        />
+                    </div>
+                </div>
+                <p className="text-center text-muted-foreground text-sm mt-4 px-4">{activeDetail.caption}</p>
+              </TabsContent>
             </Tabs>
         </div>
       </div>

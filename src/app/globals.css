@@ -125,19 +125,10 @@
 .floating-element-2 { width: 450px; height: 450px; bottom: 5%; right: 10%; animation-duration: 28s; animation-delay: -8s; }
 .floating-element-3 { width: 250px; height: 250px; top: 50%; left: 45%; animation-duration: 35s; animation-delay: -15s; }
 
-/* Project Card Redesign Styles */
-.project-card-glow {
-  position: relative;
+/* Project Card Styles */
+.project-card-base {
   background-color: hsl(var(--card));
   border: 1px solid hsl(var(--border) / 0.5);
-  border-radius: 1.25rem; /* 20px */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card-glow:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px hsl(var(--primary) / 0.15),
-    0 0 40px hsl(var(--neon-blue) / 0.4);
 }
 
 .gradient-text {
@@ -148,94 +139,22 @@
   text-fill-color: transparent;
 }
 
-.glowing-tag {
-    background-color: hsl(var(--secondary) / 0.7);
-    border-radius: 9999px;
-    padding: 0.25rem 0.75rem; /* 4px 12px */
-    font-size: 0.75rem; /* text-xs */
-    font-weight: 500; /* medium */
-    color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--border));
-}
-
-.pill-tab-switcher {
-  background-color: hsl(var(--secondary) / 0.5);
-  backdrop-filter: blur(4px);
-}
-
-.pill-tab-button {
-  z-index: 10;
-  transition: color 0.3s ease;
-}
-
-.pill-tab-button:not([data-state='active']):hover {
-  color: hsl(var(--foreground));
-}
-
-.pill-tab-button[data-state='active'] {
-  color: hsl(var(--foreground)) !important;
-}
-.pill-tab-button[value='problem']:hover ~ .pill-tab-indicator,
-.pill-tab-button[data-state='active'][value='problem'] ~ .pill-tab-indicator {
-  --glow-color: hsl(var(--neon-orange) / 0.7);
-  box-shadow: 0 0 15px 2px var(--glow-color);
-}
-.pill-tab-button[value='solution']:hover ~ .pill-tab-indicator,
-.pill-tab-button[data-state='active'][value='solution'] ~ .pill-tab-indicator {
-  --glow-color: hsl(var(--neon-blue) / 0.7);
-  box-shadow: 0 0 15px 2px var(--glow-color);
-}
-.pill-tab-button[value='result']:hover ~ .pill-tab-indicator,
-.pill-tab-button[data-state='active'][value='result'] ~ .pill-tab-indicator {
-  --glow-color: hsl(var(--neon-green) / 0.7);
-  box-shadow: 0 0 15px 2px var(--glow-color);
-}
-
-
-.pill-tab-indicator {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  border-radius: 9999px;
-  box-shadow: 0 0 15px 2px var(--glow-color);
-  background-color: var(--bg-color);
-  z-index: 5;
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.pill-problem {
-  --glow-color: hsl(var(--neon-orange) / 0.7);
-  --bg-color: hsl(var(--neon-orange) / 0.2);
-}
-.pill-solution {
-  --glow-color: hsl(var(--neon-blue) / 0.7);
-  --bg-color: hsl(var(--neon-blue) / 0.2);
-}
-.pill-result {
-  --glow-color: hsl(var(--neon-green) / 0.7);
-  --bg-color: hsl(var(--neon-green) / 0.2);
-}
-
-
 .browser-mockup {
   border: 1px solid hsl(var(--border) / 0.3);
-  background: linear-gradient(145deg, hsl(var(--secondary)), hsl(var(--card)));
+  background: hsl(var(--secondary));
 }
 
 .browser-mockup-header {
   border-bottom: 1px solid hsl(var(--border) / 0.3);
-  background-color: hsl(var(--background) / 0.3);
+  background-color: hsl(var(--background) / 0.5);
 }
 
 .case-study-button {
-  font-weight: 600;
+  border: 1px solid hsl(var(--primary) / 0.5);
+  transition: background-color 0.3s;
   color: hsl(var(--primary));
-  background-color: hsl(var(--primary) / 0.1);
-  border: 1px solid hsl(var(--primary) / 0.3);
 }
 
 .case-study-button:hover {
-  background-color: hsl(var(--primary) / 0.2);
-  border-color: hsl(var(--primary) / 0.5);
+  background-color: hsl(var(--primary) / 0.1);
 }
