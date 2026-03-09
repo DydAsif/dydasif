@@ -98,7 +98,7 @@ export function About() {
               alt="Ashfakur Rahman Asif photo"
               width={500}
               height={500}
-              className="relative object-cover w-[300px] h-[300px] rounded-full border-4 border-primary/20 shadow-2xl"
+              className="relative object-cover w-[300px] h-[300px] rounded-full shadow-2xl"
               data-ai-hint="professional man"
             />
           </div>
