@@ -101,7 +101,8 @@ export function Hero() {
               alt="Ashfakur Rahman Asif"
               width={200}
               height={200}
-              className="relative object-cover object-top w-48 h-48 md:w-52 md:h-52 rounded-full shadow-2xl border-4 border-primary/50"
+              className="relative object-cover w-48 h-48 md:w-52 md:h-52 rounded-full shadow-2xl border-4 border-primary/50"
+              style={{ objectPosition: '50% 20%' }}
               data-ai-hint="professional man"
               priority
             />
