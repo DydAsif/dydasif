@@ -11,24 +11,16 @@ import { ImageLightbox } from '../image-lightbox';
 const StapeLogo = () => (
     <svg
       role="img"
-      viewBox="0 0 40 40"
+      viewBox="0 0 256 256"
       xmlns="http://www.w3.org/2000/svg"
       className="h-10 w-10 transition-transform duration-300 ease-in-out group-hover:scale-125"
       aria-label="Stape.io logo"
+      preserveAspectRatio="xMidYMid meet"
     >
-      <path d="M20 5 L10 20 L15 20 L20 12 L25 20 L30 20 Z M12 25 L20 38 L28 25 Z" fill="hsl(var(--primary))"/>
-      <text
-        x="32"
-        y="25"
-        fontFamily="Poppins, sans-serif"
-        fontSize="18"
-        fontWeight="bold"
-        fill="hsl(var(--foreground))"
-        textAnchor="middle"
-        dominantBaseline="middle"
-      >
-        S
-      </text>
+        <g fill="hsl(var(--primary))">
+            <path d="M103.344 128.011L18.667 90.697v-45.19l128.01 55.617l-43.333 16.887z"></path>
+            <path d="M152.656 127.989L237.333 165.303v45.19L127.99 154.783l24.666-26.794z"></path>
+        </g>
     </svg>
 );
 
