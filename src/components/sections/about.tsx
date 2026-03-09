@@ -47,6 +47,11 @@ function Counter({ to, duration = 2 }: { to: number; duration?: number }) {
 export function About() {
   return (
     <section id="about" className="w-full py-12 md:py-24 about-bg">
+        <div className="floating-element-container">
+            <div className="floating-element floating-element-1"></div>
+            <div className="floating-element floating-element-2"></div>
+            <div className="floating-element floating-element-3"></div>
+        </div>
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-16">
           <div className="space-y-2">
@@ -93,15 +98,15 @@ export function About() {
             data-aos-delay="200"
           >
             <div 
-                className="rounded-lg border border-primary/20 shadow-lg hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] hover:scale-105 transition-all duration-300 p-2"
+                className="rounded-lg border-2 border-primary p-2 shadow-[0_0_20px_hsl(var(--primary)/0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
                 style={{ background: 'linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a1628 100%)' }}
             >
                 <Image
                   src="https://i.ibb.co/yBgznW1r/Gemini-Generated-Image-fu4jc9fu4jc9fu4j-1.png"
                   alt="Ashfakur Rahman Asif photo"
-                  width={500}
-                  height={500}
-                  className="relative object-cover w-[300px] h-[300px] rounded-lg"
+                  width={320}
+                  height={420}
+                  className="relative h-[420px] w-[320px] rounded-lg object-cover"
                   data-ai-hint="professional man"
                 />
             </div>
