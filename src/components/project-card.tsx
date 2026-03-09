@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import type { Project, ProjectTag } from '@/lib/projects-data';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,14 +21,16 @@ const tabGradients = {
   result: 'pill-result',
 };
 
+const tabActiveStyles = {
+  problem: 'pill-problem-active',
+  solution: 'pill-solution-active',
+  result: 'pill-result-active',
+};
+
 const GlowingTag = ({ tag }: { tag: ProjectTag }) => (
   <div
-    className="glowing-tag inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold"
-    style={{
-      '--tag-glow-color': tag.color,
-      '--tag-glow-color-start': `hsl(${tag.color.split(' ')[0]} ${tag.color.split(' ')[1]} / 0.4)`,
-      '--tag-glow-color-end': `hsl(${tag.color.split(' ')[0]} ${tag.color.split(' ')[1]} / 0.1)`,
-    } as React.CSSProperties}
+    className="glowing-tag inline-flex items-center gap-2"
+    style={{ '--tag-glow-color': tag.color } as React.CSSProperties}
   >
     <tag.icon className="h-4 w-4" />
     <span>{tag.name}</span>
@@ -37,7 +39,37 @@ const GlowingTag = ({ tag }: { tag: ProjectTag }) => (
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const [activeTab, setActiveTab] = useState<TabValue>('problem');
+  const [isHovered, setIsHovered] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startAutoSlide = () => {
+    stopAutoSlide();
+    intervalRef.current = setInterval(() => {
+        setActiveTab(prevTab => {
+            const currentIndex = TABS.findIndex(t => t.value === prevTab);
+            const nextIndex = (currentIndex + 1) % TABS.length;
+            return TABS[nextIndex].value;
+        });
+    }, 4000);
+  };
   
+  const stopAutoSlide = () => {
+      if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+      }
+  };
+
+  useEffect(() => {
+    if (!isHovered) {
+        startAutoSlide();
+    } else {
+        stopAutoSlide();
+    }
+    return () => stopAutoSlide();
+  }, [isHovered]);
+
+
   const activeDetail = project[activeTab];
 
   return (
@@ -46,6 +78,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       data-aos="fade-up"
       data-aos-delay={`${100 * index}`}
       data-aos-duration="800"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="p-8 grid lg:grid-cols-2 gap-8 items-center">
         {/* Left Side: Text Content */}
@@ -73,7 +107,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 onClick={() => setActiveTab(tab.value)}
                 className={cn(
                   "pill-tab-button relative w-full rounded-full px-4 py-2 text-sm font-medium",
-                  activeTab === tab.value ? "active" : ""
+                   activeTab === tab.value ? tabActiveStyles[tab.value] : ""
                 )}
               >
                 {tab.label}
@@ -101,9 +135,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTab}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
+                    exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="h-full"
                   >

@@ -15,9 +15,11 @@ export function ProjectPresentation() {
           </div>
         </div>
         
-        <div className="space-y-16 md:space-y-24">
+        <div className="timeline-container">
           {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
+            <div key={project.title} className="timeline-item">
+              <ProjectCard project={project} index={index} />
+            </div>
           ))}
         </div>
 
