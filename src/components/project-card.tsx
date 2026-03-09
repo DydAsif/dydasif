@@ -97,7 +97,7 @@ export function ProjectCard({ project }: { project: Project }) {
                               animate={{ opacity: 1 }}
                               exit={{ opacity: 0 }}
                               transition={{ duration: 0.3 }}
-                              className="relative aspect-video bg-gray-900"
+                              className="relative aspect-[16/10] bg-gray-900"
                           >
                               <Image
                                   src={activeDetail.image}

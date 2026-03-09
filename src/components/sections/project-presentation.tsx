@@ -1,7 +1,6 @@
 
 import { ProjectCard } from '@/components/project-card';
 import { projects } from '@/lib/projects-data';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 export function ProjectPresentation() {
   return (
@@ -16,26 +15,11 @@ export function ProjectPresentation() {
           </div>
         </div>
         
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent>
+        <div className="space-y-16">
             {projects.map((project, index) => (
-              <CarouselItem key={index}>
-                <div className="p-1">
-                  <ProjectCard project={project} />
-                </div>
-              </CarouselItem>
+                <ProjectCard key={index} project={project} />
             ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
-        </Carousel>
-
+        </div>
       </div>
     </section>
   );
