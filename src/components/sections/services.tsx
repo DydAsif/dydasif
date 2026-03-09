@@ -59,14 +59,18 @@ const services = [
   },
 ];
 
-const StapeSIcon = () => (
+const StapeIcon = () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       className="h-10 w-10 text-primary transition-transform duration-300 ease-in-out group-hover:scale-125"
     >
-      <path d="M15.5 4.5c-2-1-4.8-1-6.8 0C5.5 5.8 4 8.7 4 12s1.5 6.2 4.7 7.5c2 1 4.8 1 6.8 0C18.5 18.2 20 15.3 20 12s-1.5-6.2-4.7-7.5zm-1.2 11.2c-1.1.5-2.5.5-3.6 0 -2.1-1-3-2.9-3-4.7s.9-3.7 3-4.7c1.1-.5 2.5-.5 3.6 0 2.1 1 3 2.9 3 4.7s-.9 3.7-3 4.7z"/>
+      <circle cx="12" cy="12" r="8" />
     </svg>
   );
 
@@ -79,7 +83,7 @@ const tools: { name: string; logo: string | JSX.Element; displayName: string }[]
     { name: 'WordPress', logo: 'https://cdn.simpleicons.org/wordpress/00ccff', displayName: 'WordPress' },
     { name: 'Shopify', logo: 'https://cdn.simpleicons.org/shopify/00ccff', displayName: 'Shopify' },
     { name: 'Wix', logo: 'https://cdn.simpleicons.org/wix/00ccff', displayName: 'Wix' },
-    { name: 'Stape.io', logo: <StapeSIcon />, displayName: 'Stape.io' },
+    { name: 'Stape.io', logo: <StapeIcon />, displayName: 'Stape.io' },
 ];
 
 export function Services() {
