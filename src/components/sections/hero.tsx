@@ -43,11 +43,11 @@ function Counter({ to, duration = 2 }: { to: number; duration?: number }) {
     return <span ref={ref}>{count}</span>;
 }
 
-const StatItem = ({ to, text, icon }: { to: number; text: string; icon: React.ReactNode }) => (
+const StatItem = ({ to, text, icon, suffix = '+' }: { to: number; text: string; icon: React.ReactNode, suffix?: string }) => (
     <div className="flex flex-col items-center gap-2 text-center">
         <div className="text-primary">{icon}</div>
         <p className="text-3xl md:text-4xl font-bold text-white">
-            <Counter to={to} />+
+            <Counter to={to} />{suffix}
         </p>
         <p className="text-sm text-muted-foreground">{text}</p>
     </div>
@@ -141,18 +141,18 @@ export function Hero() {
         <div className="mt-16 grid grid-cols-3 gap-8 md:gap-16" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
             <StatItem to={50} text="Projects Completed" icon={<CheckCircle className="w-8 h-8"/>} />
             <StatItem to={3} text="Years Experience" icon={<TrendingUp className="w-8 h-8"/>} />
-            <StatItem to={100} text="Client Satisfaction" icon={<UserCheck className="w-8 h-8"/>} />
+            <StatItem to={100} text="Client Satisfaction" icon={<UserCheck className="w-8 h-8"/>} suffix="%" />
         </div>
-      </div>
         
-      <div 
-          className="absolute bottom-8 text-primary/80 animate-bounce"
+        <div 
+          className="mt-12 text-primary/80 animate-bounce"
           data-aos="fade-up"
           data-aos-duration="800"
-          data-aos-delay="600"
+          data-aos-delay="500"
           data-aos-anchor-placement="top-bottom"
-      >
+        >
           <a href="#about" onClick={(e) => handleScrollTo(e, '#about')}>↓ Scroll Down</a>
+        </div>
       </div>
     </section>
   );
