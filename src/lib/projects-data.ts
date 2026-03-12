@@ -94,7 +94,8 @@ export const projects: Project[] = [
       image: 'https://i.ibb.co/0jqRTnsN/result2.jpg',
       imageAlt: 'Google Ads dashboard showing 18 conversions in a week',
       imageHint: 'analytics report',
-      caption: "Successfully tracking an average of 18 conversions per week, enabling data-driven campaign optimization."
+      caption: "Successfully tracking an average of 18 conversions per week, enabling data-driven campaign optimization.",
+      fullViewLink: "https://drive.google.com/file/d/1VwodmeXMQcUDPMeCR0O4ImMxLhKK-UmU/view?usp=sharing"
     },
   }
 ];
