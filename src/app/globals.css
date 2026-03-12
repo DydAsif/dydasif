@@ -112,7 +112,6 @@
 
 .hero-professional-bg { position: relative; overflow: hidden; background-color: hsl(216, 100%, 4%); background-image: linear-gradient(170deg, hsl(220, 43%, 12%) 0%, hsl(216, 100%, 4%) 100%); }
 .hero-professional-bg::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(ellipse 60% 40% at 50% 100%, hsla(var(--primary), 0.15), transparent), linear-gradient(to right, hsl(var(--border) / 0.1) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--border) / 0.1) 1px, transparent 1px); background-size: 4rem 4rem; mask-image: radial-gradient(ellipse at center, black 10%, transparent 70%); opacity: 0.7; animation: scroll-grid 45s linear infinite; z-index: 0; }
-.hero-professional-bg > * { position: relative; z-index: 1; }
 
 /* Input field placeholder animations */
 .glow-on-focus:focus-visible { animation: focus-glow 2s ease-in-out infinite; box-shadow: 0 0 8px 2px hsl(var(--primary) / 0.6); }
