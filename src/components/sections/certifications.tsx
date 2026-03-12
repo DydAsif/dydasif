@@ -19,7 +19,7 @@ const certifications = [
     program: 'Authorized by: Department of Youth Development',
     skills: 'Covered: Freelancing strategy, marketplace setup, career planning',
     hasCertificate: true,
-    link: '#',
+    link: 'https://drive.google.com/file/d/1_eYqXXVZKrJqVRJtskXbjJEuz2z-rZ0P/view?usp=sharing',
   },
   {
     icon: <BookOpenCheck className="h-10 w-10 text-primary" />,
