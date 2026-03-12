@@ -10,7 +10,7 @@ const certifications = [
     program: 'Board: Bangladesh Technical Education Board (BTEB)',
     skills: 'Covered: Word, Excel, PowerPoint, Typing',
     hasCertificate: true,
-    link: '#',
+    link: 'https://drive.google.com/file/d/1WJcIWDCzII6HxhThX__s80UVCvJrVkPQ/view?usp=sharing',
   },
   {
     icon: <Award className="h-10 w-10 text-primary" />,
