@@ -1,12 +1,10 @@
 "use client";
 
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-import { Facebook, TrendingUp, GitBranch, ChevronDown, ZoomIn, ExternalLink } from 'lucide-react';
+import { Facebook, TrendingUp, GitBranch, ChevronDown, ExternalLink } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { useState } from 'react';
-import { ImageLightbox } from '../image-lightbox';
 
 const services = [
   {
@@ -90,14 +88,6 @@ const tools: { name: string; logo: string | JSX.Element; displayName: string }[]
 ];
 
 export function Services() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<{ url: string; alt: string } | null>(null);
-
-  const openLightbox = (imageUrl: string, alt: string) => {
-    setSelectedImage({ url: imageUrl, alt });
-    setLightboxOpen(true);
-  };
-
   return (
     <section id="services" className="w-full py-12 md:py-24 lg:py-32 services-bg" data-aos="fade-up" data-aos-duration="1200">
       <div className="container mx-auto max-w-7xl px-4 md:px-6">
@@ -137,9 +127,11 @@ export function Services() {
                        ))}
                      </ul>
                      <h4 className="font-semibold text-sm">Proof Screenshot:</h4>
-                      <div
-                        className="overflow-hidden relative aspect-video rounded-lg border-2 border-primary/20 shadow-lg group cursor-pointer"
-                        onClick={() => openLightbox(service.image, service.imageAlt)}
+                      <a
+                        href={service.fullViewLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block overflow-hidden relative aspect-video rounded-lg border-2 border-primary/20 shadow-lg group cursor-pointer"
                       >
                         <Image
                           src={service.image}
@@ -150,17 +142,11 @@ export function Services() {
                         />
                         <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="flex items-center gap-2 text-white font-semibold">
-                            <ZoomIn className="h-6 w-6" />
-                            <span>View Image</span>
+                            <ExternalLink className="h-6 w-6" />
+                            <span>View Full Resolution</span>
                           </div>
                         </div>
-                      </div>
-                      <Button asChild variant="outline" size="sm" className="mt-2 w-full">
-                        <a href={service.fullViewLink} target="_blank" rel="noopener noreferrer">
-                          View Full Resolution
-                          <ExternalLink className="h-4 w-4 ml-2" />
-                        </a>
-                      </Button>
+                      </a>
                   </CollapsibleContent>
                 </CardFooter>
               </Card>
@@ -188,14 +174,6 @@ export function Services() {
           </div>
         </div>
       </div>
-      {selectedImage && (
-        <ImageLightbox
-          isOpen={lightboxOpen}
-          onOpenChange={setLightboxOpen}
-          imageUrl={selectedImage.url}
-          altText={selectedImage.alt}
-        />
-      )}
     </section>
   );
 }
