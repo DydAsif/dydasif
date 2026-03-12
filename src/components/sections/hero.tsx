@@ -1,9 +1,9 @@
+
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { useInView } from 'framer-motion';
 import { TrendingUp, CheckCircle, UserCheck } from 'lucide-react';
 
 const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, selector: string) => {
@@ -23,29 +23,32 @@ const subtitles = [
 
 function Counter({ to, duration = 2 }: { to: number; duration?: number }) {
     const [count, setCount] = useState(0);
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     useEffect(() => {
-        if (isInView) {
-            let start = 0;
-            const end = to;
-            if (start === end) return;
-
-            let startTime: number | null = null;
-            const step = (timestamp: number) => {
-                if (!startTime) startTime = timestamp;
-                const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-                setCount(Math.floor(progress * end));
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
+        let start = 0;
+        const end = to;
+        if (start === end) {
+          setCount(end);
+          return;
         }
-    }, [isInView, to, duration]);
 
-    return <span ref={ref}>{count}</span>;
+        let startTime: number | null = null;
+        const step = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+            setCount(Math.floor(progress * end));
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        const animationFrame = window.requestAnimationFrame(step);
+        
+        return () => {
+          window.cancelAnimationFrame(animationFrame);
+        }
+    }, [to, duration]);
+
+    return <span>{count}</span>;
 }
 
 const StatItem = ({ to, text, icon, suffix = '+' }: { to: number; text: string; icon: React.ReactNode, suffix?: string }) => (
@@ -118,7 +121,7 @@ export function Hero() {
       id="home"
       className="h-screen min-h-[800px] w-full flex flex-col justify-center relative text-center overflow-hidden hero-professional-bg"
     >
-       <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
+       <div className="absolute inset-0 z-0 pointer-events-none">
             {particles}
         </div>
        <div className="floating-element-container">
