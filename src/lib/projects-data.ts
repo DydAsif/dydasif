@@ -80,7 +80,8 @@ export const projects: Project[] = [
       image: 'https://i.ibb.co/8DhXzRMj/prob-2-ss.jpg',
       imageAlt: 'Empty Google Analytics 4 dashboard with problem labels',
       imageHint: 'empty chart error',
-      caption: "Without conversion data, the client was flying blind, unable to determine campaign ROI or optimize ad spend."
+      caption: "Without conversion data, the client was flying blind, unable to determine campaign ROI or optimize ad spend.",
+      fullViewLink: "https://drive.google.com/file/d/1gEq5xlqVMbssF2pYNI7vQFNiemhro4YY/view?usp=sharing"
     },
     solution: {
       image: 'https://i.ibb.co/q38TBYsL/sol2.jpg',
