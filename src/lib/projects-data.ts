@@ -57,7 +57,8 @@ export const projects: Project[] = [
         image: 'https://i.ibb.co/1Yykhn02/result1.jpg',
         imageAlt: 'Facebook Events Manager showing an 8.7/10 Event Match Quality score',
         imageHint: 'analytics dashboard',
-        caption: "Achieved near-perfect purchase tracking accuracy and an 8.7/10 Event Match Quality score."
+        caption: "Achieved near-perfect purchase tracking accuracy and an 8.7/10 Event Match Quality score.",
+        fullViewLink: 'https://drive.google.com/file/d/1V1E9CflMVT7dBY75CvtjeLqyAArSWDnX/view?usp=sharing'
     },
   },
   {
