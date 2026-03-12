@@ -44,7 +44,7 @@ export async function submitContactForm(values: z.infer<typeof contactFormSchema
   try {
     await resend.emails.send({
       from: 'onboarding@resend.dev', // This uses Resend's test domain. Emails can only be sent to your verified Resend account email. To use your own domain, you must purchase one and verify it with Resend.
-      to: 'dydfreelancer@gmail.com',
+      to: 'asifashfakurrahman@gmail.com',
       subject: `New contact form submission from ${name}`,
       reply_to: email,
       html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong></p><p>${message}</p>`,

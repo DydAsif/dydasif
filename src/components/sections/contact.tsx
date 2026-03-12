@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import { submitContactForm } from '@/app/actions';
 import { Loader2, Mail, Linkedin, Facebook, Instagram, Twitter } from 'lucide-react';
 import { Card } from '../ui/card';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -124,14 +125,32 @@ export function Contact() {
                     </div>
                      <div>
                         <h3 className="text-2xl font-bold text-primary">Connect With Me</h3>
-                         <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                            <a href="mailto:dydfreelancer@gmail.com" className="flex h-16 w-16 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:scale-110 hover:border-primary hover:text-primary hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]"><Mail className="h-8 w-8" /></a>
+                         <TooltipProvider>
+                          <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <a href="mailto:asifashfakurrahman@gmail.com" className="flex h-16 w-16 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:scale-110 hover:border-primary hover:text-primary hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
+                                    <Mail className="h-8 w-8" />
+                                  </a>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>Send Email</p>
+                                </TooltipContent>
+                              </Tooltip>
                              {socialMediaLinks.map((link) => (
-                               <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label} className="flex h-16 w-16 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:scale-110 hover:border-primary hover:text-primary hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
-                                 {link.icon}
-                               </a>
+                               <Tooltip key={link.label}>
+                                 <TooltipTrigger asChild>
+                                   <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label} className="flex h-16 w-16 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:scale-110 hover:border-primary hover:text-primary hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
+                                     {link.icon}
+                                   </a>
+                                 </TooltipTrigger>
+                                 <TooltipContent>
+                                   <p>{link.label}</p>
+                                 </TooltipContent>
+                               </Tooltip>
                             ))}
-                        </div>
+                          </div>
+                        </TooltipProvider>
                     </div>
                 </div>
 
