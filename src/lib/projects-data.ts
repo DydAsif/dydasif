@@ -44,7 +44,8 @@ export const projects: Project[] = [
       image: 'https://i.ibb.co/HTHLrdV3/prob-1.jpg',
       imageAlt: 'Facebook Ads showing poor purchase tracking data',
       imageHint: 'facebook events error',
-      caption: "Inaccurate purchase event tracking led to unreliable ad performance data and wasted spend."
+      caption: "Inaccurate purchase event tracking led to unreliable ad performance data and wasted spend.",
+      fullViewLink: "https://drive.google.com/file/d/1gKENWsP9R03H8OPy-nmPW3l1Vib4drwI/view?usp=sharing"
     },
     solution: {
         image: 'https://i.ibb.co/RmkpK9G/sol1.jpg',
