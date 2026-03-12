@@ -18,7 +18,7 @@ const TABS: { value: TabValue; label: string }[] = [
 ];
 
 const TAB_SEQUENCE: TabValue[] = ['problem', 'solution', 'result'];
-const AUTO_SLIDE_INTERVAL = 3000; // 3 seconds
+const AUTO_SLIDE_INTERVAL = 5000; // 5 seconds
 const USER_PAUSE_DURATION = 8000; // 8 seconds
 
 const tabActiveClasses: Record<TabValue, string> = {
@@ -87,10 +87,10 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
     <AnimatePresence mode="wait">
         <motion.div
             key={activeTab}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'linear' }}
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -10 }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
             className="absolute inset-0"
         >
             <Image
