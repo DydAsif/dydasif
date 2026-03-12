@@ -118,7 +118,7 @@ export function Hero() {
       id="home"
       className="h-screen min-h-[800px] w-full flex flex-col justify-center relative text-center overflow-hidden hero-professional-bg"
     >
-       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+       <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
             {particles}
         </div>
        <div className="floating-element-container">
@@ -127,7 +127,7 @@ export function Hero() {
         <div className="floating-element floating-element-3"></div>
       </div>
       
-      <div className="z-10 flex flex-col items-center justify-center w-full px-4">
+      <div className="relative z-[3] flex flex-col items-center justify-center w-full px-4">
         <div data-aos="zoom-in" data-aos-duration="800" className="relative mb-6">
             <div className="absolute -inset-2 rounded-full glowing-ring-animation"></div>
             <Image
