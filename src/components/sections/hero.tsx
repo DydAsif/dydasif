@@ -90,21 +90,24 @@ export function Hero() {
 
   useEffect(() => {
     const generateParticles = () => {
-      const particleArray = [...Array(50)].map((_, i) => (
-        <div
-          key={i}
-          className="particle"
-          style={
-            {
-              '--x': `${Math.random() * 100}vw`,
-              '--y': `${Math.random() * 100}vh`,
-              '--d': `${Math.random() * 10 + 15}s`,
-              '--delay': `${Math.random() * -25}s`,
-              '--s': `${Math.random() * 2 + 1}px`,
-            } as React.CSSProperties
-          }
-        ></div>
-      ));
+      const particleArray = [...Array(100)].map((_, i) => {
+        const isStar = Math.random() > 0.7; // 30% are stars
+        return (
+          <div
+            key={i}
+            className={isStar ? "particle particle-star" : "particle"}
+            style={
+              {
+                '--x': `${Math.random() * 100}vw`,
+                '--y': `${Math.random() * 100}vh`,
+                '--d': `${Math.random() * 15 + 20}s`, // Slower movement: 20s to 35s
+                '--delay': `${Math.random() * -35}s`,
+                '--s': `${isStar ? (Math.random() * 0.5 + 2) : (Math.random() * 0.5 + 1.5)}px`,
+              } as React.CSSProperties
+            }
+          ></div>
+        );
+      });
       setParticles(particleArray);
     };
     generateParticles();
