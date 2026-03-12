@@ -87,7 +87,8 @@ export const projects: Project[] = [
       image: 'https://i.ibb.co/q38TBYsL/sol2.jpg',
       imageAlt: 'Google Tag Manager workspace showing GA4 and Google Ads tags',
       imageHint: 'gtm workspace',
-      caption: "A comprehensive GTM setup was created to capture user interactions and send them as conversions to GA4 & Google Ads."
+      caption: "A comprehensive GTM setup was created to capture user interactions and send them as conversions to GA4 & Google Ads.",
+      fullViewLink: "https://drive.google.com/file/d/1T3_KyW50C07RLVb9gCDtKS_81QKc2cyA/view?usp=sharing"
     },
     result: {
       image: 'https://i.ibb.co/0jqRTnsN/result2.jpg',
