@@ -83,6 +83,28 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
     };
   }, [index]);
 
+  const imageContent = (
+    <AnimatePresence mode="wait">
+        <motion.div
+            key={activeTab}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'linear' }}
+            className="absolute inset-0"
+        >
+            <Image
+                src={activeDetail.image}
+                alt={activeDetail.imageAlt}
+                fill
+                className="new-project-mockup-image"
+                data-ai-hint={activeDetail.imageHint}
+                unoptimized
+            />
+        </motion.div>
+    </AnimatePresence>
+  );
+
   return (
     <>
       <div className="new-project-card">
@@ -149,48 +171,39 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
               <div className="new-project-mockup-dot bg-[#f59e0b]"></div>
               <div className="new-project-mockup-dot bg-[#22c55e]"></div>
             </div>
-            <div
-              className="new-project-mockup-image-wrapper group cursor-pointer"
-              onClick={() => setLightboxOpen(true)}
-            >
-              <AnimatePresence mode="wait">
-                  <motion.div
-                      key={activeTab}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'linear' }}
-                      className="absolute inset-0"
-                  >
-                      <Image
-                          src={activeDetail.image}
-                          alt={activeDetail.imageAlt}
-                          fill
-                          className="new-project-mockup-image"
-                          data-ai-hint={activeDetail.imageHint}
-                          unoptimized
-                      />
-                  </motion.div>
-              </AnimatePresence>
-               <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex items-center gap-2 text-white font-semibold">
-                  <ZoomIn className="h-6 w-6" />
-                  <span>View Image</span>
+            
+            {activeDetail.fullViewLink ? (
+              <a
+                href={activeDetail.fullViewLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="new-project-mockup-image-wrapper group cursor-pointer"
+              >
+                {imageContent}
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center gap-2 text-white font-semibold">
+                    <ExternalLink className="h-6 w-6" />
+                    <span>View Full Resolution</span>
+                  </div>
+                </div>
+              </a>
+            ) : (
+              <div
+                className="new-project-mockup-image-wrapper group cursor-pointer"
+                onClick={() => setLightboxOpen(true)}
+              >
+                {imageContent}
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center gap-2 text-white font-semibold">
+                    <ZoomIn className="h-6 w-6" />
+                    <span>View Image</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
 
           <p className="new-project-caption">{activeDetail.caption}</p>
-          
-          {activeDetail.fullViewLink && (
-            <Button asChild variant="outline" size="sm" className="mt-2 w-full">
-              <a href={activeDetail.fullViewLink} target="_blank" rel="noopener noreferrer">
-                View Full Resolution
-                <ExternalLink className="h-4 w-4 ml-2" />
-              </a>
-            </Button>
-          )}
 
           {activeDetail.details && (
             <div className="new-project-details-container">
