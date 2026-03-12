@@ -4,9 +4,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import type { Project, ProjectTag } from '@/lib/projects-data';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, ZoomIn } from 'lucide-react';
+import { CheckCircle, ZoomIn, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ImageLightbox } from '@/components/image-lightbox';
+import { Button } from '@/components/ui/button';
 
 type TabValue = 'problem' | 'solution' | 'result';
 
@@ -181,6 +182,15 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           </div>
 
           <p className="new-project-caption">{activeDetail.caption}</p>
+          
+          {activeDetail.fullViewLink && (
+            <Button asChild variant="outline" size="sm" className="mt-2 w-full">
+              <a href={activeDetail.fullViewLink} target="_blank" rel="noopener noreferrer">
+                View Full Resolution
+                <ExternalLink className="h-4 w-4 ml-2" />
+              </a>
+            </Button>
+          )}
 
           {activeDetail.details && (
             <div className="new-project-details-container">

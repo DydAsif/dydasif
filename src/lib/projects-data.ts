@@ -7,6 +7,7 @@ export type ProjectDetail = {
   imageHint: string;
   caption: string;
   details?: { text: string; color: 'red' | 'blue' | 'green' }[];
+  fullViewLink?: string;
 };
 
 export type ProjectTag = {
@@ -49,7 +50,8 @@ export const projects: Project[] = [
         image: 'https://i.ibb.co/RmkpK9G/sol1.jpg',
         imageAlt: 'Google Tag Manager workspace with server-side tracking setup',
         imageHint: 'tracking solution',
-        caption: "Implemented a robust server-side GTM container with Meta Pixel & CAPI for precise event deduplication."
+        caption: "Implemented a robust server-side GTM container with Meta Pixel & CAPI for precise event deduplication.",
+        fullViewLink: 'https://drive.google.com/file/d/1x-JG5fUv9xvGKDBU9B0rGJknXu73a1Md/view?usp=sharing'
     },
     result: {
         image: 'https://i.ibb.co/1Yykhn02/result1.jpg',
