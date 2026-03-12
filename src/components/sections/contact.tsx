@@ -135,7 +135,7 @@ export function Contact() {
                           <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4">
                               <Tooltip>
                                 <TooltipTrigger asChild>
-                                  <a href="mailto:asifashfakurrahman@gmail.com" className="flex h-16 w-16 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:scale-110 hover:border-primary hover:text-primary hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
+                                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=asifashfakurrahman@gmail.com" target="_blank" rel="noopener noreferrer" className="flex h-16 w-16 items-center justify-center rounded-full border border-border text-muted-foreground transition-all duration-300 hover:scale-110 hover:border-primary hover:text-primary hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
                                     <Mail className="h-8 w-8" />
                                   </a>
                                 </TooltipTrigger>
