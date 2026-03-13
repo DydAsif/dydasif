@@ -121,7 +121,7 @@ export function Hero() {
       id="home"
       className="h-screen min-h-[800px] w-full flex flex-col justify-center relative text-center overflow-hidden hero-professional-bg"
     >
-       <div className="absolute inset-0 z-0 pointer-events-none">
+       <div className="absolute inset-0 z-[1] pointer-events-none">
             {particles}
         </div>
        <div className="floating-element-container">
@@ -139,7 +139,7 @@ export function Hero() {
               width={200}
               height={200}
               className="relative object-cover w-48 h-48 md:w-52 md:h-52 rounded-full shadow-2xl border-4 border-primary/50"
-              style={{ objectPosition: '50% 20%' }}
+              style={{ objectPosition: 'center 25%' }}
               data-ai-hint="professional man"
               priority
             />
