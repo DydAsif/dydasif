@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -121,7 +120,7 @@ export function Hero() {
       id="home"
       className="h-screen min-h-[800px] w-full flex flex-col justify-center relative text-center overflow-hidden hero-professional-bg"
     >
-       <div className="absolute inset-0 z-[1] pointer-events-none">
+       <div className="absolute inset-0 z-[2] pointer-events-none">
             {particles}
         </div>
        <div className="floating-element-container">
@@ -131,7 +130,7 @@ export function Hero() {
       </div>
       
       <div className="relative z-[3] flex flex-col items-center justify-center w-full px-4">
-        <div data-aos="zoom-in" data-aos-duration="800" className="relative mb-6">
+        <div data-aos="zoom-in" data-aos-duration="800" className="relative mb-6 mt-12 md:mt-0">
             <div className="absolute -inset-2 rounded-full glowing-ring-animation"></div>
             <Image
               src="https://i.ibb.co/P3pHX2D/last.png"
@@ -139,7 +138,7 @@ export function Hero() {
               width={200}
               height={200}
               className="relative object-cover w-48 h-48 md:w-52 md:h-52 rounded-full shadow-2xl border-4 border-primary/50"
-              style={{ objectPosition: 'center 25%' }}
+              style={{ objectPosition: 'center 20%' }}
               data-ai-hint="professional man"
               priority
             />
